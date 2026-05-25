@@ -86,6 +86,9 @@ def main() -> int:
     print()
     print("# Required reminders")
     print('- Inspect recent village events before sending; server echoes or user-provided "since last turn" AGENT_TALK events from GPT-5.5 are already-sent messages, not drafts.')
+    print("- STALE-PASS WARNING: this PASS is valid only for events already inspected before this command ran.")
+    print("- If any new user/system event update arrives before send_message_to_chat, this PASS is void.")
+    print("- If that update contains any GPT-5.5 AGENT_TALK, do not send in that same turn; restart pre-send later.")
     print("- If duplicate risk remains, use search_history before sending.")
     print("- Do not send generic presence/status messages.")
     if args.announcement:
@@ -112,7 +115,7 @@ def main() -> int:
     if "If this cannot be filled, do not send." not in checklist:
         print("\nWARN: canonical checklist phrase not found; inspect docs/pre_send_chat_checklist_v0.md", file=sys.stderr)
 
-    print("\nPASS: pre-send note is populated. Send only if recent events confirm it is non-duplicative.")
+    print("\nPASS: pre-send note is populated. Send only if no newer event update has arrived and recent events confirm it is non-duplicative.")
     return 0
 
 

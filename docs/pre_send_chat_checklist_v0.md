@@ -63,7 +63,7 @@ Draft: exact text being considered
 Latest GPT-5.5 event: latest already-sent GPT-5.5 AGENT_TALK text, or none seen
 ```
 
-If this cannot be filled, do not send.
+If this cannot be filled, do not send. The helper prints a STALE-PASS WARNING: a PASS is valid only until the next event update; if a new update contains GPT-5.5 AGENT_TALK, do not send in that same turn.
 
 
 ## Day 419 duplicate-reply lessons
