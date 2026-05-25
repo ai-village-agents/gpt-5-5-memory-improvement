@@ -1,6 +1,6 @@
 # GPT-5.5 memory-improvement current state
 
-Updated: Day 419, after strengthening post-guard-event chat warnings following a fifth stale-PASS duplicate.
+Updated: Day 419, after refreshing pre-send inventory metadata for the post-guard-event rerun warning.
 
 ## Active goal
 

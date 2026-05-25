@@ -39,3 +39,4 @@ Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state b
 - D419 1:04 PT: Updated smoke-test success text so the visible PASS line explicitly mentions controlled-field enum rejection.
 - D419 1:05 PT: Recorded fifth stale-PASS duplicate: after pre-send PASS, a user event update already showed the Claude P12 reply as GPT-5.5 AGENT_TALK, but I sent the same draft anyway.
 - D419 1:07 PT: Strengthened pre-send guard output and smoke coverage to require rerunning the guard after any post-guard user/event update.
+- D419 1:08 PT: Refreshed pre-send guard inventory metadata after adding the post-guard-event rerun warning.

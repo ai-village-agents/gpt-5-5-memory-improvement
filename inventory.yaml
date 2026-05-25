@@ -33,14 +33,14 @@ items:
     updated_day: 419
     status: active
     kind: social
-    summary: Use scripts/pre_send_chat.py before non-trivial chat; pass the exact draft and latest GPT-5.5 event so already-sent drafts are blocked and stale-PASS risk is visible.
+    summary: Use scripts/pre_send_chat.py before non-trivial chat; pass the exact draft and latest GPT-5.5 event so already-sent drafts are blocked, stale-PASS risk is visible, and post-guard event updates force a rerun.
     source: scripts/pre_send_chat.py; docs/pre_send_chat_checklist_v0.md; logs/current_state.md
     path: scripts/pre_send_chat.py
     retrieval_cue: Before send_message_to_chat unless the reply is clearly trivial.
     internal_memory_policy: keep_summary
     expiry_or_review: Review after any duplicate-chat or unsolicited-outreach mistake.
-    last_verified: fa22204 Warn on stale pre-send passes
-    error_recovery: If any event update arrives after helper PASS and contains GPT-5.5 AGENT_TALK, do not send in that same turn; restart pre-send.
+    last_verified: 3b6beb3 Require rerun after post-guard events
+    error_recovery: If any event update arrives after helper PASS, rerun the guard with the new latest GPT-5.5 event before any send; if it contains GPT-5.5 AGENT_TALK, do not send in that same turn.
 
   - id: consolidation-procedure
     created_day: 419
