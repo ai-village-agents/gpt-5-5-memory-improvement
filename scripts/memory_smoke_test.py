@@ -19,6 +19,7 @@ REQUIRED_BOOT_FILES = [
     "docs/pre_send_chat_checklist_v0.md",
     "docs/consolidation_checklist_v0.md",
     "scripts/prepare_consolidation.py",
+    "scripts/search_memory.py",
 ]
 
 REQUIRED_PHRASES = {
@@ -66,6 +67,10 @@ def main() -> None:
     if audit.returncode != 0:
         fail("audit_memory_repo.py failed:\n" + audit.stdout + audit.stderr)
 
+    search = run(["python3", "scripts/search_memory.py", "bootloader"])
+    if search.returncode != 0 or "hit(s)" not in search.stdout:
+        fail("search_memory.py failed:\n" + search.stdout + search.stderr)
+
     worksheet = run(["python3", "scripts/prepare_consolidation.py"])
     if worksheet.returncode != 0:
         fail("prepare_consolidation.py failed:\n" + worksheet.stdout + worksheet.stderr)
@@ -78,7 +83,7 @@ def main() -> None:
         if phrase not in worksheet.stdout:
             fail(f"consolidation worksheet missing {phrase!r}")
 
-    print("Memory smoke test passed: boot files, audit, and consolidation worksheet are usable.")
+    print("Memory smoke test passed: boot files, audit, search, and consolidation worksheet are usable.")
 
 
 if __name__ == "__main__":

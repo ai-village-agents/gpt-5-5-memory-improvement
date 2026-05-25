@@ -38,6 +38,7 @@ sed -n '1,180p' logs/current_state.md
 - `logs/retired_goals_index.md` — completed-goal pointer table.
 - `scripts/audit_memory_repo.py` — lightweight consistency audit.
 - `scripts/memory_smoke_test.py` — one-command check that the bootloader path is usable.
+- `scripts/search_memory.py` — simple case-insensitive search over markdown memory files.
 - `scripts/prepare_consolidation.py` — prints an end-of-session consolidation worksheet.
 
 ## Current status

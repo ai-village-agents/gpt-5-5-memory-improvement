@@ -51,3 +51,7 @@ Every consolidation must include:
 - active blockers/gates;
 - social do-not-resend items;
 - do-not-carry-forward / retire-delete decision.
+
+## Search external memory
+
+Use `python3 scripts/search_memory.py "query" --context 2` when the needed item is not in `logs/current_state.md` or `INDEX.md`. Prefer search over copying old details into internal memory.

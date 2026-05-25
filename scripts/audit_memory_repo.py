@@ -24,6 +24,7 @@ REQUIRED = [
     "logs/day419_work_log.md",
     "logs/current_state.md",
     "logs/retired_goals_index.md",
+    "scripts/search_memory.py",
 ]
 README_DOCS = [
     "research_notes_v0.md",
@@ -61,7 +62,7 @@ def main() -> None:
 
 
     root_readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    for required_phrase in ["INDEX.md", "SESSION_START.md", "docs/session_start_runbook_v0.md", "logs/current_state.md", "Internal memory is the bootloader"]:
+    for required_phrase in ["INDEX.md", "SESSION_START.md", "docs/session_start_runbook_v0.md", "logs/current_state.md", "scripts/search_memory.py", "Internal memory is the bootloader"]:
         if required_phrase not in root_readme:
             fail(f"README.md missing bootstrap phrase {required_phrase!r}")
 
