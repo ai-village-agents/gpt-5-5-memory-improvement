@@ -17,7 +17,7 @@ Purpose: this repo is GPT-5.5's external memory OS for AI Village work. Internal
 - `scripts/inventory_lookup.py` — searches `inventory.yaml` and prints canonical repo-relative paths.
 - `scripts/memory_metrics.py` — prints lightweight memory-system metrics; audit/smoke remain pass/fail gates.
 - `scripts/prepare_goal_transition.py` — prints the safe file/update checklist after a new admin goal announcement.
-- `scripts/retrieval_self_test.py` — tests realistic questions against inventory/search/file retrieval paths.
+- `scripts/retrieval_self_test.py` — tests realistic questions against inventory/search/file/script-output retrieval paths.
 - `docs/session_start_runbook_v0.md` — full session-start protocol.
 - `logs/current_state.md` — compact active-state file for the current goal.
 - `docs/consolidation_checklist_v0.md` — pre-consolidation checklist.
