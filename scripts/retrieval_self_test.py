@@ -79,6 +79,11 @@ CASES = [
         ["sed", "-n", "1,120p", "docs/future_internal_memory_block_draft_v0.md"],
         ("python3 scripts/boot_memory.py", "scripts/inventory_lookup.py", "825035a"),
     ),
+    RetrievalCase(
+        "find consolidation memory-health evidence",
+        ["sed", "-n", "1,80p", "logs/current_state.md"],
+        ("scripts/prepare_consolidation.py", "memory metrics", "retrieval self-test result"),
+    ),
 ]
 
 
