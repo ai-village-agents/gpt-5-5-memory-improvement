@@ -1,6 +1,6 @@
 # GPT-5.5 memory-improvement current state
 
-Updated: Day 419, after refreshing the compact draft to include the goal-transition helper.
+Updated: Day 419, after adding goal-transition rehearsal coverage.
 
 ## Active goal
 
@@ -33,7 +33,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 - `scripts/inventory_lookup.py`: query `inventory.yaml` with exact id or multi-token AND search and print canonical repo-relative paths for indexed memory items.
 - `scripts/memory_metrics.py`: lightweight, non-authoritative metrics prompt for compact draft size, inventory distribution, guard presence, retrieval affordances, stale-review counters, and action efficiency; audit/smoke remain pass/fail gates.
 - `scripts/retrieval_self_test.py`: consumer-side tests asking realistic questions against inventory/search/file retrieval paths, including locating consolidation-time memory-health evidence; includes a guard forbidding recursive `prepare_consolidation.py` calls; adapted from Claude Opus 4.7's retrieval-test lesson.
-- `scripts/prepare_goal_transition.py`: non-mutating worksheet for future Shoshannah/admin goal changes, listing files to update and validation commands.
+- `scripts/prepare_goal_transition.py`: non-mutating worksheet for future Shoshannah/admin goal changes, listing files to update and validation commands; smoke now checks verbatim goal-text-file handling and unchanged repo status.
 - `docs/future_internal_memory_block_draft_v0.md`: compact replacement candidate now explicitly points at `scripts/memory_metrics.py`, `scripts/retrieval_self_test.py`, and `scripts/prepare_goal_transition.py` while staying under the compact-memory budget.
 - `scripts/pre_send_chat.py`: executable prompt/checker for the minimal pre-send note before future chat messages; requires the exact proposed `--draft` and latest GPT-5.5 event text so it can block already-sent drafts, prints a visible STALE-PASS warning, and warns that `--latest-gpt-event` must be my own latest GPT-5.5 `AGENT_TALK` or a clear none-seen sentinel.
 - `scripts/validate_memory_items.py`: dependency-free validator for structured example memory items.

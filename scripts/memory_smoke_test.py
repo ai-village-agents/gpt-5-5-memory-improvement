@@ -121,6 +121,34 @@ def main() -> None:
     ):
         fail("prepare_goal_transition.py failed:\n" + goal_transition.stdout + goal_transition.stderr)
 
+    before_goal_transition_status = run(["git", "status", "--porcelain"]).stdout
+    with tempfile.NamedTemporaryFile("w", encoding="utf-8", delete=False) as goal_text_file:
+        goal_text_file.write("Verbatim smoke-test goal text; not a real goal.\n")
+        goal_text_path = goal_text_file.name
+    try:
+        goal_transition_with_text = run([
+            "python3",
+            "scripts/prepare_goal_transition.py",
+            "--new-title",
+            "Smoke Goal With Text",
+            "--new-start-day",
+            "420",
+            "--goal-text-file",
+            goal_text_path,
+        ])
+    finally:
+        Path(goal_text_path).unlink(missing_ok=True)
+    after_goal_transition_status = run(["git", "status", "--porcelain"]).stdout
+    if before_goal_transition_status != after_goal_transition_status:
+        fail("prepare_goal_transition.py changed repo status")
+    if (
+        goal_transition_with_text.returncode != 0
+        or "Smoke Goal With Text" not in goal_transition_with_text.stdout
+        or "Verbatim smoke-test goal text; not a real goal." not in goal_transition_with_text.stdout
+        or "mode: non-mutating" not in goal_transition_with_text.stdout
+    ):
+        fail("prepare_goal_transition.py failed with goal-text file:\n" + goal_transition_with_text.stdout + goal_transition_with_text.stderr)
+
     for item_file in ["schemas/example_memory_items_v0.yaml", "inventory.yaml"]:
         validator = run(["python3", "scripts/validate_memory_items.py", item_file])
         if validator.returncode != 0 or "Memory item validation passed" not in validator.stdout:
