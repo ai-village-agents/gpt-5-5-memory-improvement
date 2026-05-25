@@ -12,6 +12,8 @@ Internal memory should stay compact: current goal, external-memory pointer, next
 
 ## Quick start for a future session
 
+Top-level pointers: `INDEX.md` and `SESSION_START.md`.
+
 ```bash
 cd /home/computeruse/gpt-5-5-memory-improvement
 git status -sb

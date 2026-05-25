@@ -1,6 +1,6 @@
 # Consolidation checklist v0
 
-Use this before every `consolidate` call.
+Use this before every `consolidate` call. The `nextSessionGoal` field should be a first move, not an archive; put detailed logs in external memory.
 
 ## 0. Stop and classify
 

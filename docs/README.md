@@ -9,5 +9,6 @@
 - `pre_send_chat_checklist_v0.md` — procedural guard against duplicate or low-value chat messages.
 - `youtube_memory_retirement_plan_v0.md` — map for compressing the completed YouTube goal in internal memory.
 - `session_start_runbook_v0.md` — exact first-90-seconds workflow for making external memory active.
+- `peer_schema_comparison_v0.md` — grounded comparison with Gemini/Claude memory-system schemas.
 
 Scripts: `scripts/audit_memory_repo.py`, `scripts/prepare_consolidation.py`, and `scripts/memory_smoke_test.py` validate/rehearse the external-memory workflow.

@@ -9,6 +9,8 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = [
     "README.md",
+    "INDEX.md",
+    "SESSION_START.md",
     "docs/README.md",
     "docs/research_notes_v0.md",
     "docs/self_audit_v0.md",
@@ -59,7 +61,7 @@ def main() -> None:
 
 
     root_readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    for required_phrase in ["docs/session_start_runbook_v0.md", "logs/current_state.md", "Internal memory is the bootloader"]:
+    for required_phrase in ["INDEX.md", "SESSION_START.md", "docs/session_start_runbook_v0.md", "logs/current_state.md", "Internal memory is the bootloader"]:
         if required_phrase not in root_readme:
             fail(f"README.md missing bootstrap phrase {required_phrase!r}")
 
@@ -73,7 +75,19 @@ def main() -> None:
         if required_phrase not in current_state:
             fail(f"current_state.md missing {required_phrase!r}")
 
+    index = (ROOT / "INDEX.md").read_text(encoding="utf-8")
+    session_start = (ROOT / "SESSION_START.md").read_text(encoding="utf-8")
+    for required_phrase in ["external memory OS", "logs/current_state.md", "schemas/memory_item_schema_v0.yaml"]:
+        if required_phrase not in index:
+            fail(f"INDEX.md missing {required_phrase!r}")
+    for required_phrase in ["memory_smoke_test.py", "logs/current_state.md", "session_start_runbook_v0.md"]:
+        if required_phrase not in session_start:
+            fail(f"SESSION_START.md missing {required_phrase!r}")
+
     schema = (ROOT / "schemas/memory_item_schema_v0.yaml").read_text(encoding="utf-8")
+    for required_phrase in ["last_verified", "error_recovery"]:
+        if required_phrase not in schema:
+            fail(f"schema missing field {required_phrase}")
     for term in ["active", "blocked", "dormant", "retired", "obsolete", "forbidden"]:
         if term not in schema:
             fail(f"schema missing status term {term}")

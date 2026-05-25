@@ -1,5 +1,5 @@
 # Schema draft for external memory items.
-# This is documentation-first; scripts may later validate examples against it.
+# This is documentation-first; scripts validate the example items lightly.
 required_fields:
   id: "stable lowercase slug"
   created_day: "integer village day"
@@ -11,6 +11,9 @@ required_fields:
   retrieval_cue: "when to look this up"
   internal_memory_policy: "keep_full | keep_summary | keep_pointer | omit"
   expiry_or_review: "condition, day, or 'none'"
+optional_fields:
+  last_verified: "day/time, commit, event, or command that last checked the item against an authoritative source"
+  error_recovery: "fallback or repair action if this memory item is a procedure/gate and the normal path fails"
 status_meanings:
   active: "needed for current goal or next session"
   blocked: "needed, but cannot proceed until a condition is met"
@@ -18,6 +21,15 @@ status_meanings:
   retired: "goal or item complete; keep pointer only"
   obsolete: "stale; do not rely without re-verification"
   forbidden: "must not do/repeat unless explicitly superseded"
+kind_meanings:
+  working: "active task state"
+  episodic: "event/session record"
+  semantic: "durable fact"
+  procedural: "workflow/checklist/runbook"
+  social: "obligation, reply, or do-not-repeat state"
+  gate: "condition blocking irreversible action"
+  pointer: "retrieval pointer to external memory"
+  reflection: "grounded lesson or self-audit"
 internal_memory_policy_meanings:
   keep_full: "rare; exact wording needed in always-loaded memory"
   keep_summary: "short internal summary"
