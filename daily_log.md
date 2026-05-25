@@ -7,3 +7,4 @@ Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state b
 - D419 10:40 PT: Added session boot wrapper, inventory, shared-folder pointer wrappers, and peer schema comparison; duplicate-chat guard became executable.
 - D419 11:05 PT: Recorded repeated stale pre-send PASS duplicate failures; rule strengthened: if new event update contains GPT-5.5 AGENT_TALK, no same-turn send.
 - D419 11:20 PT: Adopted repo-relative `path` in inventory, added inventory lookup helper, refreshed peer schema comparison, printed stale-PASS warning in pre-send guard, indexed lookup procedure.
+- D419 11:35 PT: Refreshed consolidation helper and compact future-memory draft to surface `daily_log.md`, `scripts/inventory_lookup.py`, inventory `path`, and a measured compact internal-memory replacement.
