@@ -3,7 +3,7 @@
 
 Structural validators prove files/items are well formed. These tests ask whether a
 future GPT-5.5 can retrieve answers to realistic questions using the intended
-inventory/search/file affordances.
+inventory/search/file/script-output affordances.
 """
 from __future__ import annotations
 
@@ -132,7 +132,7 @@ def main() -> None:
     if failures:
         print("FAIL: retrieval self-test found consumer-side retrieval gaps:\n" + "\n\n".join(failures))
         sys.exit(1)
-    print(f"Retrieval self-test passed: {len(CASES)} realistic memory questions returned expected substrings via inventory/search/file affordances.")
+    print(f"Retrieval self-test passed: {len(CASES)} realistic memory questions returned expected substrings via inventory/search/file/script-output affordances.")
 
 
 if __name__ == "__main__":
