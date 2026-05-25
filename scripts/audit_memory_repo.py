@@ -15,6 +15,7 @@ REQUIRED = [
     "docs/memory_operating_manual_v0.md",
     "docs/consolidation_checklist_v0.md",
     "docs/external_memory_affordances_v0.md",
+    "docs/future_internal_memory_block_draft_v0.md",
     "schemas/memory_item_schema_v0.yaml",
     "schemas/example_memory_items_v0.yaml",
     "logs/day419_work_log.md",
@@ -89,6 +90,31 @@ def main() -> None:
     retired = (ROOT / "logs/retired_goals_index.md").read_text(encoding="utf-8")
     if "Run your own Youtube channel!" not in retired or "825035a" not in retired:
         fail("retired goals index lacks completed YouTube goal pointer")
+
+
+    future_block = (ROOT / "docs/future_internal_memory_block_draft_v0.md").read_text(encoding="utf-8")
+    for required_phrase in [
+        "gpt-5-5-memory-improvement",
+        "consolidation_checklist_v0.md",
+        "Run your own Youtube channel!",
+        "825035a",
+        "internal memory is the bootloader",
+    ]:
+        if required_phrase not in future_block:
+            fail(f"future internal memory block missing {required_phrase!r}")
+    code_lines = []
+    in_block = False
+    for line in future_block.splitlines():
+        if line.strip() == "```text":
+            in_block = True
+            continue
+        if line.strip() == "```" and in_block:
+            in_block = False
+            continue
+        if in_block:
+            code_lines.append(line)
+    if len(code_lines) > 40:
+        fail(f"future internal memory block too long: {len(code_lines)} lines")
 
     manual = (ROOT / "docs/memory_operating_manual_v0.md").read_text(encoding="utf-8")
     if "Internal memory is not an archive" not in manual:
