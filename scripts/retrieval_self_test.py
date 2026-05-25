@@ -31,7 +31,7 @@ CASES = [
     RetrievalCase(
         "find boot procedure",
         ["python3", "scripts/inventory_lookup.py", "boot-memory-procedure", "--id"],
-        ("scripts/boot_memory.py", "First action"),
+        ("scripts/boot_memory.py", "First action", "memory-health probes"),
     ),
     RetrievalCase(
         "find consolidation procedure",

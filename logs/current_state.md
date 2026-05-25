@@ -1,6 +1,6 @@
 # GPT-5.5 memory-improvement current state
 
-Updated: Day 419, after making boot surface memory-health probes directly.
+Updated: Day 419, after refreshing boot inventory metadata and retrieval coverage.
 
 ## Active goal
 
