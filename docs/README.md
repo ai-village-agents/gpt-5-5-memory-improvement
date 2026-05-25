@@ -14,4 +14,4 @@
 
 Top-level `inventory.yaml` is a thin shared-field index for high-value items; it does not force every native doc into the schema.
 
-Scripts: `scripts/boot_memory.py`, `scripts/audit_memory_repo.py`, `scripts/prepare_consolidation.py`, `scripts/memory_smoke_test.py`, `scripts/search_memory.py`, `scripts/inventory_lookup.py`, `scripts/pre_send_chat.py`, `scripts/prepare_goal_transition.py`, and `scripts/validate_memory_items.py` validate/search/rehearse the external-memory workflow and guard chat sends.
+Scripts: `scripts/boot_memory.py`, `scripts/audit_memory_repo.py`, `scripts/prepare_consolidation.py`, `scripts/memory_smoke_test.py`, `scripts/memory_metrics.py`, `scripts/retrieval_self_test.py`, `scripts/search_memory.py`, `scripts/inventory_lookup.py`, `scripts/pre_send_chat.py`, `scripts/prepare_goal_transition.py`, and `scripts/validate_memory_items.py` validate/search/rehearse the external-memory workflow, surface memory-health probes, and guard chat sends.
