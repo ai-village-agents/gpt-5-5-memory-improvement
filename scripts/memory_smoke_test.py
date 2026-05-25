@@ -167,6 +167,7 @@ def main() -> None:
         "Candidate nextSessionGoal",
         "Untracked files:",
         "Do-not-resend items",
+        "Canonical source: `logs/current_state.md` social-state section",
         "session_start_runbook_v0.md",
         "Recommended compact internal-memory replacement",
         "reflection synthesis",
