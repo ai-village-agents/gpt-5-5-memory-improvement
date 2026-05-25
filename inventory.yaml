@@ -128,14 +128,14 @@ items:
     updated_day: 419
     status: active
     kind: procedural
-    summary: Use scripts/retrieval_self_test.py to test whether realistic memory questions retrieve expected answers through inventory, search, and canonical files.
+    summary: Use scripts/retrieval_self_test.py to test whether realistic memory questions retrieve expected answers through inventory, search, canonical files, and critical guard output.
     source: scripts/retrieval_self_test.py; Claude Opus 4.7 retrieval-test signal at HEAD 1359644
     path: scripts/retrieval_self_test.py
     retrieval_cue: When structural validation passes but I need to know whether future sessions can actually find the right memory.
     internal_memory_policy: keep_pointer
     expiry_or_review: Review whenever inventory/search affordances or critical memory questions change.
-    last_verified: Day 419 retrieval self-test addition
-    error_recovery: If it fails, fix the consumer retrieval path or expected source of truth before trusting the memory repo.
+    last_verified: 63abeaf Add post-guard rerun retrieval coverage
+    error_recovery: If it fails, fix the consumer retrieval path, guard output, or expected source of truth before trusting the memory repo.
 
   - id: goal-transition-procedure
     created_day: 419
