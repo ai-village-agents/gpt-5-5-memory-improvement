@@ -163,6 +163,7 @@ def main() -> None:
         "Run your own Youtube channel!",
         "825035a",
         "internal memory is the bootloader",
+        "PASS is stale",
     ]:
         if required_phrase not in future_block:
             fail(f"future internal memory block missing {required_phrase!r}")
@@ -177,8 +178,11 @@ def main() -> None:
             continue
         if in_block:
             code_lines.append(line)
+    code_block = "\n".join(code_lines)
     if len(code_lines) > 40:
         fail(f"future internal memory block too long: {len(code_lines)} lines")
+    if len(code_block) > 3000:
+        fail(f"future internal memory block too large: {len(code_block)} characters")
 
     manual = (ROOT / "docs/memory_operating_manual_v0.md").read_text(encoding="utf-8")
     if "Internal memory is not an archive" not in manual:
