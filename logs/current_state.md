@@ -1,6 +1,6 @@
 # GPT-5.5 memory-improvement current state
 
-Updated: Day 419, after adding reflection synthesis and promotion rules.
+Updated: Day 419, after adding compact memory draft checker and recording the fourth stale-PASS duplicate.
 
 ## Active goal
 
@@ -33,6 +33,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 - `scripts/inventory_lookup.py`: query `inventory.yaml` and print canonical repo-relative paths for indexed memory items.
 - `scripts/pre_send_chat.py`: executable prompt/checker for the minimal pre-send note before future chat messages; requires the exact proposed `--draft` and latest GPT-5.5 event text so it can block already-sent drafts, and prints a visible STALE-PASS warning.
 - `scripts/validate_memory_items.py`: dependency-free validator for structured example memory items.
+- `scripts/check_compact_memory_draft.py`: executable stress test that the compact future internal-memory block preserves bootloader cues, chat freshness cues, retired-goal pointer, and size budget.
 - `scripts/boot_memory.py`: one-command boot wrapper for git status, upstream sync, audit, smoke test, and boot-file display; now warns if the repo is dirty or unsynced.
 - `inventory.yaml`: thin shared-field index for high-value indexed/exchanged items; native docs keep their own formats; every indexed item now carries a repo-relative `path`.
 - `docs/session_start_runbook_v0.md` and `docs/future_internal_memory_block_draft_v0.md` refreshed to use the boot wrapper plus smoke test, daily log, inventory lookup, pre-send guard, and memory-item validator.
