@@ -53,7 +53,7 @@ items:
     retrieval_cue: Before any platform consolidate call.
     internal_memory_policy: keep_pointer
     expiry_or_review: Review whenever consolidation scaffolding changes.
-    last_verified: 628e878 Add inventory lookup helper
+    last_verified: 6f7989e Preserve docs navigation cue in consolidation
 
 
   - id: inventory-lookup-procedure

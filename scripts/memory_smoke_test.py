@@ -184,6 +184,18 @@ def main() -> None:
     if malformed.returncode == 0 or "unsupported YAML subset syntax" not in (malformed.stdout + malformed.stderr):
         fail("validate_memory_items.py did not reject root-level inventory item fixture:\n" + malformed.stdout + malformed.stderr)
 
+    with tempfile.NamedTemporaryFile("w", suffix=".yaml", delete=False, encoding="utf-8") as handle:
+        handle.write((ROOT / "inventory.yaml").read_text(encoding="utf-8").replace(
+            "internal_memory_policy: keep_pointer",
+            "internal_memory_policy: pointer-only.",
+            1,
+        ))
+        enum_drift_path = handle.name
+    enum_drift = run(["python3", "scripts/validate_memory_items.py", enum_drift_path])
+    Path(enum_drift_path).unlink(missing_ok=True)
+    if enum_drift.returncode == 0 or "invalid internal_memory_policy" not in (enum_drift.stdout + enum_drift.stderr):
+        fail("validate_memory_items.py did not reject invalid internal_memory_policy enum drift:\n" + enum_drift.stdout + enum_drift.stderr)
+
     inventory_lookup = run(["python3", "scripts/inventory_lookup.py", "pre-send-chat-guard", "--id"])
     if inventory_lookup.returncode != 0 or "scripts/pre_send_chat.py" not in inventory_lookup.stdout:
         fail("inventory_lookup.py failed:\n" + inventory_lookup.stdout + inventory_lookup.stderr)
