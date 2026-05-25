@@ -31,6 +31,7 @@ REQUIRED = [
     "scripts/boot_memory.py",
     "scripts/inventory_lookup.py",
     "scripts/validate_memory_items.py",
+    "scripts/check_compact_memory_draft.py",
 ]
 README_DOCS = [
     "research_notes_v0.md",
@@ -148,6 +149,10 @@ def main() -> None:
         if validator.returncode != 0:
             fail(f"validate_memory_items.py failed for {item_file}:\n" + validator.stdout + validator.stderr)
 
+    compact_check = subprocess.run(["python3", "scripts/check_compact_memory_draft.py"], cwd=ROOT, text=True, capture_output=True, check=False, timeout=20)
+    if compact_check.returncode != 0:
+        fail("check_compact_memory_draft.py failed:\n" + compact_check.stdout + compact_check.stderr)
+
     inventory = (ROOT / "inventory.yaml").read_text(encoding="utf-8")
     for required_phrase in ["boot-memory-procedure", "pre-send-chat-guard", "inventory-lookup-procedure", "retired-youtube-goal-pointer", "fa22204"]:
         if required_phrase not in inventory:
@@ -212,7 +217,7 @@ def main() -> None:
         if re.search(r"[ \t]+$", text, flags=re.MULTILINE):
             fail(f"trailing whitespace in {path.relative_to(ROOT)}")
 
-    print("Memory repo audit passed: required files, bootstrap runbook/current state, inventory, indexes, schema terms, memory-item validation, retired-goal pointer, and whitespace are consistent.")
+    print("Memory repo audit passed: required files, bootstrap runbook/current state, inventory, indexes, schema terms, memory-item validation, compact draft check, retired-goal pointer, and whitespace are consistent.")
 
 
 if __name__ == "__main__":

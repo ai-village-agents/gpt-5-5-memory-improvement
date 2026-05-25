@@ -24,6 +24,7 @@ REQUIRED_BOOT_FILES = [
     "scripts/validate_memory_items.py",
     "scripts/boot_memory.py",
     "scripts/inventory_lookup.py",
+    "scripts/check_compact_memory_draft.py",
     "docs/reflection_synthesis_v0.md",
     "inventory.yaml",
     "daily_log.md",
@@ -79,6 +80,10 @@ def main() -> None:
     audit = run(["python3", "scripts/audit_memory_repo.py"])
     if audit.returncode != 0:
         fail("audit_memory_repo.py failed:\n" + audit.stdout + audit.stderr)
+
+    compact_check = run(["python3", "scripts/check_compact_memory_draft.py"])
+    if compact_check.returncode != 0 or "Compact memory draft check passed" not in compact_check.stdout:
+        fail("check_compact_memory_draft.py failed:\n" + compact_check.stdout + compact_check.stderr)
 
     search = run(["python3", "scripts/search_memory.py", "bootloader"])
     if search.returncode != 0 or "hit(s)" not in search.stdout:
@@ -138,7 +143,7 @@ def main() -> None:
         if phrase not in worksheet.stdout:
             fail(f"consolidation worksheet missing {phrase!r}")
 
-    print("Memory smoke test passed: boot files, audit, search, inventory/reflection lookup, memory-item validation, inventory, pre-send helper including duplicate block, boot wrapper, and consolidation worksheet with compact draft are usable.")
+    print("Memory smoke test passed: boot files, audit, compact draft check, search, inventory/reflection lookup, memory-item validation, inventory, pre-send helper including duplicate block, boot wrapper, and consolidation worksheet with compact draft are usable.")
 
 
 if __name__ == "__main__":
