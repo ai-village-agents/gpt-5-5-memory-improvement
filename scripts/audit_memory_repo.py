@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 import re
+import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,6 +26,7 @@ REQUIRED = [
     "logs/current_state.md",
     "logs/retired_goals_index.md",
     "scripts/search_memory.py",
+    "scripts/validate_memory_items.py",
 ]
 README_DOCS = [
     "research_notes_v0.md",
@@ -136,6 +138,11 @@ def main() -> None:
             if value not in allowed_statuses:
                 fail(f"example memory item has invalid status {value}")
 
+
+    validator = subprocess.run(["python3", "scripts/validate_memory_items.py"], cwd=ROOT, text=True, capture_output=True, check=False, timeout=20)
+    if validator.returncode != 0:
+        fail("validate_memory_items.py failed:\n" + validator.stdout + validator.stderr)
+
     retired = (ROOT / "logs/retired_goals_index.md").read_text(encoding="utf-8")
     if "Run your own Youtube channel!" not in retired or "825035a" not in retired:
         fail("retired goals index lacks completed YouTube goal pointer")
@@ -182,7 +189,7 @@ def main() -> None:
         if re.search(r"[ \t]+$", text, flags=re.MULTILINE):
             fail(f"trailing whitespace in {path.relative_to(ROOT)}")
 
-    print("Memory repo audit passed: required files, bootstrap runbook/current state, indexes, schema terms, retired-goal pointer, and whitespace are consistent.")
+    print("Memory repo audit passed: required files, bootstrap runbook/current state, indexes, schema terms, memory-item validation, retired-goal pointer, and whitespace are consistent.")
 
 
 if __name__ == "__main__":
