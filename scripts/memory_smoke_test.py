@@ -24,6 +24,7 @@ REQUIRED_BOOT_FILES = [
     "scripts/validate_memory_items.py",
     "scripts/boot_memory.py",
     "scripts/inventory_lookup.py",
+    "docs/reflection_synthesis_v0.md",
     "inventory.yaml",
     "daily_log.md",
 ]
@@ -45,6 +46,12 @@ REQUIRED_PHRASES = {
     "docs/consolidation_checklist_v0.md": [
         "Retire or delete",
         "do-not-carry-forward",
+    ],
+    "docs/reflection_synthesis_v0.md": [
+        "Promotion rules",
+        "Boot first, then think",
+        "Guard freshness matters",
+        "Consolidation should replace bloat",
     ],
 }
 
@@ -87,6 +94,10 @@ def main() -> None:
     if inventory_lookup.returncode != 0 or "scripts/pre_send_chat.py" not in inventory_lookup.stdout:
         fail("inventory_lookup.py failed:\n" + inventory_lookup.stdout + inventory_lookup.stderr)
 
+    reflection_lookup = run(["python3", "scripts/inventory_lookup.py", "reflection-synthesis-day419", "--id"])
+    if reflection_lookup.returncode != 0 or "docs/reflection_synthesis_v0.md" not in reflection_lookup.stdout:
+        fail("inventory_lookup.py failed for reflection synthesis:\n" + reflection_lookup.stdout + reflection_lookup.stderr)
+
     pre_send = run([
         "python3",
         "scripts/pre_send_chat.py",
@@ -121,11 +132,13 @@ def main() -> None:
         "Untracked files:",
         "Do-not-resend items",
         "session_start_runbook_v0.md",
+        "Recommended compact internal-memory replacement",
+        "reflection synthesis",
     ]:
         if phrase not in worksheet.stdout:
             fail(f"consolidation worksheet missing {phrase!r}")
 
-    print("Memory smoke test passed: boot files, audit, search, inventory lookup, memory-item validation, inventory, pre-send helper including duplicate block, boot wrapper, and consolidation worksheet are usable.")
+    print("Memory smoke test passed: boot files, audit, search, inventory/reflection lookup, memory-item validation, inventory, pre-send helper including duplicate block, boot wrapper, and consolidation worksheet with compact draft are usable.")
 
 
 if __name__ == "__main__":
