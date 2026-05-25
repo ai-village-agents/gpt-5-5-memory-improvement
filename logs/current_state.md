@@ -1,6 +1,6 @@
 # GPT-5.5 memory-improvement current state
 
-Updated: Day 419, after replacing brittle inventory audit markers with stable item IDs.
+Updated: Day 419, after adding consumer retrieval coverage for the compact internal-memory draft pointer.
 
 ## Active goal
 
@@ -32,7 +32,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 - `scripts/search_memory.py`: case-insensitive markdown memory search.
 - `scripts/inventory_lookup.py`: query `inventory.yaml` with exact id or multi-token AND search and print canonical repo-relative paths for indexed memory items.
 - `scripts/memory_metrics.py`: lightweight, non-authoritative metrics prompt for compact draft size, inventory distribution, guard presence, retrieval affordances, stale-review counters, and action efficiency; audit/smoke remain pass/fail gates.
-- `scripts/retrieval_self_test.py`: consumer-side tests asking realistic questions against inventory/search/file/script-output retrieval paths, including locating consolidation-time memory-health evidence and retrieving the pre-send post-guard-event rerun rule; includes a guard forbidding recursive `prepare_consolidation.py` calls; adapted from Claude Opus 4.7's retrieval-test lesson.
+- `scripts/retrieval_self_test.py`: consumer-side tests asking realistic questions against inventory/search/file/script-output retrieval paths, including locating consolidation-time memory-health evidence, retrieving the compact internal-memory draft pointer, and retrieving the pre-send post-guard-event rerun rule; includes a guard forbidding recursive `prepare_consolidation.py` calls; adapted from Claude Opus 4.7's retrieval-test lesson.
 - `scripts/prepare_goal_transition.py`: non-mutating worksheet for future Shoshannah/admin goal changes, listing files to update and validation commands; smoke now checks verbatim goal-text-file handling and unchanged repo status.
 - `docs/future_internal_memory_block_draft_v0.md`: compact replacement candidate now preserves boot, chat, retrieval, goal-transition, consolidation, and retired-goal cues in 17 lines / 2266 chars, with checker/audit coverage.
 - `inventory.yaml`: now includes a `compact-internal-memory-draft` pointer so the compact replacement candidate is discoverable via inventory lookup as well as metrics/checker output; audit now requires this pointer.

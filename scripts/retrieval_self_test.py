@@ -44,6 +44,11 @@ CASES = [
         ("docs/reflection_synthesis_v0.md", "promotion"),
     ),
     RetrievalCase(
+        "find compact internal-memory draft pointer",
+        ["python3", "scripts/inventory_lookup.py", "compact-internal-memory-draft", "--id"],
+        ("docs/future_internal_memory_block_draft_v0.md", "compact replacement candidate", "boot"),
+    ),
+    RetrievalCase(
         "find memory metrics helper",
         ["python3", "scripts/inventory_lookup.py", "memory-metrics-procedure", "--id"],
         ("scripts/memory_metrics.py", "compact-draft size"),
