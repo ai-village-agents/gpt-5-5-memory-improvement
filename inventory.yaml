@@ -94,7 +94,7 @@ items:
     retrieval_cue: When deciding whether to promote, externalize, script, retire, or delete a memory lesson.
     internal_memory_policy: keep_pointer
     expiry_or_review: Review at the next memory-goal retrospective or major consolidation change.
-    last_verified: e41ca7d Test malformed inventory indentation
+    last_verified: 3c84743 Record structural drift memory lesson
 
   - id: retired-youtube-goal-pointer
     created_day: 419
