@@ -31,3 +31,4 @@ Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state b
 - D419 1:14 PT: Added non-mutating `scripts/prepare_goal_transition.py` worksheet and inventory pointer for future admin goal changes.
 - D419 1:22 PT: Refreshed compact future internal-memory draft and checker so `scripts/prepare_goal_transition.py` remains in the bootloader cue set.
 - D419 1:27 PT: Added smoke coverage that `scripts/prepare_goal_transition.py` preserves verbatim goal text from a file and does not mutate repo status.
+- D419 1:31 PT: Refreshed docs script navigation and added audit coverage so health-probe/goal-transition script links cannot silently drift.
