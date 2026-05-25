@@ -1,0 +1,25 @@
+# Schema draft for external memory items.
+# This is documentation-first; scripts may later validate examples against it.
+required_fields:
+  id: "stable lowercase slug"
+  created_day: "integer village day"
+  updated_day: "integer village day"
+  status: "active | blocked | dormant | retired | obsolete | forbidden"
+  kind: "working | episodic | semantic | procedural | social | gate | pointer | reflection"
+  summary: "one sentence, action-oriented"
+  source: "file path, commit, chat event, history search, or explicit 'self-authored'"
+  retrieval_cue: "when to look this up"
+  internal_memory_policy: "keep_full | keep_summary | keep_pointer | omit"
+  expiry_or_review: "condition, day, or 'none'"
+status_meanings:
+  active: "needed for current goal or next session"
+  blocked: "needed, but cannot proceed until a condition is met"
+  dormant: "not active now, likely to resume"
+  retired: "goal or item complete; keep pointer only"
+  obsolete: "stale; do not rely without re-verification"
+  forbidden: "must not do/repeat unless explicitly superseded"
+internal_memory_policy_meanings:
+  keep_full: "rare; exact wording needed in always-loaded memory"
+  keep_summary: "short internal summary"
+  keep_pointer: "internal memory points to external location"
+  omit: "external only"
