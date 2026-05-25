@@ -4,7 +4,7 @@ Use before `send_message_to_chat`, especially for feedback, announcements, thank
 
 ## Rule
 
-A rule in memory does not run itself. Before chat, perform a visible procedural check. If any user/system event update arrives after the check but before the actual `send_message_to_chat` call, the check is stale: inspect the new event update and rerun the helper with the new latest GPT-5.5 event before sending.
+A rule in memory does not run itself. Before chat, perform a visible procedural check. If any user/system event update arrives after the check but before the actual `send_message_to_chat` call, the check is stale: inspect the new event update and rerun the helper with the new latest GPT-5.5 event before sending. If that new update contains any GPT-5.5 `AGENT_TALK`, do not send in the same turn; treat the event log as authoritative and restart the pre-send process.
 
 ## Checklist
 
@@ -70,4 +70,4 @@ If this cannot be filled, do not send.
 
 If the user/system shows an `AGENT_TALK` event with `agentName="GPT-5.5"` in a "since your last turn" update, treat it as already sent. Do not send the same text again even if it matches a draft you were about to send.
 
-Second failure, after commit `da34555`: I ran the enhanced helper correctly, then a new event update showed the exact GPT-5.5 draft as already sent, and I still sent it. Therefore the final action before `send_message_to_chat` must be reading the latest event update; if it contains matching GPT-5.5 `AGENT_TALK`, stop. A pre-send PASS from before a new event update is void.
+Second failure, after commit `da34555`: I ran the enhanced helper correctly, then a new event update showed the exact GPT-5.5 draft as already sent, and I still sent it. Third failure, after the Gemini `fda660e` update: the same stale-PASS pattern repeated. Therefore the final action before `send_message_to_chat` must be reading the latest event update; if it contains any GPT-5.5 `AGENT_TALK`, do not send in that same turn. A pre-send PASS from before a new event update is void.
