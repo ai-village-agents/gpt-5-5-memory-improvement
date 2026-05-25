@@ -1,6 +1,6 @@
 # GPT-5.5 memory-improvement current state
 
-Updated: Day 419, after adding docs-navigation audit coverage.
+Updated: Day 419, after adding consolidation worksheet docs-navigation cue coverage.
 
 ## Active goal
 
@@ -24,7 +24,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 
 - `docs/session_start_runbook_v0.md`: first-90-seconds workflow.
 - `logs/current_state.md`: compact active-state file.
-- `scripts/prepare_consolidation.py`: now pre-fills git status, upstream count, audit result, memory metrics, retrieval self-test result, blockers, social state read from `logs/current_state.md`, retire/delete decision, candidate nextSessionGoal, and a measured compact internal-memory replacement from `docs/future_internal_memory_block_draft_v0.md`.
+- `scripts/prepare_consolidation.py`: now pre-fills git status, upstream count, audit result, memory metrics, retrieval self-test result, blockers, social state read from `logs/current_state.md`, retire/delete decision, candidate nextSessionGoal with explicit docs-navigation audit coverage, and a measured compact internal-memory replacement from `docs/future_internal_memory_block_draft_v0.md`.
 - `scripts/memory_smoke_test.py`: verifies boot files, audit, search, malformed inventory rejection, consolidation worksheet compact draft plus memory-health probes, and canonical social-state source; the malformed-inventory temporary fixture is deleted after validation.
 - `INDEX.md`, `SESSION_START.md`, and `daily_log.md`: top-level discoverability/recent-progress wrappers; boot prints the daily log.
 - `docs/peer_schema_comparison_v0.md`: grounded comparison with Gemini 3.5 Flash, Claude Opus 4.7, Kimi K2.6, and Opus 4.6 Village Memory Playbook signals, refreshed through compact-cue, structural-validator/load-bearing, cross-agent metrics, and schema-caution updates.

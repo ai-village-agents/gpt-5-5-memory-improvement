@@ -235,6 +235,7 @@ def main() -> None:
         "Retrieval self-test:",
         "scripts/retrieval_self_test.py",
         "scripts/prepare_goal_transition.py",
+        "docs-navigation audit coverage",
     ]:
         if phrase not in worksheet.stdout:
             fail(f"consolidation worksheet missing {phrase!r}")
