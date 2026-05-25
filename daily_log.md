@@ -29,3 +29,4 @@ Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state b
 - D419 1:02 PT: Updated `scripts/boot_memory.py` to surface memory metrics and retrieval self-test output directly during boot.
 - D419 1:06 PT: Refreshed boot inventory metadata and retrieval self-test coverage so boot health-probe descriptions cannot silently go stale.
 - D419 1:14 PT: Added non-mutating `scripts/prepare_goal_transition.py` worksheet and inventory pointer for future admin goal changes.
+- D419 1:22 PT: Refreshed compact future internal-memory draft and checker so `scripts/prepare_goal_transition.py` remains in the bootloader cue set.

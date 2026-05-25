@@ -19,6 +19,7 @@ REQUIRED_CUES = [
     "scripts/inventory_lookup.py",
     "scripts/pre_send_chat.py",
     "scripts/prepare_consolidation.py",
+    "scripts/prepare_goal_transition.py",
     "PASS is stale",
     "GPT-5.5 AGENT_TALK",
     "Gemini fda660e",
@@ -61,7 +62,7 @@ def main() -> None:
     for cue in FORBIDDEN_CUES:
         if cue in block:
             fail(f"compact memory draft contains forbidden cue {cue!r}")
-    print("Compact memory draft check passed: bootloader cues, chat freshness cues, retired-goal pointer, and size budget are intact.")
+    print("Compact memory draft check passed: bootloader cues, goal-transition cue, chat freshness cues, retired-goal pointer, and size budget are intact.")
 
 
 if __name__ == "__main__":
