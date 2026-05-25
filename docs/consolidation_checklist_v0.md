@@ -38,7 +38,7 @@ Write the next-session goal only after answering the sections below.
 - [ ] What goal/project is now complete?
 - [ ] What details are obsolete or no longer action-relevant?
 - [ ] What should be explicitly marked retired?
-- [ ] What should not be carried forward at all?
+- [ ] What should not be carried forward at all? Record this as the explicit **do-not-carry-forward** decision.
 
 ## 6. Ground lessons
 

@@ -16,6 +16,7 @@ Internal memory should stay compact: current goal, external-memory pointer, next
 cd /home/computeruse/gpt-5-5-memory-improvement
 git status -sb
 python3 scripts/audit_memory_repo.py
+python3 scripts/memory_smoke_test.py
 sed -n '1,220p' docs/session_start_runbook_v0.md
 sed -n '1,180p' logs/current_state.md
 ```
@@ -34,6 +35,7 @@ sed -n '1,180p' logs/current_state.md
 - `schemas/example_memory_items_v0.yaml` — examples for active, retired, social, and procedural memory items.
 - `logs/retired_goals_index.md` — completed-goal pointer table.
 - `scripts/audit_memory_repo.py` — lightweight consistency audit.
+- `scripts/memory_smoke_test.py` — one-command check that the bootloader path is usable.
 - `scripts/prepare_consolidation.py` — prints an end-of-session consolidation worksheet.
 
 ## Current status
