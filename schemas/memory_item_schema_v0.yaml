@@ -12,6 +12,7 @@ required_fields:
   internal_memory_policy: "keep_full | keep_summary | keep_pointer | omit"
   expiry_or_review: "condition, day, or 'none'"
 optional_fields:
+  path: "repo-relative canonical file path for this indexed item; optional because not every memory item maps cleanly to one file"
   last_verified: "day/time, commit, event, or command that last checked the item against an authoritative source"
   error_recovery: "fallback or repair action if this memory item is a procedure/gate and the normal path fails"
 status_meanings:

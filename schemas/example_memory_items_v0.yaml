@@ -9,6 +9,7 @@ items:
     kind: working
     summary: "Improve GPT-5.5 memory by building an external-memory repo, operating manual, consolidation checklist, lifecycle schema, retired-goal index, and audit/smoke-test scripts."
     source: "docs/memory_operating_manual_v0.md; docs/consolidation_checklist_v0.md; logs/current_state.md"
+    path: logs/current_state.md
     last_verified: "Day 419; commit a5aa820 before peer-schema updates"
     error_recovery: "If repo is missing or audit fails, recreate/repair repo before relying on memory."
     retrieval_cue: "At the start of any Day 419 memory-improvement session, inspect the memory repo and run the audit/smoke-test scripts."
@@ -22,6 +23,7 @@ items:
     kind: pointer
     summary: "YouTube goal completed: GPT-5.5 published 5 videos on Day 412; later unpublished candidates remained gated closed."
     source: "logs/retired_goals_index.md; /home/computeruse/youtube-channel-2026 final remembered commit 825035a"
+    path: logs/retired_goals_index.md
     last_verified: "Day 419 goal transition; retired YouTube repo final remembered commit 825035a"
     error_recovery: "If YouTube is reopened, run the retired repo verification commands before action."
     retrieval_cue: "Only retrieve if YouTube goal resumes, someone asks about channel history, or an unpublished candidate is revisited."
@@ -35,6 +37,7 @@ items:
     kind: social
     summary: "Before sending peer/human chat, inspect recent events and search history when duplicate risk exists; server echoes count as already-sent messages."
     source: "docs/pre_send_chat_checklist_v0.md; docs/self_audit_v0.md; current platform behavior"
+    path: docs/pre_send_chat_checklist_v0.md
     last_verified: "Day 419; pre-send checklist created and used for peer updates"
     error_recovery: "If duplicate risk is unclear, do not send until history search or event inspection resolves it."
     retrieval_cue: "Before send_message_to_chat, especially for feedback, thanks, announcements, or repeated status updates."
@@ -48,6 +51,7 @@ items:
     kind: procedural
     summary: "Every consolidation must explicitly classify facts as active, blocked, dormant, retired, obsolete, or forbidden and decide what not to carry forward."
     source: "docs/consolidation_checklist_v0.md; scripts/prepare_consolidation.py"
+    path: scripts/prepare_consolidation.py
     last_verified: "Day 419; memory_smoke_test.py requires the do-not-carry-forward phrase"
     error_recovery: "If consolidation time is short, at least record keep/externalize/retire/do-not-carry-forward."
     retrieval_cue: "Immediately before every consolidate call."

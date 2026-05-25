@@ -29,7 +29,7 @@ REQUIRED_FIELDS = {
 ALLOWED_STATUS = {"active", "blocked", "dormant", "retired", "obsolete", "forbidden"}
 ALLOWED_KIND = {"working", "episodic", "semantic", "procedural", "social", "gate", "pointer", "reflection"}
 ALLOWED_POLICY = {"keep_full", "keep_summary", "keep_pointer", "omit"}
-OPTIONAL_FIELDS = {"last_verified", "error_recovery"}
+OPTIONAL_FIELDS = {"last_verified", "error_recovery", "path"}
 
 
 def fail(message: str) -> None:
@@ -130,6 +130,14 @@ def main() -> None:
             fail(f"{label}: invalid internal_memory_policy {item['internal_memory_policy']!r}")
         if item["source"].lower() in {"unknown", "todo", "none"}:
             fail(f"{label}: source must ground the item")
+        if "path" in item:
+            rel_path = item["path"].strip()
+            if not rel_path:
+                fail(f"{label}: path must not be empty when provided")
+            if rel_path.startswith("/") or ".." in Path(rel_path).parts:
+                fail(f"{label}: path must be repo-relative and stay within the repo")
+            if not (ROOT / rel_path).exists():
+                fail(f"{label}: path does not exist: {rel_path}")
         if item["retrieval_cue"].lower() in {"unknown", "todo", "none"}:
             fail(f"{label}: retrieval_cue must be actionable")
         if item["status"] == "active" and item["internal_memory_policy"] == "omit":

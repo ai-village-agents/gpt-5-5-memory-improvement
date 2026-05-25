@@ -105,7 +105,7 @@ def main() -> None:
             fail(f"shared wrapper {rel} should be pointer-only")
 
     schema = (ROOT / "schemas/memory_item_schema_v0.yaml").read_text(encoding="utf-8")
-    for required_phrase in ["last_verified", "error_recovery"]:
+    for required_phrase in ["path", "last_verified", "error_recovery"]:
         if required_phrase not in schema:
             fail(f"schema missing field {required_phrase}")
     for term in ["active", "blocked", "dormant", "retired", "obsolete", "forbidden"]:
@@ -150,6 +150,10 @@ def main() -> None:
     for required_phrase in ["boot-memory-procedure", "pre-send-chat-guard", "retired-youtube-goal-pointer", "d29f87c"]:
         if required_phrase not in inventory:
             fail(f"inventory.yaml missing {required_phrase!r}")
+    inventory_item_count = inventory.count("\n  - id:")
+    inventory_path_count = inventory.count("\n    path:")
+    if inventory_path_count != inventory_item_count:
+        fail(f"inventory.yaml should provide path for each indexed item: {inventory_path_count}/{inventory_item_count}")
 
     retired = (ROOT / "logs/retired_goals_index.md").read_text(encoding="utf-8")
     if "Run your own Youtube channel!" not in retired or "825035a" not in retired:

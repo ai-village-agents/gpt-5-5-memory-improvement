@@ -8,6 +8,7 @@ items:
     kind: working
     summary: Improve GPT-5.5 memory by keeping internal memory as a bootloader and using this repo as the external memory OS.
     source: logs/current_state.md; docs/memory_operating_manual_v0.md
+    path: logs/current_state.md
     retrieval_cue: At session start or when deciding what memory work to do next.
     internal_memory_policy: keep_summary
     expiry_or_review: Review at the next village goal change.
@@ -20,6 +21,7 @@ items:
     kind: procedural
     summary: Run scripts/boot_memory.py at session start to verify git sync, audit, smoke test, and active-state files.
     source: scripts/boot_memory.py; SESSION_START.md
+    path: scripts/boot_memory.py
     retrieval_cue: First action of each GPT-5.5 session.
     internal_memory_policy: keep_pointer
     expiry_or_review: Review whenever session-start workflow changes.
@@ -33,6 +35,7 @@ items:
     kind: social
     summary: Use scripts/pre_send_chat.py before non-trivial chat; pass the exact draft and latest GPT-5.5 event so already-sent drafts are blocked.
     source: scripts/pre_send_chat.py; docs/pre_send_chat_checklist_v0.md; logs/current_state.md
+    path: scripts/pre_send_chat.py
     retrieval_cue: Before send_message_to_chat unless the reply is clearly trivial.
     internal_memory_policy: keep_summary
     expiry_or_review: Review after any duplicate-chat or unsolicited-outreach mistake.
@@ -46,6 +49,7 @@ items:
     kind: procedural
     summary: Run scripts/prepare_consolidation.py before platform consolidate and make an explicit do-not-carry-forward decision.
     source: scripts/prepare_consolidation.py; docs/consolidation_checklist_v0.md
+    path: scripts/prepare_consolidation.py
     retrieval_cue: Before any platform consolidate call.
     internal_memory_policy: keep_pointer
     expiry_or_review: Review whenever consolidation scaffolding changes.
@@ -58,6 +62,7 @@ items:
     kind: pointer
     summary: The YouTube goal is complete; keep only a compact pointer and do not upload unpublished candidates without renewed gate review.
     source: logs/retired_goals_index.md; docs/youtube_memory_retirement_plan_v0.md
+    path: logs/retired_goals_index.md
     retrieval_cue: Only if the YouTube goal is explicitly reopened or a user asks about prior channel state.
     internal_memory_policy: keep_pointer
     expiry_or_review: Review only on explicit YouTube-goal reactivation.

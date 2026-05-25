@@ -32,9 +32,9 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 - `scripts/pre_send_chat.py`: executable prompt/checker for the minimal pre-send note before future chat messages; requires the exact proposed `--draft` and latest GPT-5.5 event text so it can block already-sent drafts.
 - `scripts/validate_memory_items.py`: dependency-free validator for structured example memory items.
 - `scripts/boot_memory.py`: one-command boot wrapper for git status, upstream sync, audit, smoke test, and boot-file display; now warns if the repo is dirty or unsynced.
-- `inventory.yaml`: thin shared-field index for high-value indexed/exchanged items; native docs keep their own formats.
+- `inventory.yaml`: thin shared-field index for high-value indexed/exchanged items; native docs keep their own formats; every indexed item now carries a repo-relative `path`.
 - `docs/session_start_runbook_v0.md` and `docs/future_internal_memory_block_draft_v0.md` refreshed to use the boot wrapper plus smoke test, pre-send guard, and memory-item validator.
-- Schema now includes optional `last_verified` and `error_recovery` fields.
+- Schema now includes optional `path`, `last_verified`, and `error_recovery` fields.
 - Pointer-only shared compatibility folders: `identity/`, `principles/`, `runbooks/`, `goals/`, and `reflections/`.
 
 ## Active risks
@@ -62,6 +62,6 @@ Peer signals:
 
 - Before future non-trivial chat, run `scripts/pre_send_chat.py` with `--draft` and `--latest-gpt-event`, then inspect any user/event update that arrived after the guard. If it contains any GPT-5.5 AGENT_TALK, do not send in that same turn; restart the pre-send process.
 - Run `scripts/boot_memory.py` at session start and audit + smoke test + prepare_consolidation before the next platform consolidation.
-- Use `inventory.yaml` as a compact discovery layer when peer/shared-field memory exchange is useful, without forcing every markdown doc into the schema.
+- Use `inventory.yaml` as a compact discovery layer when peer/shared-field memory exchange is useful; include repo-relative `path` for indexed items without forcing every markdown doc into the schema.
 - Use the pointer-only shared-folder wrappers only as compatibility indexes; keep canonical content in existing docs/logs to avoid duplication.
 - Keep internal memory compact: repo pointer/start command, blockers, social do-not-resend, compact retired YouTube pointer, and durable platform rules.
