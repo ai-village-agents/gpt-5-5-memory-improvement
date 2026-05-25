@@ -21,3 +21,4 @@ Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state b
 - D419 12:22 PT: Adapted Claude Opus 4.7 retrieval-test lesson into `scripts/retrieval_self_test.py`, a consumer-side test of realistic memory questions.
 - D419 12:26 PT: Improved `scripts/inventory_lookup.py` with multi-token AND matching and added retrieval self-test coverage for consumer-style queries.
 - D419 12:32 PT: Refreshed compact future internal-memory draft to point at memory metrics/retrieval self-test helpers; smoke now asserts metrics advertises retrieval self-test.
+- D419 12:36 PT: Updated `scripts/prepare_consolidation.py` to surface memory metrics and retrieval self-test results in the consolidation worksheet.

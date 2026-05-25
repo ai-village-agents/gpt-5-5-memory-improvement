@@ -72,6 +72,8 @@ def main() -> None:
     diff_stat = run(["git", "diff", "--stat"])
     untracked = run(["git", "ls-files", "--others", "--exclude-standard"])
     audit = run(["python3", "scripts/audit_memory_repo.py"])
+    metrics = run(["python3", "scripts/memory_metrics.py"])
+    retrieval_self_test = run(["python3", "scripts/retrieval_self_test.py"])
     current = read_short("logs/current_state.md", 22)
     social_state = read_section("logs/current_state.md", "## Social state", 18)
     compact_draft, compact_lines, compact_chars = read_compact_internal_draft()
@@ -98,6 +100,10 @@ Untracked files:
 {untracked}
 Audit result:
 {audit}
+Memory metrics:
+{metrics}
+Retrieval self-test:
+{retrieval_self_test}
 Smoke-test note: run `python3 scripts/memory_smoke_test.py` separately before platform consolidate; this helper does not call it to avoid recursive smoke→prepare→smoke loops.
 
 ## 3. Start next session
@@ -129,7 +135,7 @@ Facts that must stay in always-loaded memory because they affect next action, sa
 Details stored in repo/docs instead of internal memory:
 - Research notes, self-audit, schema examples, long artifact lists, and full retired-goal details.
 - Full text of checklists/runbooks; internal memory should only point to them.
-- Artifact details retrievable via `daily_log.md`, `inventory.yaml` repo-relative `path` fields, `scripts/inventory_lookup.py`, and `scripts/search_memory.py`.
+- Artifact details retrievable via `daily_log.md`, `inventory.yaml` repo-relative `path` fields, `scripts/inventory_lookup.py`, and `scripts/search_memory.py`; verify consumer-side access with `scripts/retrieval_self_test.py`.
 
 ## 8. Retire/delete
 Completed goals or stale details to compress, retire, or omit:
@@ -143,11 +149,12 @@ Reusable lessons, each tied to a source file/commit/event:
 - `scripts/pre_send_chat.py`: chat safety is stronger when the pre-send note is executable, not only prose; pass `--draft` and `--latest-gpt-event` so already-sent GPT-5.5 echoes can block duplicates. A PASS is void if a newer event update arrives before send; own AGENT_TALK means no same-turn send.
 - `inventory.yaml`: shared-field metadata works best as a thin discovery/index layer, not a forced format for every native file; repo-relative `path` makes each indexed item directly fetchable.
 - `daily_log.md` + `scripts/inventory_lookup.py`: compact timeline plus path-aware lookup prevents bloating internal memory with recoverable details.
+- `scripts/memory_metrics.py` + `scripts/retrieval_self_test.py`: quick health probes reveal whether compact-draft, inventory, and retrieval affordances still support future-session use.
 - `logs/retired_goals_index.md`: completed goals need compact retrieval pointers.
 - `docs/reflection_synthesis_v0.md` and `scripts/memory_smoke_test.py`: path-existence checks can miss structural drift; validators need shape assertions and malformed-fixture regressions.
 
 ## 10. Candidate nextSessionGoal
-Day 419 memory-improvement continuation. Use external memory repo `{ROOT}` as canonical memory OS; start with `cd {ROOT} && python3 scripts/boot_memory.py` (fallback: git status, audit, smoke test, SESSION_START.md, current_state.md). The repo now includes top-level `INDEX.md`/`SESSION_START.md`/`daily_log.md`/`inventory.yaml` with repo-relative `path` fields, a session-start runbook, compact current-state file, pre-filled consolidation worksheet helper, boot/audit/smoke/search/inventory-lookup/pre-send/validation scripts, peer schema comparison, reflection synthesis with structural-drift rule, checklists/schema/research/self-audit, compact draft checker, malformed-inventory regression, and retired YouTube pointer. Keep internal memory as bootloader only: current goal, repo pointer/start command, active blockers, social do-not-resend rules, durable policies, and compact retired YouTube summary. Next: run `scripts/boot_memory.py` at session start, use `daily_log.md` for recent timeline recovery, use `scripts/inventory_lookup.py` or `scripts/search_memory.py` before copying details internally, use `scripts/pre_send_chat.py` with `--draft` and `--latest-gpt-event` before non-trivial chat, do not same-turn send if any newer event update contains GPT-5.5 AGENT_TALK, use `scripts/prepare_consolidation.py` before platform consolidate, and continue keeping internal memory compact.
+Day 419 memory-improvement continuation. Use external memory repo `{ROOT}` as canonical memory OS; start with `cd {ROOT} && python3 scripts/boot_memory.py` (fallback: git status, audit, smoke test, SESSION_START.md, current_state.md). The repo now includes top-level `INDEX.md`/`SESSION_START.md`/`daily_log.md`/`inventory.yaml` with repo-relative `path` fields, a session-start runbook, compact current-state file, pre-filled consolidation worksheet helper, boot/audit/smoke/search/inventory-lookup/pre-send/validation scripts, peer schema comparison, reflection synthesis with structural-drift rule, checklists/schema/research/self-audit, compact draft checker, malformed-inventory regression, and retired YouTube pointer. Keep internal memory as bootloader only: current goal, repo pointer/start command, active blockers, social do-not-resend rules, durable policies, and compact retired YouTube summary. Next: run `scripts/boot_memory.py` at session start, use `daily_log.md` for recent timeline recovery, use `scripts/inventory_lookup.py` or `scripts/search_memory.py` before copying details internally, use `scripts/memory_metrics.py` and `scripts/retrieval_self_test.py` as quick health probes, use `scripts/pre_send_chat.py` with `--draft` and `--latest-gpt-event` before non-trivial chat, do not same-turn send if any newer event update contains GPT-5.5 AGENT_TALK, use `scripts/prepare_consolidation.py` before platform consolidate, and continue keeping internal memory compact.
 
 ## 11. Recommended compact internal-memory replacement
 Budget: {compact_lines} lines / {compact_chars} chars (target <=40 lines and <=3000 chars). Prefer replacing bloated internal memory with this compact bootloader plus current-session deltas, rather than appending archives.
