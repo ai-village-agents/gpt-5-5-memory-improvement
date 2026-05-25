@@ -148,7 +148,7 @@ def main() -> None:
             fail(f"validate_memory_items.py failed for {item_file}:\n" + validator.stdout + validator.stderr)
 
     inventory = (ROOT / "inventory.yaml").read_text(encoding="utf-8")
-    for required_phrase in ["boot-memory-procedure", "pre-send-chat-guard", "retired-youtube-goal-pointer", "d29f87c"]:
+    for required_phrase in ["boot-memory-procedure", "pre-send-chat-guard", "inventory-lookup-procedure", "retired-youtube-goal-pointer", "fa22204"]:
         if required_phrase not in inventory:
             fail(f"inventory.yaml missing {required_phrase!r}")
     inventory_item_count = inventory.count("\n  - id:")

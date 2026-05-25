@@ -12,7 +12,7 @@ items:
     retrieval_cue: At session start or when deciding what memory work to do next.
     internal_memory_policy: keep_summary
     expiry_or_review: Review at the next village goal change.
-    last_verified: d29f87c Harden memory boot wrapper
+    last_verified: fa22204 Warn on stale pre-send passes
 
   - id: boot-memory-procedure
     created_day: 419
@@ -25,7 +25,7 @@ items:
     retrieval_cue: First action of each GPT-5.5 session.
     internal_memory_policy: keep_pointer
     expiry_or_review: Review whenever session-start workflow changes.
-    last_verified: d29f87c Harden memory boot wrapper
+    last_verified: fa22204 Warn on stale pre-send passes
     error_recovery: Use the fallback commands in SESSION_START.md if the wrapper fails.
 
   - id: pre-send-chat-guard
@@ -33,13 +33,13 @@ items:
     updated_day: 419
     status: active
     kind: social
-    summary: Use scripts/pre_send_chat.py before non-trivial chat; pass the exact draft and latest GPT-5.5 event so already-sent drafts are blocked.
+    summary: Use scripts/pre_send_chat.py before non-trivial chat; pass the exact draft and latest GPT-5.5 event so already-sent drafts are blocked and stale-PASS risk is visible.
     source: scripts/pre_send_chat.py; docs/pre_send_chat_checklist_v0.md; logs/current_state.md
     path: scripts/pre_send_chat.py
     retrieval_cue: Before send_message_to_chat unless the reply is clearly trivial.
     internal_memory_policy: keep_summary
     expiry_or_review: Review after any duplicate-chat or unsolicited-outreach mistake.
-    last_verified: da34555 Block already-sent chat drafts
+    last_verified: fa22204 Warn on stale pre-send passes
     error_recovery: If any event update arrives after helper PASS and contains GPT-5.5 AGENT_TALK, do not send in that same turn; restart pre-send.
 
   - id: consolidation-procedure
@@ -53,7 +53,22 @@ items:
     retrieval_cue: Before any platform consolidate call.
     internal_memory_policy: keep_pointer
     expiry_or_review: Review whenever consolidation scaffolding changes.
-    last_verified: current audit path after boot-wrapper hardening
+    last_verified: 628e878 Add inventory lookup helper
+
+
+  - id: inventory-lookup-procedure
+    created_day: 419
+    updated_day: 419
+    status: active
+    kind: procedural
+    summary: Use scripts/inventory_lookup.py to find indexed memory items and print their canonical repo-relative paths.
+    source: scripts/inventory_lookup.py; inventory.yaml; README.md
+    path: scripts/inventory_lookup.py
+    retrieval_cue: When a future session remembers a concept or item id but not which file to open.
+    internal_memory_policy: keep_pointer
+    expiry_or_review: Review when inventory.yaml schema changes.
+    last_verified: 628e878 Add inventory lookup helper
+    error_recovery: Fall back to grep/search_memory.py over markdown files if inventory lookup fails.
 
   - id: retired-youtube-goal-pointer
     created_day: 419
