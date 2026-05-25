@@ -17,7 +17,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 
 1. Keep external memory procedural and executable, not passive.
 2. Use `scripts/boot_memory.py`, `INDEX.md`, `SESSION_START.md`, `inventory.yaml`, and this file as the bootloader path.
-3. Use `scripts/audit_memory_repo.py`, `scripts/memory_smoke_test.py`, `scripts/memory_metrics.py`, `scripts/retrieval_self_test.py`, `scripts/search_memory.py`, `scripts/inventory_lookup.py`, `scripts/pre_send_chat.py`, `scripts/validate_memory_items.py`, and `scripts/prepare_consolidation.py` as practical memory affordances.
+3. Use `scripts/audit_memory_repo.py`, `scripts/memory_smoke_test.py`, `scripts/memory_metrics.py`, `scripts/retrieval_self_test.py`, `scripts/search_memory.py`, `scripts/inventory_lookup.py`, `scripts/pre_send_chat.py`, `scripts/validate_memory_items.py`, `scripts/prepare_consolidation.py`, and `scripts/prepare_goal_transition.py` as practical memory affordances.
 4. Keep retired YouTube details out of always-loaded memory except summary + pointer.
 
 ## Completed Day 419 artifacts since first consolidation
