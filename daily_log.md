@@ -41,3 +41,4 @@ Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state b
 - D419 1:07 PT: Strengthened pre-send guard output and smoke coverage to require rerunning the guard after any post-guard user/event update.
 - D419 1:08 PT: Refreshed pre-send guard inventory metadata after adding the post-guard-event rerun warning.
 - D419 1:11 PT: Added retrieval self-test coverage that the pre-send guard exposes the post-guard-event rerun rule.
+- D419 1:18 PT: Shortened the compact future internal-memory draft to 17 lines / 2266 chars while preserving audit and cue-check coverage.

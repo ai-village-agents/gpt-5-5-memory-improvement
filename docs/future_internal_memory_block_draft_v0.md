@@ -5,22 +5,21 @@ Status: draft, not yet installed. Use as a target when consolidating after Day 4
 ```text
 AI Village memory — GPT-5.5 — compact operating state
 
-Current goal: Improve your memory! (started Day 419). I am GPT-5.5 in #best with Gemini 3.5 Flash, Claude Opus 4.7, and Kimi K2.6. Work weekdays 10am-2pm PT.
+Goal/room: Improve your memory! (Day 419). I am GPT-5.5 in #best with Gemini 3.5 Flash, Claude Opus 4.7, and Kimi K2.6; work weekdays 10am-2pm PT.
 
-Core policy: internal memory is the bootloader for safe action, not an archive. Keep only current goal/room, external-memory pointer and first command, active blockers/gates, social do-not-resend state, durable policies, and compact retired-goal pointers.
+Policy: internal memory is the bootloader for safe action, not an archive. Keep only goal/room, repo+first command, active gates, social do-not-resend, durable platform rules, and compact retired-goal pointers.
 
-External memory repo: /home/computeruse/gpt-5-5-memory-improvement, remote https://github.com/ai-village-agents/gpt-5-5-memory-improvement. Start every session with:
-cd /home/computeruse/gpt-5-5-memory-improvement && python3 scripts/boot_memory.py
+External memory: /home/computeruse/gpt-5-5-memory-improvement (remote ai-village-agents/gpt-5-5-memory-improvement). First command every session: cd /home/computeruse/gpt-5-5-memory-improvement && python3 scripts/boot_memory.py
 
-Key affordances: scripts/boot_memory.py, SESSION_START.md, daily_log.md, logs/current_state.md, and path-aware inventory.yaml for boot/discovery; scripts/audit_memory_repo.py and scripts/memory_smoke_test.py for integrity; scripts/search_memory.py and scripts/inventory_lookup.py for retrieval; scripts/memory_metrics.py and scripts/retrieval_self_test.py for memory-health probes; scripts/pre_send_chat.py before non-trivial chat; scripts/validate_memory_items.py for schema examples/inventory; scripts/prepare_consolidation.py before consolidate; scripts/prepare_goal_transition.py after real admin goal changes; docs/consolidation_checklist_v0.md for keep/externalize/retire/forbid decisions.
+Retrieval/health path: boot output, SESSION_START.md, daily_log.md, logs/current_state.md, inventory.yaml, scripts/inventory_lookup.py, scripts/search_memory.py, scripts/memory_metrics.py, scripts/retrieval_self_test.py. Integrity: scripts/audit_memory_repo.py, scripts/memory_smoke_test.py, scripts/validate_memory_items.py. Use scripts/pre_send_chat.py before non-trivial chat, scripts/prepare_consolidation.py plus docs/consolidation_checklist_v0.md before consolidate, and scripts/prepare_goal_transition.py after real admin goal changes.
 
-Active risks: external memory fails if boot path is skipped; prose rules do not run themselves; duplicate chat/server-echo risk; stale hard-coded commit metadata; over-documentation can become another unsearched blob. Boot wrapper warns if repo is dirty or unsynced; inspect before committing/consolidating.
+Chat rule: prior repo/schema/pre-send/inventory and peer replies are already sent; specifically do not resend Kimi folder-taxonomy, Claude inventory/da34555/Haiku/P12, or Gemini fda660e replies. Before chat, use --draft and latest own event. If any event arrives after PASS, the PASS is stale; if it contains GPT-5.5 AGENT_TALK, do not send that turn. AGENT_TALK with agentName="GPT-5.5" is already sent.
 
-Social state: do not resend prior repo/schema announcements, Kimi folder-taxonomy reply, pre-send/inventory announcements, Claude inventory-shape reply, Claude da34555 guard/path reply, Gemini fda660e stale-PASS reply, Claude Haiku inventory-link reply, or Claude P12 enum-drift reply. Those last five direct peer replies were duplicated; do not repeat. Before chat, run scripts/pre_send_chat.py with `--draft` and `--latest-gpt-event`; if any user/event update arrives after PASS, the PASS is stale, and if it contains GPT-5.5 AGENT_TALK, do not send in that same turn. AGENT_TALK with agentName="GPT-5.5" is already sent.
+Risks: skipped boot, passive prose rules, server echoes, stale commit prose, and external bloat. Boot warns if dirty/unsynced; inspect before commits/consolidation.
 
-Retired goal: “Run your own Youtube channel!” completed at Day 419 start. GPT-5.5 published 5 videos on Day 412; Day 415-416 work was QA/docs/preproduction only. Unpublished candidates remained gated closed. Detailed state only from /home/computeruse/youtube-channel-2026, final remembered commit 825035a.
+Retired goal: “Run your own Youtube channel!” closed Day 419. GPT-5.5 published 5 videos on Day 412; later work was QA/docs/preproduction; unpublished candidates stayed gated closed. Details only from /home/computeruse/youtube-channel-2026 at final remembered commit 825035a.
 
-Durable platform rules: use send_message_to_chat for chat, not normal output. Bash commands begin with a clear comment. Avoid unsolicited human outreach without approval. Verify live/UI/source facts before irreversible actions. GitHub repos should be under ai-village-agents.
+Platform: chat via send_message_to_chat only; bash commands start with clear comments; no unsolicited human outreach without approval; verify source/UI/live facts before irreversible actions; GitHub repos under ai-village-agents.
 ```
 
 ## Notes
