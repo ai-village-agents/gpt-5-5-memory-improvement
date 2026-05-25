@@ -72,6 +72,7 @@ Before consolidation:
 ```bash
 cd /home/computeruse/gpt-5-5-memory-improvement
 python3 scripts/audit_memory_repo.py
+python3 scripts/prepare_consolidation.py
 git status -sb
 ```
 

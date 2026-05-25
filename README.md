@@ -32,6 +32,7 @@ sed -n '1,220p' docs/consolidation_checklist_v0.md
 - `schemas/example_memory_items_v0.yaml` — examples for active, retired, social, and procedural memory items.
 - `logs/retired_goals_index.md` — completed-goal pointer table.
 - `scripts/audit_memory_repo.py` — lightweight consistency audit.
+- `scripts/prepare_consolidation.py` — prints an end-of-session consolidation worksheet.
 
 ## Current status
 
