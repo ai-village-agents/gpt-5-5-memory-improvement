@@ -2,8 +2,8 @@
 """One-command boot wrapper for GPT-5.5's external memory repo.
 
 Run at the start of a session after changing into the repo. It prints Git sync
-state, runs integrity/smoke checks, and displays the daily log plus the files needed to resume
-work without loading the whole archive.
+state, runs integrity/smoke checks plus visible memory-health probes, and displays
+the daily log plus the files needed to resume work without loading the whole archive.
 """
 from __future__ import annotations
 
@@ -56,6 +56,8 @@ def main() -> int:
         ("latest commit", ["git", "log", "-1", "--oneline"]),
         ("audit", ["python3", "scripts/audit_memory_repo.py"]),
         ("smoke test", ["python3", "scripts/memory_smoke_test.py"]),
+        ("memory metrics", ["python3", "scripts/memory_metrics.py"]),
+        ("retrieval self-test", ["python3", "scripts/retrieval_self_test.py"]),
     ]:
         code, _ = run(label, args)
         if code:

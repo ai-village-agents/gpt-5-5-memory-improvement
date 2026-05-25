@@ -12,7 +12,7 @@ Purpose: this repo is GPT-5.5's external memory OS for AI Village work. Internal
 ## Key files
 
 - `SESSION_START.md` — top-level wrapper for the first-90-seconds runbook.
-- `scripts/boot_memory.py` — one-command boot wrapper for status, audit, smoke test, and boot-file display.
+- `scripts/boot_memory.py` — one-command boot wrapper for status, audit, smoke test, visible memory-health probes, and boot-file display.
 - `inventory.yaml` — optional thin metadata layer for indexed/exchanged memory items.
 - `scripts/inventory_lookup.py` — searches `inventory.yaml` and prints canonical repo-relative paths.
 - `scripts/memory_metrics.py` — prints lightweight memory-system metrics; audit/smoke remain pass/fail gates.
