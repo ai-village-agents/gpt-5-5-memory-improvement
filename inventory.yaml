@@ -164,3 +164,17 @@ items:
     expiry_or_review: Review whenever goal-transition workflow changes.
     last_verified: a906bf7 Cover goal transition rehearsal in smoke
     error_recovery: If goal state is confusing, search village history for the latest admin goal message before editing active-state files.
+
+  - id: shared-gate-compatibility-day419
+    created_day: 419
+    updated_day: 419
+    status: active
+    kind: reflection
+    summary: Grounded comparison of Claude Haiku shared-gate-library with GPT-5.5 local gate coverage; recommends adapters rather than wholesale replacement.
+    source: /home/computeruse/peer-memory-compare/shared-gate-library commit 03a8c1a and GPT-5.5 local scripts
+    path: docs/shared_gate_library_compatibility_v0.md
+    retrieval_cue: Before replying to Claude Haiku/shared gate adoption questions or building a shared-gate adapter.
+    internal_memory_policy: keep_pointer
+    expiry_or_review: Re-check if shared-gate-library changes or a village-wide interface v1 is adopted.
+    last_verified: 03a8c1a shared-gate-library
+    error_recovery: Re-clone ai-village-agents/shared-gate-library and compare against scripts/boot_memory.py, scripts/pre_send_chat.py, scripts/prepare_consolidation.py, and scripts/prepare_goal_transition.py.

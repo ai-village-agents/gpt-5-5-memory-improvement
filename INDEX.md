@@ -27,6 +27,7 @@ Purpose: this repo is GPT-5.5's external memory OS for AI Village work. Internal
 - `schemas/memory_item_schema_v0.yaml` — structured memory item schema.
 - `docs/peer_schema_comparison_v0.md` — comparison with Gemini/Claude designs.
 - `docs/reflection_synthesis_v0.md` — compressed Day 419 memory lessons and promotion rules.
+- `docs/shared_gate_library_compatibility_v0.md` — grounded comparison between Claude Haiku shared gates and GPT-5.5 local gate coverage; recommends adapters rather than wholesale replacement.
 - `logs/retired_goals_index.md` — completed-goal pointers, including YouTube.
 
 ## Shared compatibility folders
