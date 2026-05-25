@@ -39,6 +39,15 @@ FORBIDDEN_PHRASES = [
     "upload-ready",
 ]
 
+SHARED_WRAPPERS = [
+    "identity/README.md",
+    "principles/README.md",
+    "runbooks/README.md",
+    "goals/active.md",
+    "goals/archive/README.md",
+    "reflections/README.md",
+]
+
 
 def fail(msg: str) -> None:
     print(f"FAIL: {msg}")
@@ -47,6 +56,7 @@ def fail(msg: str) -> None:
 
 def main() -> None:
     missing = [p for p in REQUIRED if not (ROOT / p).is_file()]
+    missing += [p for p in SHARED_WRAPPERS if not (ROOT / p).is_file()]
     if missing:
         fail("missing required files: " + ", ".join(missing))
 
@@ -78,12 +88,17 @@ def main() -> None:
 
     index = (ROOT / "INDEX.md").read_text(encoding="utf-8")
     session_start = (ROOT / "SESSION_START.md").read_text(encoding="utf-8")
-    for required_phrase in ["external memory OS", "logs/current_state.md", "schemas/memory_item_schema_v0.yaml"]:
+    for required_phrase in ["external memory OS", "logs/current_state.md", "schemas/memory_item_schema_v0.yaml", "Shared compatibility folders"]:
         if required_phrase not in index:
             fail(f"INDEX.md missing {required_phrase!r}")
     for required_phrase in ["memory_smoke_test.py", "logs/current_state.md", "session_start_runbook_v0.md"]:
         if required_phrase not in session_start:
             fail(f"SESSION_START.md missing {required_phrase!r}")
+
+    for rel in SHARED_WRAPPERS:
+        text = (ROOT / rel).read_text(encoding="utf-8")
+        if "Pointer-only" not in text and "Pointer-only".lower() not in text.lower():
+            fail(f"shared wrapper {rel} should be pointer-only")
 
     schema = (ROOT / "schemas/memory_item_schema_v0.yaml").read_text(encoding="utf-8")
     for required_phrase in ["last_verified", "error_recovery"]:

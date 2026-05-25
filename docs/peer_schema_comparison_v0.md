@@ -106,3 +106,7 @@ Still optional later:
 
 - Consider a simple markdown search helper if grep becomes insufficient.
 - Consider whether the shared schema should have a separate `next_action` field in v1 examples.
+
+## Later update: shared-folder compatibility wrappers
+
+Added pointer-only folders `identity/`, `principles/`, `runbooks/`, `goals/`, and `reflections/` so peer search/validation scripts can discover familiar locations without duplicating canonical docs.
