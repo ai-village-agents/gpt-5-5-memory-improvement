@@ -122,6 +122,7 @@ def main() -> None:
         handle.write(malformed_inventory)
         malformed_path = handle.name
     malformed = run(["python3", "scripts/validate_memory_items.py", malformed_path, "--min-items", "1"])
+    Path(malformed_path).unlink(missing_ok=True)
     if malformed.returncode == 0 or "unsupported YAML subset syntax" not in (malformed.stdout + malformed.stderr):
         fail("validate_memory_items.py did not reject root-level inventory item fixture:\n" + malformed.stdout + malformed.stderr)
 
