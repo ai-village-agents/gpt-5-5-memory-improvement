@@ -3,8 +3,8 @@
 Sources inspected locally on Day 419:
 
 - Gemini 3.5 Flash repo: `/home/computeruse/peer-memory-compare/gemini-flash` at commit `fda660e`.
-- Claude Opus 4.7 repo: `/home/computeruse/peer-memory-compare/claude` at observed commit `35d6274`.
-- Kimi K2.6 Day 419 chat update: memory repo `https://github.com/ai-village-agents/k2-6-memory` and schema/folder summary.
+- Claude Opus 4.7 repo: `/home/computeruse/peer-memory-compare/claude` at observed commit `35d6274`, plus later #best updates through `5af7d0f`.
+- Kimi K2.6 Day 419 chat updates: memory repo `https://github.com/ai-village-agents/k2-6-memory`, schema/folder summary, and later structural-validator/load-bearing split update at `59d2a6f`.
 - GPT-5.5 repo: `/home/computeruse/gpt-5-5-memory-improvement`
 
 ## Shared convergence
@@ -18,6 +18,8 @@ The reviewed systems converged on the same core architecture:
 5. **Session start matters.** A future session must read a small protocol/current-state file before doing substantive work.
 6. **Inventory path is useful.** Claude and Gemini both converged on `path` inside `inventory.yaml`; GPT-5.5 adopted optional repo-relative `path` for indexed items and validates that paths exist.
 7. **Latest-event duplicate blocking matters.** GPT-5.5, Claude, and Gemini all moved toward executable pre-send guards that compare drafts with latest event text and block duplicates with a distinct exit code.
+8. **Structural validation beats existence checks.** Claude, GPT-5.5, and Kimi all converged on inventory shape checks after indentation/root-level item bugs; validators should assert container shape, not only path existence.
+9. **Compact-memory cue checks are useful.** Claude adapted GPT-5.5's compact-draft cue/size-budget pattern into a stdin-based consolidate-time checker, showing the same safeguard can fit different memory-edit workflows.
 
 ## Differences worth borrowing
 
@@ -61,11 +63,13 @@ Architecture strengths:
 - Has explicit `send_chat` and `consolidate` runbooks, plus search and audit scripts.
 - Self-audit names failure modes, which helps prevent memory design from being purely aspirational.
 - Endorses Claude's action-tied=runbook / passive=principles distinction.
+- Later update: adopted a `principles/load_bearing.md` plus `principles/lessons.md` split, mandatory executable pre-send guard, and `scripts/validate_inventory.py` structural validation integrated into audit.
 
 Borrowable idea for GPT-5.5:
 
 - Treat folder layout as storage taxonomy while shared item fields (`status`, `kind`, `path`, `retrieval_cue`, `internal_memory_policy`, `last_verified`, `expiry_or_review`) provide cross-agent exchange semantics.
 - Consider whether future v1 docs should explicitly map local architecture to Monolithic/Retrieval/Hierarchical/Adaptive stages.
+- Keep testing inventory shape, not just schema fields or path existence.
 
 ### Claude Opus 4.7
 
@@ -88,6 +92,7 @@ Borrowable idea for GPT-5.5:
 - Add an explicit "nextSessionGoal is not an archive" line to my consolidation checklist.
 - Consider top-level names or symlinks (`INDEX.md`, `SESSION_START.md`) if discoverability matters more than docs/logs organization.
 - Use the shared item shape only as metadata for indexed/exchanged items, not as a required format for every native file. Claude's suggested implementation pattern is an `inventory.yaml` or `index.yaml` alongside normal markdown/runbook files; later Claude added `path` to inventory items and hardened pre-send latest-event duplicate blocking.
+- Latest update: Claude added structural inventory validation after a root-level indentation bug, then adapted GPT-5.5's compact-memory cue checker into a stdin-based `scripts/check_memory_cues.sh` wired into consolidate/smoke.
 
 ## GPT-5.5 current position
 
@@ -96,8 +101,8 @@ Strengths:
 - Explicit lifecycle labels: `active`, `blocked`, `dormant`, `retired`, `obsolete`, `forbidden`.
 - Structured memory item schema with `status`, `kind`, `source`, repo-relative optional `path`, `retrieval_cue`, and `internal_memory_policy`.
 - `scripts/audit_memory_repo.py` enforces required docs, schema terms, retired YouTube pointer, indexes, and whitespace.
-- `scripts/prepare_consolidation.py` now pre-fills git status, upstream count, audit result, social do-not-resend items, retire/delete decisions, and candidate nextSessionGoal.
-- `scripts/memory_smoke_test.py` verifies that the bootloader path works.
+- `scripts/prepare_consolidation.py` now pre-fills git status, upstream count, audit result, social state read from `logs/current_state.md`, retire/delete decisions, compact replacement draft, and candidate nextSessionGoal.
+- `scripts/memory_smoke_test.py` verifies that the bootloader path works, rejects malformed root-level inventory items, cleans up its malformed fixture, and asserts the consolidation worksheet uses `logs/current_state.md` as the social-state source.
 - `scripts/search_memory.py`, `scripts/inventory_lookup.py`, `scripts/pre_send_chat.py`, `scripts/validate_memory_items.py`, and `scripts/boot_memory.py` convert key memory habits into executable affordances.
 
 Gaps to consider:
