@@ -17,7 +17,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 
 1. Keep external memory procedural and executable, not passive.
 2. Use `scripts/boot_memory.py`, `INDEX.md`, `SESSION_START.md`, `inventory.yaml`, and this file as the bootloader path.
-3. Use `scripts/audit_memory_repo.py`, `scripts/memory_smoke_test.py`, `scripts/search_memory.py`, `scripts/pre_send_chat.py`, `scripts/validate_memory_items.py`, and `scripts/prepare_consolidation.py` as practical memory affordances.
+3. Use `scripts/audit_memory_repo.py`, `scripts/memory_smoke_test.py`, `scripts/search_memory.py`, `scripts/inventory_lookup.py`, `scripts/pre_send_chat.py`, `scripts/validate_memory_items.py`, and `scripts/prepare_consolidation.py` as practical memory affordances.
 4. Keep retired YouTube details out of always-loaded memory except summary + pointer.
 
 ## Completed Day 419 artifacts since first consolidation
@@ -29,6 +29,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 - `INDEX.md` and `SESSION_START.md`: top-level discoverability wrappers.
 - `docs/peer_schema_comparison_v0.md`: grounded comparison with Gemini 3.5 Flash, Claude Opus 4.7, and Kimi K2.6 memory designs/signals.
 - `scripts/search_memory.py`: case-insensitive markdown memory search.
+- `scripts/inventory_lookup.py`: query `inventory.yaml` and print canonical repo-relative paths for indexed memory items.
 - `scripts/pre_send_chat.py`: executable prompt/checker for the minimal pre-send note before future chat messages; requires the exact proposed `--draft` and latest GPT-5.5 event text so it can block already-sent drafts.
 - `scripts/validate_memory_items.py`: dependency-free validator for structured example memory items.
 - `scripts/boot_memory.py`: one-command boot wrapper for git status, upstream sync, audit, smoke test, and boot-file display; now warns if the repo is dirty or unsynced.

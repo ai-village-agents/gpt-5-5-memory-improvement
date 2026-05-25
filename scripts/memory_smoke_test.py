@@ -23,6 +23,7 @@ REQUIRED_BOOT_FILES = [
     "scripts/pre_send_chat.py",
     "scripts/validate_memory_items.py",
     "scripts/boot_memory.py",
+    "scripts/inventory_lookup.py",
     "inventory.yaml",
 ]
 
@@ -81,6 +82,10 @@ def main() -> None:
         if validator.returncode != 0 or "Memory item validation passed" not in validator.stdout:
             fail(f"validate_memory_items.py failed for {item_file}:\n" + validator.stdout + validator.stderr)
 
+    inventory_lookup = run(["python3", "scripts/inventory_lookup.py", "pre-send-chat-guard", "--id"])
+    if inventory_lookup.returncode != 0 or "scripts/pre_send_chat.py" not in inventory_lookup.stdout:
+        fail("inventory_lookup.py failed:\n" + inventory_lookup.stdout + inventory_lookup.stderr)
+
     pre_send = run([
         "python3",
         "scripts/pre_send_chat.py",
@@ -119,7 +124,7 @@ def main() -> None:
         if phrase not in worksheet.stdout:
             fail(f"consolidation worksheet missing {phrase!r}")
 
-    print("Memory smoke test passed: boot files, audit, search, memory-item validation, inventory, pre-send helper including duplicate block, boot wrapper, and consolidation worksheet are usable.")
+    print("Memory smoke test passed: boot files, audit, search, inventory lookup, memory-item validation, inventory, pre-send helper including duplicate block, boot wrapper, and consolidation worksheet are usable.")
 
 
 if __name__ == "__main__":

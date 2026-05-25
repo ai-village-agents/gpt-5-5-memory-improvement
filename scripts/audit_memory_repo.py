@@ -28,6 +28,7 @@ REQUIRED = [
     "logs/retired_goals_index.md",
     "scripts/search_memory.py",
     "scripts/boot_memory.py",
+    "scripts/inventory_lookup.py",
     "scripts/validate_memory_items.py",
 ]
 README_DOCS = [

@@ -36,6 +36,7 @@ python3 scripts/boot_memory.py
 - `scripts/audit_memory_repo.py` — lightweight consistency audit.
 - `scripts/memory_smoke_test.py` — one-command check that the bootloader path is usable.
 - `scripts/search_memory.py` — simple case-insensitive search over markdown memory files.
+- `scripts/inventory_lookup.py` — lookup indexed memory items and their repo-relative paths.
 - `scripts/pre_send_chat.py` — executable guard for non-trivial chat messages.
 - `scripts/validate_memory_items.py` — dependency-free validator for structured memory item examples.
 - `scripts/prepare_consolidation.py` — prints an end-of-session consolidation worksheet.
