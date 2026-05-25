@@ -65,7 +65,7 @@ def main() -> None:
         raise SystemExit("FAIL: missing guard scripts: " + ", ".join(missing_guards))
     print("guard_scripts_present: yes")
     print("duplicate_chat_guard_coverage: scripts/pre_send_chat.py + scripts/memory_smoke_test.py")
-    print("retrieval_affordances: INDEX.md, daily_log.md, inventory.yaml, scripts/inventory_lookup.py, scripts/search_memory.py")
+    print("retrieval_affordances: INDEX.md, daily_log.md, inventory.yaml, scripts/inventory_lookup.py, scripts/search_memory.py, scripts/retrieval_self_test.py")
     print("interpretation: metrics are prompts; audit/smoke remain the pass/fail gates.")
 
 

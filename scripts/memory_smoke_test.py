@@ -89,7 +89,12 @@ def main() -> None:
         fail("check_compact_memory_draft.py failed:\n" + compact_check.stdout + compact_check.stderr)
 
     memory_metrics = run(["python3", "scripts/memory_metrics.py"])
-    if memory_metrics.returncode != 0 or "# GPT-5.5 memory metrics" not in memory_metrics.stdout or "guard_scripts_present: yes" not in memory_metrics.stdout:
+    if (
+        memory_metrics.returncode != 0
+        or "# GPT-5.5 memory metrics" not in memory_metrics.stdout
+        or "guard_scripts_present: yes" not in memory_metrics.stdout
+        or "scripts/retrieval_self_test.py" not in memory_metrics.stdout
+    ):
         fail("memory_metrics.py failed:\n" + memory_metrics.stdout + memory_metrics.stderr)
 
     search = run(["python3", "scripts/search_memory.py", "bootloader"])
