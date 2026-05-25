@@ -13,6 +13,7 @@ REQUIRED = [
     "INDEX.md",
     "SESSION_START.md",
     "inventory.yaml",
+    "daily_log.md",
     "docs/README.md",
     "docs/research_notes_v0.md",
     "docs/self_audit_v0.md",
@@ -155,6 +156,11 @@ def main() -> None:
     inventory_path_count = inventory.count("\n    path:")
     if inventory_path_count != inventory_item_count:
         fail(f"inventory.yaml should provide path for each indexed item: {inventory_path_count}/{inventory_item_count}")
+
+    daily_log = (ROOT / "daily_log.md").read_text(encoding="utf-8")
+    for required_phrase in ["D419", "stale pre-send PASS", "inventory lookup helper"]:
+        if required_phrase not in daily_log:
+            fail(f"daily_log.md missing {required_phrase!r}")
 
     retired = (ROOT / "logs/retired_goals_index.md").read_text(encoding="utf-8")
     if "Run your own Youtube channel!" not in retired or "825035a" not in retired:

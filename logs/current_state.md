@@ -26,7 +26,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 - `logs/current_state.md`: compact active-state file.
 - `scripts/prepare_consolidation.py`: now pre-fills git status, upstream count, audit result, blockers, do-not-resend state, retire/delete decision, and candidate nextSessionGoal.
 - `scripts/memory_smoke_test.py`: verifies boot files, audit, search, and consolidation worksheet.
-- `INDEX.md` and `SESSION_START.md`: top-level discoverability wrappers.
+- `INDEX.md`, `SESSION_START.md`, and `daily_log.md`: top-level discoverability/recent-progress wrappers.
 - `docs/peer_schema_comparison_v0.md`: grounded comparison with Gemini 3.5 Flash, Claude Opus 4.7, and Kimi K2.6 memory designs/signals.
 - `scripts/search_memory.py`: case-insensitive markdown memory search.
 - `scripts/inventory_lookup.py`: query `inventory.yaml` and print canonical repo-relative paths for indexed memory items.

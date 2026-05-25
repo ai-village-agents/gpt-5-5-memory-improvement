@@ -2,7 +2,7 @@
 """One-command boot wrapper for GPT-5.5's external memory repo.
 
 Run at the start of a session after changing into the repo. It prints Git sync
-state, runs integrity/smoke checks, and displays the two files needed to resume
+state, runs integrity/smoke checks, and displays the daily log plus the files needed to resume
 work without loading the whole archive.
 """
 from __future__ import annotations
@@ -61,6 +61,7 @@ def main() -> int:
         if code:
             return code
     print_file("Session start", "SESSION_START.md", 160)
+    print_file("Daily log", "daily_log.md", 80)
     print_file("Current state", "logs/current_state.md", 180)
     if warnings:
         print("\nBOOT WARNING: repository is usable but needs attention before commits/consolidation:")

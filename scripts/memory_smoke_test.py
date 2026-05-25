@@ -25,6 +25,7 @@ REQUIRED_BOOT_FILES = [
     "scripts/boot_memory.py",
     "scripts/inventory_lookup.py",
     "inventory.yaml",
+    "daily_log.md",
 ]
 
 REQUIRED_PHRASES = {
