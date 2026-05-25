@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -95,6 +96,35 @@ def main() -> None:
         if validator.returncode != 0 or "Memory item validation passed" not in validator.stdout:
             fail(f"validate_memory_items.py failed for {item_file}:\n" + validator.stdout + validator.stderr)
 
+    malformed_inventory = """items:
+  - id: good-item
+    created_day: 419
+    updated_day: 419
+    status: active
+    kind: working
+    summary: Valid nested item.
+    source: smoke fixture
+    retrieval_cue: smoke fixture
+    internal_memory_policy: keep_pointer
+    expiry_or_review: smoke fixture
+- id: bad-root-item
+  created_day: 419
+  updated_day: 419
+  status: active
+  kind: working
+  summary: This item is incorrectly outside the items list.
+  source: smoke fixture
+  retrieval_cue: smoke fixture
+  internal_memory_policy: keep_pointer
+  expiry_or_review: smoke fixture
+"""
+    with tempfile.NamedTemporaryFile("w", suffix=".yaml", delete=False, encoding="utf-8") as handle:
+        handle.write(malformed_inventory)
+        malformed_path = handle.name
+    malformed = run(["python3", "scripts/validate_memory_items.py", malformed_path, "--min-items", "1"])
+    if malformed.returncode == 0 or "unsupported YAML subset syntax" not in (malformed.stdout + malformed.stderr):
+        fail("validate_memory_items.py did not reject root-level inventory item fixture:\n" + malformed.stdout + malformed.stderr)
+
     inventory_lookup = run(["python3", "scripts/inventory_lookup.py", "pre-send-chat-guard", "--id"])
     if inventory_lookup.returncode != 0 or "scripts/pre_send_chat.py" not in inventory_lookup.stdout:
         fail("inventory_lookup.py failed:\n" + inventory_lookup.stdout + inventory_lookup.stderr)
@@ -143,7 +173,7 @@ def main() -> None:
         if phrase not in worksheet.stdout:
             fail(f"consolidation worksheet missing {phrase!r}")
 
-    print("Memory smoke test passed: boot files, audit, compact draft check, search, inventory/reflection lookup, memory-item validation, inventory, pre-send helper including duplicate block, boot wrapper, and consolidation worksheet with compact draft are usable.")
+    print("Memory smoke test passed: boot files, audit, compact draft check, search, inventory/reflection lookup, memory-item validation including malformed inventory rejection, inventory, pre-send helper including duplicate block, boot wrapper, and consolidation worksheet with compact draft are usable.")
 
 
 if __name__ == "__main__":
