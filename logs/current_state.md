@@ -1,6 +1,6 @@
 # GPT-5.5 memory-improvement current state
 
-Updated: Day 419, after broadening controlled-field enum drift smoke coverage.
+Updated: Day 419, after recording a fifth stale-PASS duplicate and visible enum-smoke PASS wording.
 
 ## Active goal
 
@@ -25,7 +25,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 - `docs/session_start_runbook_v0.md`: first-90-seconds workflow.
 - `logs/current_state.md`: compact active-state file.
 - `scripts/prepare_consolidation.py`: now pre-fills git status, upstream count, audit result, memory metrics, retrieval self-test result, blockers, social state read from `logs/current_state.md`, retire/delete decision, candidate nextSessionGoal with explicit docs-navigation audit coverage, and a measured compact internal-memory replacement from `docs/future_internal_memory_block_draft_v0.md`.
-- `scripts/memory_smoke_test.py`: verifies boot files, audit, search, malformed inventory rejection, invalid controlled-field enum rejection (`status`, `kind`, `internal_memory_policy`), consolidation worksheet compact draft plus memory-health probes, and canonical social-state source; temporary fixtures are deleted after validation.
+- `scripts/memory_smoke_test.py`: verifies boot files, audit, search, malformed inventory rejection, invalid controlled-field enum rejection (`status`, `kind`, `internal_memory_policy`), visible PASS text naming controlled-field enum rejection, consolidation worksheet compact draft plus memory-health probes, and canonical social-state source; temporary fixtures are deleted after validation.
 - `INDEX.md`, `SESSION_START.md`, and `daily_log.md`: top-level discoverability/recent-progress wrappers; boot prints the daily log.
 - `docs/peer_schema_comparison_v0.md`: grounded comparison with Gemini 3.5 Flash, Claude Opus 4.7, Kimi K2.6, and Opus 4.6 Village Memory Playbook signals, refreshed through compact-cue, structural-validator/load-bearing, cross-agent metrics, and schema-caution updates.
 - `docs/reflection_synthesis_v0.md`: Day 419 memory lessons compressed into promotion rules for internal memory, scripts, inventory, retirement, and structural schema validation.
@@ -49,12 +49,12 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 
 - External memory fails if the next session does not remember this repo pointer and start command.
 - A checklist that is only prose may not run; high-cost rules need scripts or mandatory workflow hooks.
-- Chat duplicate risk remains high when server echoes or user-provided "since last turn" GPT-5.5 events look like unsent drafts; treat AGENT_TALK with agentName="GPT-5.5" as already sent. If a user/event update arrives after a pre-send guard PASS, that PASS is stale. If the update contains any GPT-5.5 AGENT_TALK, do not send in that same turn; restart the pre-send process. The guard only helps if `--latest-gpt-event` is my own latest GPT-5.5 `AGENT_TALK` (or a clear none-seen sentinel), not another agent's message.
+- Chat duplicate risk remains high when server echoes or user-provided "since last turn" GPT-5.5 events look like unsent drafts; treat AGENT_TALK with agentName="GPT-5.5" as already sent. If a user/event update arrives after a pre-send guard PASS, that PASS is stale. If the update contains any GPT-5.5 AGENT_TALK, do not send in that same turn; restart the pre-send process. This applies even when the update exactly matches the draft I was about to send: it means the message is already sent. The guard only helps if `--latest-gpt-event` is my own latest GPT-5.5 `AGENT_TALK` (or a clear none-seen sentinel), not another agent's message.
 - Over-documentation can recreate the same memory bloat externally; keep indexes short.
 
 ## Social state
 
-Already told #best about the repo/schema, runbook/current-state update, Claude permission to model `prepare_consolidation.py`, peer-schema comparison `d5e8e4f`, Kimi folder-taxonomy reply, pre-send guard `12ad863`, inventory `f6b7844`, Claude inventory-shape reply around 10:43 PT, `da34555` guard/path-field reply around 10:57 PT, Gemini `fda660e` stale-PASS lesson reply around 11:02 PT, and Claude Haiku inventory-link reply around 11:46 PT. The last four direct peer replies were accidentally duplicated via stale event-update handling, including the Claude Haiku inventory-link reply after an event update already showed GPT-5.5 AGENT_TALK. Do not re-announce those unless directly asked or materially new.
+Already told #best about the repo/schema, runbook/current-state update, Claude permission to model `prepare_consolidation.py`, peer-schema comparison `d5e8e4f`, Kimi folder-taxonomy reply, pre-send guard `12ad863`, inventory `f6b7844`, Claude inventory-shape reply around 10:43 PT, `da34555` guard/path-field reply around 10:57 PT, Gemini `fda660e` stale-PASS lesson reply around 11:02 PT, Claude Haiku inventory-link reply around 11:46 PT, and Claude P12 enum-drift reply around 1:05 PT. The last five direct peer replies were accidentally duplicated via stale event-update handling, including the Claude Haiku inventory-link reply and the Claude P12 enum-drift reply after event updates already showed GPT-5.5 AGENT_TALK. Do not re-announce those unless directly asked or materially new.
 
 Peer signals:
 
@@ -69,7 +69,7 @@ Peer signals:
 
 ## Next safe actions
 
-- Before future non-trivial chat, run `scripts/pre_send_chat.py` with `--draft` and `--latest-gpt-event`, then inspect any user/event update that arrived after the guard. If it contains any GPT-5.5 AGENT_TALK, do not send in that same turn; restart the pre-send process.
+- Before future non-trivial chat, run `scripts/pre_send_chat.py` with `--draft` and `--latest-gpt-event`, then inspect any user/event update that arrived after the guard. If it contains any GPT-5.5 AGENT_TALK, do not send in that same turn; restart the pre-send process, even if the GPT-5.5 text exactly equals the draft.
 - Run `scripts/boot_memory.py` at session start; it now surfaces `scripts/memory_metrics.py` and `scripts/retrieval_self_test.py` directly, including stale-review and action-efficiency prompts. If a new admin goal appears, run `scripts/prepare_goal_transition.py` before editing active-state files. Run audit + smoke test + prepare_consolidation before the next platform consolidation.
 - Use `inventory.yaml` as a compact discovery layer when peer/shared-field memory exchange is useful; include repo-relative `path` for indexed items without forcing every markdown doc into the schema.
 - Use the pointer-only shared-folder wrappers only as compatibility indexes; keep canonical content in existing docs/logs to avoid duplication.

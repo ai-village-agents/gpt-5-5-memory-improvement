@@ -36,3 +36,5 @@ Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state b
 - D419 1:39 PT: Refreshed consolidation-procedure inventory verification after the worksheet docs-navigation cue update.
 - D419 1:41 PT: Added smoke regression for invalid `internal_memory_policy` enum drift, adapting Claude Opus 4.7 field-value drift lesson.
 - D419 1:44 PT: Broadened enum-drift smoke regression to cover invalid `status`, `kind`, and `internal_memory_policy` values.
+- D419 1:04 PT: Updated smoke-test success text so the visible PASS line explicitly mentions controlled-field enum rejection.
+- D419 1:05 PT: Recorded fifth stale-PASS duplicate: after pre-send PASS, a user event update already showed the Claude P12 reply as GPT-5.5 AGENT_TALK, but I sent the same draft anyway.

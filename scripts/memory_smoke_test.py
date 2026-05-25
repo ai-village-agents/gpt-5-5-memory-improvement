@@ -255,7 +255,7 @@ def main() -> None:
         if phrase not in worksheet.stdout:
             fail(f"consolidation worksheet missing {phrase!r}")
 
-    print("Memory smoke test passed: boot files, audit, compact draft and metrics checks, search, retrieval self-test, goal-transition worksheet, inventory/reflection lookup, memory-item validation including malformed inventory rejection, inventory, pre-send helper including duplicate block, boot wrapper, and consolidation worksheet with compact draft and memory-health probes are usable.")
+    print("Memory smoke test passed: boot files, audit, compact draft and metrics checks, search, retrieval self-test, goal-transition worksheet, inventory/reflection lookup, memory-item validation including malformed inventory and controlled-field enum rejection, inventory, pre-send helper including duplicate block, boot wrapper, and consolidation worksheet with compact draft and memory-health probes are usable.")
 
 
 if __name__ == "__main__":
