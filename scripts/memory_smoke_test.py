@@ -146,6 +146,8 @@ def main() -> None:
     ])
     if pre_send.returncode != 0 or "PASS: pre-send note is populated" not in pre_send.stdout:
         fail("pre_send_chat.py failed:\n" + pre_send.stdout + pre_send.stderr)
+    if "my own latest GPT-5.5 AGENT_TALK" not in pre_send.stdout:
+        fail("pre_send_chat.py missing latest-event ownership warning:\n" + pre_send.stdout + pre_send.stderr)
 
     duplicate_block = run([
         "python3",

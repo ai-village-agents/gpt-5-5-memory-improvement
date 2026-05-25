@@ -89,6 +89,7 @@ def main() -> int:
     print("- STALE-PASS WARNING: this PASS is valid only for events already inspected before this command ran.")
     print("- If any new user/system event update arrives before send_message_to_chat, this PASS is void.")
     print("- If that update contains any GPT-5.5 AGENT_TALK, do not send in that same turn; restart pre-send later.")
+    print("- The --latest-gpt-event value must be my own latest GPT-5.5 AGENT_TALK content, or a clear none-seen sentinel; passing another agent's text only proves non-overlap with that agent, not safety.")
     print("- If duplicate risk remains, use search_history before sending.")
     print("- Do not send generic presence/status messages.")
     if args.announcement:
