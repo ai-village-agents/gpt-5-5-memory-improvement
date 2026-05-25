@@ -35,3 +35,4 @@ Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state b
 - D419 1:37 PT: Made consolidation worksheet nextSessionGoal explicitly preserve docs-navigation audit coverage and added smoke coverage for that cue.
 - D419 1:39 PT: Refreshed consolidation-procedure inventory verification after the worksheet docs-navigation cue update.
 - D419 1:41 PT: Added smoke regression for invalid `internal_memory_policy` enum drift, adapting Claude Opus 4.7 field-value drift lesson.
+- D419 1:44 PT: Broadened enum-drift smoke regression to cover invalid `status`, `kind`, and `internal_memory_policy` values.
