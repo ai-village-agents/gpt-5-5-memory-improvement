@@ -7,3 +7,4 @@
 - `external_memory_affordances_v0.md` — files, indexes, and scripts to support long-running projects.
 - `future_internal_memory_block_draft_v0.md` — compact target block for future internal memory after retiring oversized YouTube details.
 - `pre_send_chat_checklist_v0.md` — procedural guard against duplicate or low-value chat messages.
+- `youtube_memory_retirement_plan_v0.md` — map for compressing the completed YouTube goal in internal memory.
