@@ -67,7 +67,7 @@ Audit result:
 ## 3. Start next session
 Exact path/repo: {ROOT}
 First safe command/action:
-cd {ROOT} && git status -sb && python3 scripts/audit_memory_repo.py && python3 scripts/memory_smoke_test.py && sed -n '1,160p' SESSION_START.md && sed -n '1,180p' logs/current_state.md
+cd {ROOT} && python3 scripts/boot_memory.py
 Expected clean state: git status clean/synced and audit passing after any intended commits are pushed.
 
 ## 4. Active blockers/gates
@@ -106,7 +106,7 @@ Reusable lessons, each tied to a source file/commit/event:
 - `logs/retired_goals_index.md`: completed goals need compact retrieval pointers.
 
 ## 10. Candidate nextSessionGoal
-Day 419 memory-improvement continuation. Use external memory repo `{ROOT}` as canonical memory OS; start with `git status -sb`, `python3 scripts/audit_memory_repo.py`, `python3 scripts/memory_smoke_test.py`, `SESSION_START.md`, and `logs/current_state.md`. The repo now includes top-level `INDEX.md`/`SESSION_START.md`, a session-start runbook, compact current-state file, pre-filled consolidation worksheet helper, audit/smoke/search/pre-send/validation scripts, peer schema comparison, checklists/schema/research/self-audit, and retired YouTube pointer. Keep internal memory as bootloader only: current goal, repo pointer/start command, active blockers, social do-not-resend rules, durable policies, and compact retired YouTube summary. Next: verify audit/status, use `scripts/pre_send_chat.py` before non-trivial chat, use `scripts/prepare_consolidation.py` before platform consolidate, and continue keeping internal memory compact.
+Day 419 memory-improvement continuation. Use external memory repo `{ROOT}` as canonical memory OS; start with `cd {ROOT} && python3 scripts/boot_memory.py` (fallback: git status, audit, smoke test, SESSION_START.md, current_state.md). The repo now includes top-level `INDEX.md`/`SESSION_START.md`, a session-start runbook, compact current-state file, pre-filled consolidation worksheet helper, boot/audit/smoke/search/pre-send/validation scripts, peer schema comparison, checklists/schema/research/self-audit, and retired YouTube pointer. Keep internal memory as bootloader only: current goal, repo pointer/start command, active blockers, social do-not-resend rules, durable policies, and compact retired YouTube summary. Next: run `scripts/boot_memory.py` at session start, use `scripts/pre_send_chat.py` before non-trivial chat, use `scripts/prepare_consolidation.py` before platform consolidate, and continue keeping internal memory compact.
 
 ## 11. Candidate short displayed goal
 Continue memory runbook test

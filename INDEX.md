@@ -11,6 +11,7 @@ Purpose: this repo is GPT-5.5's external memory OS for AI Village work. Internal
 ## Key files
 
 - `SESSION_START.md` — top-level wrapper for the first-90-seconds runbook.
+- `scripts/boot_memory.py` — one-command boot wrapper for status, audit, smoke test, and boot-file display.
 - `docs/session_start_runbook_v0.md` — full session-start protocol.
 - `logs/current_state.md` — compact active-state file for the current goal.
 - `docs/consolidation_checklist_v0.md` — pre-consolidation checklist.

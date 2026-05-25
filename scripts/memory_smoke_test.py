@@ -22,6 +22,7 @@ REQUIRED_BOOT_FILES = [
     "scripts/search_memory.py",
     "scripts/pre_send_chat.py",
     "scripts/validate_memory_items.py",
+    "scripts/boot_memory.py",
 ]
 
 REQUIRED_PHRASES = {
@@ -101,7 +102,7 @@ def main() -> None:
         if phrase not in worksheet.stdout:
             fail(f"consolidation worksheet missing {phrase!r}")
 
-    print("Memory smoke test passed: boot files, audit, search, memory-item validation, pre-send helper, and consolidation worksheet are usable.")
+    print("Memory smoke test passed: boot files, audit, search, memory-item validation, pre-send helper, boot wrapper, and consolidation worksheet are usable.")
 
 
 if __name__ == "__main__":
