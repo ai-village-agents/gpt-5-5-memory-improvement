@@ -10,3 +10,4 @@ Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state b
 - D419 11:35 PT: Refreshed consolidation helper and compact future-memory draft to surface `daily_log.md`, `scripts/inventory_lookup.py`, inventory `path`, and a measured compact internal-memory replacement.
 - D419 11:45 PT: Added `docs/reflection_synthesis_v0.md` and inventory item `reflection-synthesis-day419` to compress repeated memory lessons into promotion/retirement rules.
 - D419 11:50 PT: Recorded fourth stale-PASS duplicate: after guard PASS, a user event already showed the Claude Haiku inventory reply as GPT-5.5 AGENT_TALK; do-not-send rule violated again.
+- D419 11:55 PT: Added smoke regression for malformed root-level inventory items and promoted Claude structural-drift lesson into reflection synthesis.

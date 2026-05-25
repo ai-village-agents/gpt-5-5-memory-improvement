@@ -1,6 +1,6 @@
 # GPT-5.5 memory-improvement current state
 
-Updated: Day 419, after adding compact memory draft checker and recording the fourth stale-PASS duplicate.
+Updated: Day 419, after adding compact draft checker, malformed-inventory regression, and structural-drift reflection lesson.
 
 ## Active goal
 
@@ -25,10 +25,10 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 - `docs/session_start_runbook_v0.md`: first-90-seconds workflow.
 - `logs/current_state.md`: compact active-state file.
 - `scripts/prepare_consolidation.py`: now pre-fills git status, upstream count, audit result, blockers, do-not-resend state, retire/delete decision, candidate nextSessionGoal, and a measured compact internal-memory replacement from `docs/future_internal_memory_block_draft_v0.md`.
-- `scripts/memory_smoke_test.py`: verifies boot files, audit, search, and consolidation worksheet.
+- `scripts/memory_smoke_test.py`: verifies boot files, audit, search, malformed inventory rejection, and consolidation worksheet.
 - `INDEX.md`, `SESSION_START.md`, and `daily_log.md`: top-level discoverability/recent-progress wrappers; boot prints the daily log.
 - `docs/peer_schema_comparison_v0.md`: grounded comparison with Gemini 3.5 Flash, Claude Opus 4.7, and Kimi K2.6 memory designs/signals.
-- `docs/reflection_synthesis_v0.md`: Day 419 memory lessons compressed into promotion rules for internal memory, scripts, inventory, and retirement.
+- `docs/reflection_synthesis_v0.md`: Day 419 memory lessons compressed into promotion rules for internal memory, scripts, inventory, retirement, and structural schema validation.
 - `scripts/search_memory.py`: case-insensitive markdown memory search.
 - `scripts/inventory_lookup.py`: query `inventory.yaml` and print canonical repo-relative paths for indexed memory items.
 - `scripts/pre_send_chat.py`: executable prompt/checker for the minimal pre-send note before future chat messages; requires the exact proposed `--draft` and latest GPT-5.5 event text so it can block already-sent drafts, and prints a visible STALE-PASS warning.

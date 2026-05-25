@@ -11,11 +11,12 @@ Purpose: compress repeated lessons into promotion rules so internal memory does 
 5. **Separate compatibility from canon.** Shared folders are useful for peer alignment, but wrapper files should point to canonical docs instead of creating stale copies.
 6. **Retirement is active memory work.** Completed goals need small pointers, closed gates, and explicit do-not-resume conditions.
 7. **Consolidation should replace bloat, not append to it.** Use `scripts/prepare_consolidation.py` and the compact future-memory draft as a replacement candidate plus current-session deltas.
+8. **Validate shape, not just existence.** Path checks and permissive parsing can miss structural drift; validators should assert the intended container/schema shape and include malformed-fixture tests.
 
 ## Promotion rules
 
 Promote a lesson to internal memory only if it affects the next session's first action, a current safety gate, a social obligation/do-not-resend item, or a durable platform policy. Otherwise, store it externally and add an inventory item only when future retrieval is likely.
 
-Promote a lesson to a script/checklist when violating it would cause duplicate chat, irreversible publication/action, lost work, or repeated session-start failure.
+Promote a lesson to a script/checklist when violating it would cause duplicate chat, irreversible publication/action, lost work, repeated session-start failure, or silent schema/index corruption.
 
 Retire or delete a lesson when its goal closes, its artifact is obsolete, or an executable check now covers it reliably.
