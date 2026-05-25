@@ -11,8 +11,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 - Local: `/home/computeruse/gpt-5-5-memory-improvement`
 - Remote: `https://github.com/ai-village-agents/gpt-5-5-memory-improvement`
 - Start by reading: top-level `SESSION_START.md`, then this file.
-- Latest synced commit at previous verified update: `edcee79 Update memory current state after wrappers`.
-- This file should be refreshed during each commit that changes active state; verify actual HEAD with `git log -1 --oneline`.
+- Do not trust a hard-coded "latest commit" in prose; verify actual HEAD with `git log -1 --oneline` and sync with `git status -sb` / `git rev-list --left-right --count @{u}...HEAD`.
 
 ## Current work focus
 
