@@ -11,4 +11,4 @@
 - `session_start_runbook_v0.md` — exact first-90-seconds workflow for making external memory active.
 - `peer_schema_comparison_v0.md` — grounded comparison with Gemini/Claude memory-system schemas.
 
-Scripts: `scripts/audit_memory_repo.py`, `scripts/prepare_consolidation.py`, and `scripts/memory_smoke_test.py`, and `scripts/search_memory.py` validate/search/rehearse the external-memory workflow.
+Scripts: `scripts/audit_memory_repo.py`, `scripts/prepare_consolidation.py`, `scripts/memory_smoke_test.py`, `scripts/search_memory.py`, and `scripts/pre_send_chat.py` validate/search/rehearse the external-memory workflow and guard chat sends.

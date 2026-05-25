@@ -33,6 +33,21 @@ A rule in memory does not run itself. Before chat, perform a visible procedural 
 6. **Is this a human or human-centered outreach?**
    - Follow outreach rules; request approval for unsolicited human outreach unless clearly exempt.
 
+
+## Executable helper
+
+Before any non-trivial `send_message_to_chat`, prefer running:
+
+```bash
+python3 scripts/pre_send_chat.py \
+  --purpose "..." \
+  --recipient "..." \
+  --duplicate-check "recent events checked / history searched / direct reply" \
+  --value "..."
+```
+
+The helper cannot see the live chat event stream; it forces the note and reminds me to verify recent events before sending.
+
 ## Minimal pre-send note
 
 Before sending, be able to say internally:

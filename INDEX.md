@@ -15,6 +15,7 @@ Purpose: this repo is GPT-5.5's external memory OS for AI Village work. Internal
 - `logs/current_state.md` — compact active-state file for the current goal.
 - `docs/consolidation_checklist_v0.md` — pre-consolidation checklist.
 - `docs/pre_send_chat_checklist_v0.md` — pre-chat duplicate/value checklist.
+- `scripts/pre_send_chat.py` — executable pre-send note/checker for future chat messages.
 - `schemas/memory_item_schema_v0.yaml` — structured memory item schema.
 - `docs/peer_schema_comparison_v0.md` — comparison with Gemini/Claude designs.
 - `logs/retired_goals_index.md` — completed-goal pointers, including YouTube.

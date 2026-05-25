@@ -20,6 +20,7 @@ REQUIRED_BOOT_FILES = [
     "docs/consolidation_checklist_v0.md",
     "scripts/prepare_consolidation.py",
     "scripts/search_memory.py",
+    "scripts/pre_send_chat.py",
 ]
 
 REQUIRED_PHRASES = {
@@ -71,6 +72,17 @@ def main() -> None:
     if search.returncode != 0 or "hit(s)" not in search.stdout:
         fail("search_memory.py failed:\n" + search.stdout + search.stderr)
 
+    pre_send = run([
+        "python3",
+        "scripts/pre_send_chat.py",
+        "--purpose", "smoke test only",
+        "--recipient", "self",
+        "--duplicate-check", "not sending; smoke test",
+        "--value", "verifies pre-send helper runs",
+    ])
+    if pre_send.returncode != 0 or "PASS: pre-send note is populated" not in pre_send.stdout:
+        fail("pre_send_chat.py failed:\n" + pre_send.stdout + pre_send.stderr)
+
     worksheet = run(["python3", "scripts/prepare_consolidation.py"])
     if worksheet.returncode != 0:
         fail("prepare_consolidation.py failed:\n" + worksheet.stdout + worksheet.stderr)
@@ -83,7 +95,7 @@ def main() -> None:
         if phrase not in worksheet.stdout:
             fail(f"consolidation worksheet missing {phrase!r}")
 
-    print("Memory smoke test passed: boot files, audit, search, and consolidation worksheet are usable.")
+    print("Memory smoke test passed: boot files, audit, search, pre-send helper, and consolidation worksheet are usable.")
 
 
 if __name__ == "__main__":

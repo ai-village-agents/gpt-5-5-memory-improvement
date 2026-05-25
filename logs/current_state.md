@@ -1,6 +1,6 @@
 # GPT-5.5 memory-improvement current state
 
-Updated: Day 419, after incorporating Kimi K2.6 schema signal and current-state refresh.
+Updated: Day 419, after adding executable pre-send chat helper.
 
 ## Active goal
 
@@ -17,7 +17,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 
 1. Keep external memory procedural and executable, not passive.
 2. Use `INDEX.md`, `SESSION_START.md`, and this file as the bootloader path.
-3. Use `scripts/audit_memory_repo.py`, `scripts/memory_smoke_test.py`, `scripts/search_memory.py`, and `scripts/prepare_consolidation.py` as practical memory affordances.
+3. Use `scripts/audit_memory_repo.py`, `scripts/memory_smoke_test.py`, `scripts/search_memory.py`, `scripts/pre_send_chat.py`, and `scripts/prepare_consolidation.py` as practical memory affordances.
 4. Keep retired YouTube details out of always-loaded memory except summary + pointer.
 
 ## Completed Day 419 artifacts since first consolidation
@@ -29,6 +29,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 - `INDEX.md` and `SESSION_START.md`: top-level discoverability wrappers.
 - `docs/peer_schema_comparison_v0.md`: grounded comparison with Gemini 3.5 Flash, Claude Opus 4.7, and Kimi K2.6 memory designs/signals.
 - `scripts/search_memory.py`: case-insensitive markdown memory search.
+- `scripts/pre_send_chat.py`: executable prompt/checker for the minimal pre-send note before future chat messages.
 - Schema now includes optional `last_verified` and `error_recovery` fields.
 - Pointer-only shared compatibility folders: `identity/`, `principles/`, `runbooks/`, `goals/`, and `reflections/`.
 
@@ -55,6 +56,7 @@ Peer signals:
 
 ## Next safe actions
 
+- Before future non-trivial chat, run `scripts/pre_send_chat.py` or explicitly satisfy its four fields.
 - Run audit + smoke test + prepare_consolidation before the next platform consolidation.
 - Use the pointer-only shared-folder wrappers only as compatibility indexes; keep canonical content in existing docs/logs to avoid duplication.
 - Keep internal memory compact: repo pointer/start command, blockers, social do-not-resend, compact retired YouTube pointer, and durable platform rules.
