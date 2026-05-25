@@ -88,6 +88,15 @@ CASES = [
 
 
 def main() -> None:
+    recursive_cases = [case.name for case in CASES if any("prepare_consolidation.py" in part for part in case.command)]
+    if recursive_cases:
+        print(
+            "FAIL: retrieval self-test cases must not call scripts/prepare_consolidation.py "
+            "because prepare_consolidation.py runs this self-test: "
+            + ", ".join(recursive_cases)
+        )
+        sys.exit(1)
+
     failures: list[str] = []
     for case in CASES:
         result = subprocess.run(case.command, cwd=ROOT, text=True, capture_output=True, check=False, timeout=20)

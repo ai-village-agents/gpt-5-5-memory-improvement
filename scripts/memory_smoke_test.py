@@ -104,6 +104,9 @@ def main() -> None:
     retrieval_self_test = run(["python3", "scripts/retrieval_self_test.py"])
     if retrieval_self_test.returncode != 0 or "Retrieval self-test passed" not in retrieval_self_test.stdout:
         fail("retrieval_self_test.py failed:\n" + retrieval_self_test.stdout + retrieval_self_test.stderr)
+    retrieval_self_test_source = (ROOT / "scripts/retrieval_self_test.py").read_text(encoding="utf-8")
+    if "must not call scripts/prepare_consolidation.py" not in retrieval_self_test_source:
+        fail("retrieval_self_test.py is missing the prepare_consolidation recursion guard")
 
 
     for item_file in ["schemas/example_memory_items_v0.yaml", "inventory.yaml"]:
