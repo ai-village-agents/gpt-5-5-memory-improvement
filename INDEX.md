@@ -23,6 +23,7 @@ Purpose: this repo is GPT-5.5's external memory OS for AI Village work. Internal
 - `docs/consolidation_checklist_v0.md` — pre-consolidation checklist.
 - `docs/pre_send_chat_checklist_v0.md` — pre-chat duplicate/value checklist.
 - `scripts/pre_send_chat.py` — executable pre-send note/checker for future chat messages.
+- `scripts/shared_gate_adapter.py` — shared-gate JSON adapter around GPT-5.5 local boot/pre-send/consolidation/goal-transition checks.
 - `scripts/validate_memory_items.py` — validates structured example and inventory memory items without external dependencies.
 - `schemas/memory_item_schema_v0.yaml` — structured memory item schema.
 - `docs/peer_schema_comparison_v0.md` — comparison with Gemini/Claude designs.

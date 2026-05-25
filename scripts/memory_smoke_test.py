@@ -29,6 +29,7 @@ REQUIRED_BOOT_FILES = [
     "scripts/memory_metrics.py",
     "scripts/retrieval_self_test.py",
     "scripts/prepare_goal_transition.py",
+    "scripts/shared_gate_adapter.py",
     "docs/reflection_synthesis_v0.md",
     "inventory.yaml",
     "daily_log.md",
@@ -241,6 +242,35 @@ def main() -> None:
     if duplicate_block.returncode != 4 or "draft appears to match" not in duplicate_block.stderr:
         fail("pre_send_chat.py did not block duplicate draft:\n" + duplicate_block.stdout + duplicate_block.stderr)
 
+
+    adapter_pass = run([
+        "python3",
+        "scripts/shared_gate_adapter.py",
+        "pre_send_chat",
+        "--purpose", "adapter smoke test",
+        "--recipient", "self",
+        "--duplicate-check", "not sending; adapter smoke",
+        "--value", "verifies shared-gate JSON adapter preserves strict local pre-send guard",
+        "--draft", "Adapter smoke only; not sending",
+        "--latest-gpt-event", "none seen",
+    ])
+    if adapter_pass.returncode != 0 or '"gate": "pre_send_chat"' not in adapter_pass.stdout or '"status": "PASS"' not in adapter_pass.stdout:
+        fail("shared_gate_adapter.py pre_send_chat PASS smoke failed:\n" + adapter_pass.stdout + adapter_pass.stderr)
+
+    adapter_duplicate = run([
+        "python3",
+        "scripts/shared_gate_adapter.py",
+        "pre_send_chat",
+        "--purpose", "adapter duplicate smoke test",
+        "--recipient", "self",
+        "--duplicate-check", "latest GPT-5.5 event pasted",
+        "--value", "verifies adapter blocks already-sent drafts",
+        "--draft", "Adapter duplicate smoke",
+        "--latest-gpt-event", "Adapter duplicate smoke",
+    ])
+    if adapter_duplicate.returncode == 0 or '"status": "FAIL"' not in adapter_duplicate.stdout or "draft appears to match" not in adapter_duplicate.stdout:
+        fail("shared_gate_adapter.py pre_send_chat duplicate smoke failed:\n" + adapter_duplicate.stdout + adapter_duplicate.stderr)
+
     worksheet = run(["python3", "scripts/prepare_consolidation.py"])
     if worksheet.returncode != 0:
         fail("prepare_consolidation.py failed:\n" + worksheet.stdout + worksheet.stderr)
@@ -261,7 +291,7 @@ def main() -> None:
         if phrase not in worksheet.stdout:
             fail(f"consolidation worksheet missing {phrase!r}")
 
-    print("Memory smoke test passed: boot files, audit, compact draft and metrics checks, search, retrieval self-test, goal-transition worksheet, inventory/reflection lookup, memory-item validation including malformed inventory and controlled-field enum rejection, inventory, pre-send helper including duplicate block, boot wrapper, and consolidation worksheet with compact draft and memory-health probes are usable.")
+    print("Memory smoke test passed: boot files, audit, compact draft and metrics checks, search, retrieval self-test, goal-transition worksheet, inventory/reflection lookup, memory-item validation including malformed inventory and controlled-field enum rejection, inventory, pre-send helper including duplicate block, shared-gate adapter, boot wrapper, and consolidation worksheet with compact draft and memory-health probes are usable.")
 
 
 if __name__ == "__main__":

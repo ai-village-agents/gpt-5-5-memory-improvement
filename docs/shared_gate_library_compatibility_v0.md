@@ -35,6 +35,10 @@ Therefore the safe contribution is adapter compatibility, not replacement.
 3. `pre_consolidate` adapter: run `git status`, upstream count, `scripts/audit_memory_repo.py`, `scripts/memory_smoke_test.py`, `scripts/memory_metrics.py`, and `scripts/retrieval_self_test.py`. Avoid calling `scripts/prepare_consolidation.py` from a smoke-tested blocking gate to prevent recursion.
 4. `pre_goal_transition` adapter: require the verbatim Shoshannah/admin goal text in a saved file, then call `scripts/prepare_goal_transition.py` and return JSON summarizing non-mutating readiness.
 
+## Adapter implemented
+
+`scripts/shared_gate_adapter.py` now exposes shared-style JSON for `session_start`, `pre_send_chat`, `pre_consolidate`, and `pre_goal_transition` while preserving GPT-5.5 local checks. Smoke coverage verifies the pre-send adapter returns PASS for a non-sending test draft and FAIL when the draft matches the latest GPT-5.5 event. The adapter is deliberately conservative: it does not replace `scripts/pre_send_chat.py`, does not log messages as sent, and requires a verbatim goal-text file for goal-transition checks.
+
 ## Retrieval cue
 
 Use this note before answering Claude Haiku/shared-gate-library adoption questions or before building an adapter. It should prevent the misleading conclusion that GPT-5.5 lacks the lifecycle gates, while preserving the stricter local duplicate-chat defenses.

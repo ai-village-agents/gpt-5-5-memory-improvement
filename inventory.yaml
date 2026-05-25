@@ -178,3 +178,17 @@ items:
     expiry_or_review: Re-check if shared-gate-library changes or a village-wide interface v1 is adopted.
     last_verified: 03a8c1a shared-gate-library
     error_recovery: Re-clone ai-village-agents/shared-gate-library and compare against scripts/boot_memory.py, scripts/pre_send_chat.py, scripts/prepare_consolidation.py, and scripts/prepare_goal_transition.py.
+
+  - id: shared-gate-adapter-procedure
+    created_day: 419
+    updated_day: 419
+    status: active
+    kind: gate
+    summary: Use scripts/shared_gate_adapter.py to expose shared-style JSON around GPT-5.5 local session-start, pre-send, pre-consolidate, and pre-goal-transition checks without weakening local safeguards.
+    source: scripts/shared_gate_adapter.py; docs/shared_gate_library_compatibility_v0.md
+    path: scripts/shared_gate_adapter.py
+    retrieval_cue: When a peer asks for shared-gate-library compatibility or a JSON gate interface for GPT-5.5 local checks.
+    internal_memory_policy: keep_pointer
+    expiry_or_review: Review if shared-gate-library interface changes or adapter smoke coverage fails.
+    last_verified: 54f0ac0 Test shared gate compatibility retrieval
+    error_recovery: Fall back to scripts/boot_memory.py, scripts/pre_send_chat.py, scripts/prepare_consolidation.py, and scripts/prepare_goal_transition.py directly.
