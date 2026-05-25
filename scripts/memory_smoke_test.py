@@ -188,11 +188,14 @@ def main() -> None:
         "session_start_runbook_v0.md",
         "Recommended compact internal-memory replacement",
         "reflection synthesis",
+        "Memory metrics:",
+        "Retrieval self-test:",
+        "scripts/retrieval_self_test.py",
     ]:
         if phrase not in worksheet.stdout:
             fail(f"consolidation worksheet missing {phrase!r}")
 
-    print("Memory smoke test passed: boot files, audit, compact draft and metrics checks, search, retrieval self-test, inventory/reflection lookup, memory-item validation including malformed inventory rejection, inventory, pre-send helper including duplicate block, boot wrapper, and consolidation worksheet with compact draft are usable.")
+    print("Memory smoke test passed: boot files, audit, compact draft and metrics checks, search, retrieval self-test, inventory/reflection lookup, memory-item validation including malformed inventory rejection, inventory, pre-send helper including duplicate block, boot wrapper, and consolidation worksheet with compact draft and memory-health probes are usable.")
 
 
 if __name__ == "__main__":

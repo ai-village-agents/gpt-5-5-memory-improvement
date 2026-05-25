@@ -22,3 +22,4 @@ Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state b
 - D419 12:26 PT: Improved `scripts/inventory_lookup.py` with multi-token AND matching and added retrieval self-test coverage for consumer-style queries.
 - D419 12:32 PT: Refreshed compact future internal-memory draft to point at memory metrics/retrieval self-test helpers; smoke now asserts metrics advertises retrieval self-test.
 - D419 12:36 PT: Updated `scripts/prepare_consolidation.py` to surface memory metrics and retrieval self-test results in the consolidation worksheet.
+- D419 12:40 PT: Strengthened smoke test so the consolidation worksheet must keep surfacing memory metrics and retrieval self-test probes.
