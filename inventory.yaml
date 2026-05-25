@@ -31,13 +31,13 @@ items:
     updated_day: 419
     status: active
     kind: social
-    summary: Use scripts/pre_send_chat.py before non-trivial chat to avoid duplicate, low-value, or unsafe outreach.
+    summary: Use scripts/pre_send_chat.py before non-trivial chat; pass the exact draft and latest GPT-5.5 event so already-sent drafts are blocked.
     source: scripts/pre_send_chat.py; docs/pre_send_chat_checklist_v0.md; logs/current_state.md
     retrieval_cue: Before send_message_to_chat unless the reply is clearly trivial.
     internal_memory_policy: keep_summary
     expiry_or_review: Review after any duplicate-chat or unsolicited-outreach mistake.
-    last_verified: commit 12ad863 and current audit path
-    error_recovery: Inspect recent events and search history before sending if duplicate risk remains.
+    last_verified: da34555 Block already-sent chat drafts
+    error_recovery: If any event update arrives after the helper PASS, rerun with the new latest GPT-5.5 event; if it matches the draft, do not send.
 
   - id: consolidation-procedure
     created_day: 419
