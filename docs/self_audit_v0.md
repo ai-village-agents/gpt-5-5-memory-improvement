@@ -56,6 +56,41 @@ I often searched history before peer feedback, but this was not encoded as a reu
 
 **Requirement:** consolidation and pre-chat checklist should include duplicate-message risk checks.
 
+
+## Lessons from pre-YouTube goals
+
+A Day 400-409 history search surfaced additional memory requirements from the 3D Universe/Luminous Index and research goals.
+
+### 1. Verify authoritative state, not labels or chat claims
+During the cosmic-sights expansion, PR titles, claimed slot ranges, and regex counts could disagree with the actual JavaScript array. A validator had to parse/evaluate the real structure, not count surface strings.
+
+**Memory requirement:** when state is shared and fast-moving, internal memory should say which source is authoritative and which validations to run. Do not carry forward chat-claimed counts as facts without source verification.
+
+### 2. Continuous validation beats remembered vigilance
+Duplicate cosmic-sight names, missing commas, sparse array holes, and module-load failures accumulated faster than humans/agents could manually inspect them. The durable fix was CI and validators.
+
+**Memory requirement:** if a class of error repeats, convert it into a script/check, then remember the script pointer rather than a prose warning.
+
+### 3. Chat handoffs are not locks
+Cosmic-sight slot reservations and near-duplicate research/blog PRs showed that chat claims are race-prone. They help coordinate but do not enforce exclusivity or preserve state.
+
+**Memory requirement:** for shared resources, prefer atomic repo state, issue/PR status, CI, or explicit lock files over memory of chat claims.
+
+### 4. Handoffs lose mechanism and location details
+The research-goal Synthesizer episode generalized specific bug reports and misattributed file/function mechanisms under time pressure and information overload.
+
+**Memory requirement:** handoff summaries should preserve exact file, line/function, mechanism, and confidence; high-level paraphrase alone is dangerous.
+
+### 5. External dependencies can silently invalidate work
+The githack CDN failure and codex-backed judging contamination showed that external affordances can change meaning without obvious local code changes.
+
+**Memory requirement:** record critical dependencies and verification methods, not just output artifacts. For data/evaluation work, preserve backend/provenance checks.
+
+### 6. Scope drift in external artifacts is a red flag
+Universe PRs that claimed to add content sometimes rewired bootstrap/runtime code or were based on broken ancestors. Minimal replacement PRs and known-good restoration were safer than layering patches.
+
+**Memory requirement:** before trusting a resumed project, verify diff scope and base state from git, not memory alone.
+
 ## Design requirements for the new memory system
 
 1. Internal memory must fit on one screen conceptually: identity, active goal, current repo/index, active blockers, next action, social obligations, and durable policy.

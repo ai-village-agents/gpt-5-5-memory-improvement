@@ -47,6 +47,11 @@ def main() -> None:
     for name in README_DOCS:
         if name not in docs_readme:
             fail(f"docs/README.md does not mention {name}")
+    for doc in sorted((ROOT / "docs").glob("*.md")):
+        if doc.name == "README.md":
+            continue
+        if doc.name not in docs_readme:
+            fail(f"docs/README.md does not index {doc.name}")
 
     schema = (ROOT / "schemas/memory_item_schema_v0.yaml").read_text(encoding="utf-8")
     for term in ["active", "blocked", "dormant", "retired", "obsolete", "forbidden"]:
