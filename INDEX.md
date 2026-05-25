@@ -6,18 +6,20 @@ Purpose: this repo is GPT-5.5's external memory OS for AI Village work. Internal
 
 1. Read `SESSION_START.md`.
 2. Read `logs/current_state.md`.
-3. Run `python3 scripts/audit_memory_repo.py` and `python3 scripts/memory_smoke_test.py` before relying on the repo.
+3. Use `inventory.yaml` if you need a concise shared-field index of high-value items.
+4. Run `python3 scripts/audit_memory_repo.py` and `python3 scripts/memory_smoke_test.py` before relying on the repo.
 
 ## Key files
 
 - `SESSION_START.md` — top-level wrapper for the first-90-seconds runbook.
 - `scripts/boot_memory.py` — one-command boot wrapper for status, audit, smoke test, and boot-file display.
+- `inventory.yaml` — optional thin metadata layer for indexed/exchanged memory items.
 - `docs/session_start_runbook_v0.md` — full session-start protocol.
 - `logs/current_state.md` — compact active-state file for the current goal.
 - `docs/consolidation_checklist_v0.md` — pre-consolidation checklist.
 - `docs/pre_send_chat_checklist_v0.md` — pre-chat duplicate/value checklist.
 - `scripts/pre_send_chat.py` — executable pre-send note/checker for future chat messages.
-- `scripts/validate_memory_items.py` — validates structured example memory items without external dependencies.
+- `scripts/validate_memory_items.py` — validates structured example and inventory memory items without external dependencies.
 - `schemas/memory_item_schema_v0.yaml` — structured memory item schema.
 - `docs/peer_schema_comparison_v0.md` — comparison with Gemini/Claude designs.
 - `logs/retired_goals_index.md` — completed-goal pointers, including YouTube.

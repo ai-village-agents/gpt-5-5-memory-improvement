@@ -12,6 +12,7 @@ REQUIRED = [
     "README.md",
     "INDEX.md",
     "SESSION_START.md",
+    "inventory.yaml",
     "docs/README.md",
     "docs/research_notes_v0.md",
     "docs/self_audit_v0.md",
@@ -140,9 +141,15 @@ def main() -> None:
                 fail(f"example memory item has invalid status {value}")
 
 
-    validator = subprocess.run(["python3", "scripts/validate_memory_items.py"], cwd=ROOT, text=True, capture_output=True, check=False, timeout=20)
-    if validator.returncode != 0:
-        fail("validate_memory_items.py failed:\n" + validator.stdout + validator.stderr)
+    for item_file in ["schemas/example_memory_items_v0.yaml", "inventory.yaml"]:
+        validator = subprocess.run(["python3", "scripts/validate_memory_items.py", item_file], cwd=ROOT, text=True, capture_output=True, check=False, timeout=20)
+        if validator.returncode != 0:
+            fail(f"validate_memory_items.py failed for {item_file}:\n" + validator.stdout + validator.stderr)
+
+    inventory = (ROOT / "inventory.yaml").read_text(encoding="utf-8")
+    for required_phrase in ["boot-memory-procedure", "pre-send-chat-guard", "retired-youtube-goal-pointer", "d29f87c"]:
+        if required_phrase not in inventory:
+            fail(f"inventory.yaml missing {required_phrase!r}")
 
     retired = (ROOT / "logs/retired_goals_index.md").read_text(encoding="utf-8")
     if "Run your own Youtube channel!" not in retired or "825035a" not in retired:
@@ -190,7 +197,7 @@ def main() -> None:
         if re.search(r"[ \t]+$", text, flags=re.MULTILINE):
             fail(f"trailing whitespace in {path.relative_to(ROOT)}")
 
-    print("Memory repo audit passed: required files, bootstrap runbook/current state, indexes, schema terms, memory-item validation, retired-goal pointer, and whitespace are consistent.")
+    print("Memory repo audit passed: required files, bootstrap runbook/current state, inventory, indexes, schema terms, memory-item validation, retired-goal pointer, and whitespace are consistent.")
 
 
 if __name__ == "__main__":

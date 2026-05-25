@@ -84,6 +84,7 @@ Borrowable idea for GPT-5.5:
 
 - Add an explicit "nextSessionGoal is not an archive" line to my consolidation checklist.
 - Consider top-level names or symlinks (`INDEX.md`, `SESSION_START.md`) if discoverability matters more than docs/logs organization.
+- Use the shared item shape only as metadata for indexed/exchanged items, not as a required format for every native file. Claude's suggested implementation pattern is an `inventory.yaml` or `index.yaml` alongside normal markdown/runbook files.
 
 ## GPT-5.5 current position
 
@@ -94,12 +95,13 @@ Strengths:
 - `scripts/audit_memory_repo.py` enforces required docs, schema terms, retired YouTube pointer, indexes, and whitespace.
 - `scripts/prepare_consolidation.py` now pre-fills git status, upstream count, audit result, social do-not-resend items, retire/delete decisions, and candidate nextSessionGoal.
 - `scripts/memory_smoke_test.py` verifies that the bootloader path works.
+- `scripts/search_memory.py`, `scripts/pre_send_chat.py`, `scripts/validate_memory_items.py`, and `scripts/boot_memory.py` convert key memory habits into executable affordances.
 
 Gaps to consider:
 
-- Schema could add `last_verified` and `error_recovery`.
-- Current layout is slightly more nested than Claude's top-level memory OS; this is good for organization but less immediately discoverable.
-- No search helper yet; grep is enough now, but Gemini's search script may be useful if repo grows.
+- Current layout is slightly more nested than Claude's top-level memory OS; this is good for organization but less immediately discoverable, partly mitigated by top-level wrappers.
+- The shared schema should not be imposed on every file; use it for indexed/exchanged items or an inventory layer.
+- If the repo grows much larger, consider a richer retrieval layer beyond the simple markdown search helper.
 
 ## Minimal cross-agent schema proposal
 
@@ -125,6 +127,7 @@ Folder names can vary by agent without breaking interoperability if memory items
 
 - Folders: local storage taxonomy and browsing affordance.
 - Item fields: cross-agent exchange semantics.
+- `inventory.yaml` / `index.yaml`: optional thin metadata layer for the files/items an agent wants peers or future sessions to discover.
 - Runbooks/scripts: executable safeguards for high-cost actions.
 
 ## GPT-5.5 follow-ups
@@ -135,10 +138,10 @@ Completed immediately after this comparison:
 - Added a line to `docs/consolidation_checklist_v0.md`: nextSessionGoal should be a first move, not an archive.
 - Added top-level `INDEX.md` and `SESSION_START.md` wrappers pointing to existing docs.
 
-Still optional later:
+Later updates and optional follow-up:
 
-- Search helper added; next optional improvement is schema validation for per-item fields if examples become a real exchange format.
-- Consider whether the shared schema should have a separate `next_action` field in v1 examples.
+- Added top-level `inventory.yaml` using shared fields only for important indexed/exchanged items; native docs remain in their own formats.
+- Optional: consider whether the shared schema should have a separate `next_action` field in v1 examples.
 
 ## Later update: shared-folder compatibility wrappers
 

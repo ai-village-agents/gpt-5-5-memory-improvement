@@ -6,12 +6,13 @@ schemas/example_memory_items_v0.yaml, avoiding a dependency on PyYAML.
 """
 from __future__ import annotations
 
+import argparse
 import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXAMPLES = ROOT / "schemas" / "example_memory_items_v0.yaml"
+DEFAULT_ITEMS = ROOT / "schemas" / "example_memory_items_v0.yaml"
 
 REQUIRED_FIELDS = {
     "id",
@@ -81,11 +82,23 @@ def parse_items(text: str) -> list[dict[str, str]]:
 
 
 def main() -> None:
-    if not EXAMPLES.is_file():
-        fail(f"missing {EXAMPLES.relative_to(ROOT)}")
-    items = parse_items(EXAMPLES.read_text(encoding="utf-8"))
-    if len(items) < 3:
-        fail(f"expected at least 3 memory items, found {len(items)}")
+    parser = argparse.ArgumentParser(description="Validate GPT-5.5 memory item YAML subset.")
+    parser.add_argument("path", nargs="?", default=str(DEFAULT_ITEMS), help="YAML file to validate; defaults to schema examples")
+    parser.add_argument("--min-items", type=int, default=3, help="minimum number of items required")
+    args = parser.parse_args()
+
+    item_path = Path(args.path)
+    if not item_path.is_absolute():
+        item_path = ROOT / item_path
+    if not item_path.is_file():
+        try:
+            label = item_path.relative_to(ROOT)
+        except ValueError:
+            label = item_path
+        fail(f"missing {label}")
+    items = parse_items(item_path.read_text(encoding="utf-8"))
+    if len(items) < args.min_items:
+        fail(f"expected at least {args.min_items} memory items, found {len(items)}")
 
     ids: set[str] = set()
     for idx, item in enumerate(items, 1):
@@ -122,7 +135,11 @@ def main() -> None:
         if item["status"] == "active" and item["internal_memory_policy"] == "omit":
             fail(f"{label}: active items should not be omitted from retrieval policy without explanation")
 
-    print(f"Memory item validation passed: {len(items)} example items have required fields, allowed values, sources, and retrieval cues.")
+    try:
+        label = item_path.relative_to(ROOT)
+    except ValueError:
+        label = item_path
+    print(f"Memory item validation passed for {label}: {len(items)} items have required fields, allowed values, sources, and retrieval cues.")
 
 
 if __name__ == "__main__":

@@ -23,6 +23,7 @@ REQUIRED_BOOT_FILES = [
     "scripts/pre_send_chat.py",
     "scripts/validate_memory_items.py",
     "scripts/boot_memory.py",
+    "inventory.yaml",
 ]
 
 REQUIRED_PHRASES = {
@@ -75,9 +76,10 @@ def main() -> None:
         fail("search_memory.py failed:\n" + search.stdout + search.stderr)
 
 
-    validator = run(["python3", "scripts/validate_memory_items.py"])
-    if validator.returncode != 0 or "Memory item validation passed" not in validator.stdout:
-        fail("validate_memory_items.py failed:\n" + validator.stdout + validator.stderr)
+    for item_file in ["schemas/example_memory_items_v0.yaml", "inventory.yaml"]:
+        validator = run(["python3", "scripts/validate_memory_items.py", item_file])
+        if validator.returncode != 0 or "Memory item validation passed" not in validator.stdout:
+            fail(f"validate_memory_items.py failed for {item_file}:\n" + validator.stdout + validator.stderr)
 
     pre_send = run([
         "python3",
@@ -102,7 +104,7 @@ def main() -> None:
         if phrase not in worksheet.stdout:
             fail(f"consolidation worksheet missing {phrase!r}")
 
-    print("Memory smoke test passed: boot files, audit, search, memory-item validation, pre-send helper, boot wrapper, and consolidation worksheet are usable.")
+    print("Memory smoke test passed: boot files, audit, search, memory-item validation, inventory, pre-send helper, boot wrapper, and consolidation worksheet are usable.")
 
 
 if __name__ == "__main__":
