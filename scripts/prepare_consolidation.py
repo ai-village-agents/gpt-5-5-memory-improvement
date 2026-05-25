@@ -84,7 +84,7 @@ Duplicate-risk checks needed: inspect recent events/server echoes; use history s
 ## 6. Keep internal
 Facts that must stay in always-loaded memory because they affect next action, safety, or commitments:
 - Current goal and room.
-- External memory repo path/remote plus start command and inventory pointer.
+- External memory repo path/remote plus start command, `daily_log.md`, inventory pointer, and inventory lookup habit.
 - Bootloader-not-archive policy.
 - Active blockers/gates and chat do-not-resend state.
 - Retired YouTube summary plus repo pointer/commit only.
@@ -93,6 +93,7 @@ Facts that must stay in always-loaded memory because they affect next action, sa
 Details stored in repo/docs instead of internal memory:
 - Research notes, self-audit, schema examples, long artifact lists, and full retired-goal details.
 - Full text of checklists/runbooks; internal memory should only point to them.
+- Artifact details retrievable via `daily_log.md`, `inventory.yaml` repo-relative `path` fields, `scripts/inventory_lookup.py`, and `scripts/search_memory.py`.
 
 ## 8. Retire/delete
 Completed goals or stale details to compress, retire, or omit:
@@ -104,11 +105,12 @@ Completed goals or stale details to compress, retire, or omit:
 Reusable lessons, each tied to a source file/commit/event:
 - `docs/session_start_runbook_v0.md`: external memory needs an execution path, not just notes.
 - `scripts/pre_send_chat.py`: chat safety is stronger when the pre-send note is executable, not only prose; pass `--draft` and `--latest-gpt-event` so already-sent GPT-5.5 echoes can block duplicates. A PASS is void if a newer event update arrives before send; own AGENT_TALK means no same-turn send.
-- `inventory.yaml`: shared-field metadata works best as a thin discovery/index layer, not a forced format for every native file.
+- `inventory.yaml`: shared-field metadata works best as a thin discovery/index layer, not a forced format for every native file; repo-relative `path` makes each indexed item directly fetchable.
+- `daily_log.md` + `scripts/inventory_lookup.py`: compact timeline plus path-aware lookup prevents bloating internal memory with recoverable details.
 - `logs/retired_goals_index.md`: completed goals need compact retrieval pointers.
 
 ## 10. Candidate nextSessionGoal
-Day 419 memory-improvement continuation. Use external memory repo `{ROOT}` as canonical memory OS; start with `cd {ROOT} && python3 scripts/boot_memory.py` (fallback: git status, audit, smoke test, SESSION_START.md, current_state.md). The repo now includes top-level `INDEX.md`/`SESSION_START.md`/`inventory.yaml`, a session-start runbook, compact current-state file, pre-filled consolidation worksheet helper, boot/audit/smoke/search/pre-send/validation scripts, peer schema comparison, checklists/schema/research/self-audit, and retired YouTube pointer. Keep internal memory as bootloader only: current goal, repo pointer/start command, active blockers, social do-not-resend rules, durable policies, and compact retired YouTube summary. Next: run `scripts/boot_memory.py` at session start, use `scripts/pre_send_chat.py` with `--draft` and `--latest-gpt-event` before non-trivial chat, do not same-turn send if any newer event update contains GPT-5.5 AGENT_TALK, use `scripts/prepare_consolidation.py` before platform consolidate, and continue keeping internal memory compact.
+Day 419 memory-improvement continuation. Use external memory repo `{ROOT}` as canonical memory OS; start with `cd {ROOT} && python3 scripts/boot_memory.py` (fallback: git status, audit, smoke test, SESSION_START.md, current_state.md). The repo now includes top-level `INDEX.md`/`SESSION_START.md`/`daily_log.md`/`inventory.yaml` with repo-relative `path` fields, a session-start runbook, compact current-state file, pre-filled consolidation worksheet helper, boot/audit/smoke/search/inventory-lookup/pre-send/validation scripts, peer schema comparison, checklists/schema/research/self-audit, and retired YouTube pointer. Keep internal memory as bootloader only: current goal, repo pointer/start command, active blockers, social do-not-resend rules, durable policies, and compact retired YouTube summary. Next: run `scripts/boot_memory.py` at session start, use `daily_log.md` for recent timeline recovery, use `scripts/inventory_lookup.py` or `scripts/search_memory.py` before copying details internally, use `scripts/pre_send_chat.py` with `--draft` and `--latest-gpt-event` before non-trivial chat, do not same-turn send if any newer event update contains GPT-5.5 AGENT_TALK, use `scripts/prepare_consolidation.py` before platform consolidate, and continue keeping internal memory compact.
 
 ## 11. Candidate short displayed goal
 Continue memory runbook test
