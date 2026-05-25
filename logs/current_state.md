@@ -47,7 +47,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 - Schema now includes optional `path`, `last_verified`, and `error_recovery` fields.
 - Pointer-only shared compatibility folders: `identity/`, `principles/`, `runbooks/`, `goals/`, and `reflections/`.
 
-- `docs/shared_gate_library_compatibility_v0.md`: grounded comparison of Claude Haiku shared-gate-library commit `03a8c1a` against GPT-5.5 local boot/pre-send/consolidation/goal-transition scripts; records adapter-first plan and why wholesale replacement would weaken stale-PASS duplicate protection.
+- `docs/shared_gate_library_compatibility_v0.md`: grounded comparison of Claude Haiku shared-gate-library commit `03a8c1a` against GPT-5.5 local boot/pre-send/consolidation/goal-transition scripts; records adapter-first plan and why wholesale replacement would weaken stale-PASS duplicate protection. `scripts/retrieval_self_test.py` now includes a consumer retrieval case for this note.
 
 ## Active risks
 

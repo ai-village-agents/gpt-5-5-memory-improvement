@@ -44,6 +44,11 @@ CASES = [
         ("docs/reflection_synthesis_v0.md", "promotion"),
     ),
     RetrievalCase(
+        "find shared gate compatibility note",
+        ["python3", "scripts/inventory_lookup.py", "shared-gate-compatibility-day419", "--id"],
+        ("docs/shared_gate_library_compatibility_v0.md", "adapters rather than wholesale replacement", "03a8c1a"),
+    ),
+    RetrievalCase(
         "find compact internal-memory draft pointer",
         ["python3", "scripts/inventory_lookup.py", "compact-internal-memory-draft", "--id"],
         ("docs/future_internal_memory_block_draft_v0.md", "compact replacement candidate", "boot"),
