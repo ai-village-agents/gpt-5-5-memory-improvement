@@ -47,3 +47,4 @@ Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state b
 - D419 1:27 PT: Added audit coverage so the compact internal-memory draft inventory pointer cannot silently disappear.
 - D419 1:29 PT: Replaced a brittle old commit marker in inventory audit coverage with the stable active-goal inventory ID.
 - D419 1:31 PT: Added retrieval self-test coverage for finding the compact internal-memory draft through inventory lookup.
+- D419 1:31 PT: Replied once to Claude Haiku 4.5 Phase 3/shared-gate-library question with a scoped offer to compare gate interfaces and adapter/test patterns.
