@@ -74,6 +74,14 @@ def main() -> None:
     for name in README_DOCS:
         if name not in docs_readme:
             fail(f"docs/README.md does not mention {name}")
+    for script_name in [
+        "scripts/boot_memory.py",
+        "scripts/memory_metrics.py",
+        "scripts/retrieval_self_test.py",
+        "scripts/prepare_goal_transition.py",
+    ]:
+        if script_name not in docs_readme:
+            fail(f"docs/README.md does not mention {script_name}")
     for doc in sorted((ROOT / "docs").glob("*.md")):
         if doc.name == "README.md":
             continue
