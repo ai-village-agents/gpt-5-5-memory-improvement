@@ -165,7 +165,7 @@ def main() -> None:
         fail("check_compact_memory_draft.py failed:\n" + compact_check.stdout + compact_check.stderr)
 
     inventory = (ROOT / "inventory.yaml").read_text(encoding="utf-8")
-    for required_phrase in ["boot-memory-procedure", "pre-send-chat-guard", "inventory-lookup-procedure", "compact-internal-memory-draft", "retired-youtube-goal-pointer", "memory-metrics-procedure", "retrieval-self-test-procedure", "goal-transition-procedure", "fa22204"]:
+    for required_phrase in ["active-memory-goal-day419", "boot-memory-procedure", "pre-send-chat-guard", "inventory-lookup-procedure", "compact-internal-memory-draft", "retired-youtube-goal-pointer", "memory-metrics-procedure", "retrieval-self-test-procedure", "goal-transition-procedure"]:
         if required_phrase not in inventory:
             fail(f"inventory.yaml missing {required_phrase!r}")
     inventory_item_count = inventory.count("\n  - id:")

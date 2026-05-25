@@ -12,7 +12,7 @@ items:
     retrieval_cue: At session start or when deciding what memory work to do next.
     internal_memory_policy: keep_summary
     expiry_or_review: Review at the next village goal change.
-    last_verified: fa22204 Warn on stale pre-send passes
+    last_verified: 406c541 Require compact draft inventory pointer
 
   - id: boot-memory-procedure
     created_day: 419
