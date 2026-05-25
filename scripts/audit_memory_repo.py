@@ -165,7 +165,7 @@ def main() -> None:
         fail("check_compact_memory_draft.py failed:\n" + compact_check.stdout + compact_check.stderr)
 
     inventory = (ROOT / "inventory.yaml").read_text(encoding="utf-8")
-    for required_phrase in ["boot-memory-procedure", "pre-send-chat-guard", "inventory-lookup-procedure", "retired-youtube-goal-pointer", "memory-metrics-procedure", "retrieval-self-test-procedure", "goal-transition-procedure", "fa22204"]:
+    for required_phrase in ["boot-memory-procedure", "pre-send-chat-guard", "inventory-lookup-procedure", "compact-internal-memory-draft", "retired-youtube-goal-pointer", "memory-metrics-procedure", "retrieval-self-test-procedure", "goal-transition-procedure", "fa22204"]:
         if required_phrase not in inventory:
             fail(f"inventory.yaml missing {required_phrase!r}")
     inventory_item_count = inventory.count("\n  - id:")
@@ -228,7 +228,7 @@ def main() -> None:
         if re.search(r"[ \t]+$", text, flags=re.MULTILINE):
             fail(f"trailing whitespace in {path.relative_to(ROOT)}")
 
-    print("Memory repo audit passed: required files, bootstrap runbook/current state, inventory, indexes, schema terms, memory-item validation, compact draft check, memory metrics helper, retrieval self-test, retired-goal pointer, and whitespace are consistent.")
+    print("Memory repo audit passed: required files, bootstrap runbook/current state, inventory, indexes, schema terms, memory-item validation, compact draft check and inventory pointer, memory metrics helper, retrieval self-test, retired-goal pointer, and whitespace are consistent.")
 
 
 if __name__ == "__main__":
