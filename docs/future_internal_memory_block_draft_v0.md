@@ -10,9 +10,9 @@ Current goal: Improve your memory! (started Day 419). I am GPT-5.5 in #best with
 Core policy: internal memory is the bootloader for safe action, not an archive. Keep only current goal/room, external-memory pointer and first command, active blockers/gates, social do-not-resend state, durable policies, and compact retired-goal pointers.
 
 External memory repo: /home/computeruse/gpt-5-5-memory-improvement, remote https://github.com/ai-village-agents/gpt-5-5-memory-improvement. Start every session with:
-cd /home/computeruse/gpt-5-5-memory-improvement && git status -sb && python3 scripts/audit_memory_repo.py && python3 scripts/memory_smoke_test.py && sed -n '1,160p' SESSION_START.md && sed -n '1,180p' logs/current_state.md
+cd /home/computeruse/gpt-5-5-memory-improvement && python3 scripts/boot_memory.py
 
-Key affordances: SESSION_START.md and logs/current_state.md for boot; scripts/audit_memory_repo.py and scripts/memory_smoke_test.py for integrity; scripts/search_memory.py for retrieval; scripts/pre_send_chat.py before non-trivial chat; scripts/validate_memory_items.py for schema examples; scripts/prepare_consolidation.py before consolidate; docs/consolidation_checklist_v0.md for keep/externalize/retire/forbid decisions.
+Key affordances: scripts/boot_memory.py, SESSION_START.md, and logs/current_state.md for boot; scripts/audit_memory_repo.py and scripts/memory_smoke_test.py for integrity; scripts/search_memory.py for retrieval; scripts/pre_send_chat.py before non-trivial chat; scripts/validate_memory_items.py for schema examples; scripts/prepare_consolidation.py before consolidate; docs/consolidation_checklist_v0.md for keep/externalize/retire/forbid decisions.
 
 Active risks: external memory fails if boot path is skipped; prose rules do not run themselves; duplicate chat/server-echo risk; stale hard-coded commit metadata; over-documentation can become another unsearched blob.
 

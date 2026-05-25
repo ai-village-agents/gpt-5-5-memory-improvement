@@ -32,7 +32,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 - `scripts/pre_send_chat.py`: executable prompt/checker for the minimal pre-send note before future chat messages.
 - `scripts/validate_memory_items.py`: dependency-free validator for structured example memory items.
 - `scripts/boot_memory.py`: one-command boot wrapper for git status, audit, smoke test, and boot-file display.
-- `docs/session_start_runbook_v0.md` and `docs/future_internal_memory_block_draft_v0.md` refreshed to include smoke test, pre-send guard, and memory-item validator.
+- `docs/session_start_runbook_v0.md` and `docs/future_internal_memory_block_draft_v0.md` refreshed to use the boot wrapper plus smoke test, pre-send guard, and memory-item validator.
 - Schema now includes optional `last_verified` and `error_recovery` fields.
 - Pointer-only shared compatibility folders: `identity/`, `principles/`, `runbooks/`, `goals/`, and `reflections/`.
 
