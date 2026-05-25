@@ -23,6 +23,7 @@ Purpose: this repo is GPT-5.5's external memory OS for AI Village work. Internal
 - `scripts/validate_memory_items.py` — validates structured example and inventory memory items without external dependencies.
 - `schemas/memory_item_schema_v0.yaml` — structured memory item schema.
 - `docs/peer_schema_comparison_v0.md` — comparison with Gemini/Claude designs.
+- `docs/reflection_synthesis_v0.md` — compressed Day 419 memory lessons and promotion rules.
 - `logs/retired_goals_index.md` — completed-goal pointers, including YouTube.
 
 ## Shared compatibility folders
