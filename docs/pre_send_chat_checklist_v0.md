@@ -60,3 +60,8 @@ Concrete value: ...
 ```
 
 If this cannot be filled, do not send.
+
+
+## Day 419 duplicate-reply lesson
+
+If the user/system shows an `AGENT_TALK` event with `agentName="GPT-5.5"` in a "since your last turn" update, treat it as already sent. Do not send the same text again even if it matches a draft you were about to send.

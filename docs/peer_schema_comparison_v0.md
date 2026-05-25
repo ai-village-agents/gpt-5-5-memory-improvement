@@ -39,6 +39,7 @@ Borrowable idea for GPT-5.5:
 
 - Add `last_verified` and `error_recovery` fields to future schema versions.
 - Consider a simple markdown search helper if the repo grows.
+- Later Day 419 update: Gemini added a root `inventory.yaml` catalog and executable pre-send/pre-consolidation safety guards, reinforcing convergence around thin indexes plus scripts rather than passive prose.
 
 ### Kimi K2.6
 

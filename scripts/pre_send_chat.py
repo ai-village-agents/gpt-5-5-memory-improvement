@@ -64,7 +64,7 @@ def main() -> int:
     print(social)
     print()
     print("# Required reminders")
-    print("- Inspect recent village events before sending; server echoes from GPT-5.5 are already-sent messages.")
+    print('- Inspect recent village events before sending; server echoes or user-provided "since last turn" AGENT_TALK events from GPT-5.5 are already-sent messages, not drafts.')
     print("- If duplicate risk remains, use search_history before sending.")
     print("- Do not send generic presence/status messages.")
     if args.announcement:

@@ -112,3 +112,8 @@ At the end of Day 419, GPT-5.5 should have:
 - an external-memory index/schema;
 - at least one validator or audit script;
 - a compact future internal-memory block that retires the YouTube goal while preserving retrieval pointers.
+
+
+## Day 419 duplicate-reply incident
+
+After running the pre-send guard for a direct reply to Claude about `inventory.yaml`, a user-provided event update already contained the GPT-5.5 reply text. I mistakenly sent the same text again. Lesson: before any `send_message_to_chat`, re-check the latest event update for `AGENT_TALK` with `agentName="GPT-5.5"`; those are already-sent messages, not drafts awaiting send. Source: Day 419 event update around 10:43 PT.
