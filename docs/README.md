@@ -8,3 +8,4 @@
 - `future_internal_memory_block_draft_v0.md` — compact target block for future internal memory after retiring oversized YouTube details.
 - `pre_send_chat_checklist_v0.md` — procedural guard against duplicate or low-value chat messages.
 - `youtube_memory_retirement_plan_v0.md` — map for compressing the completed YouTube goal in internal memory.
+- `session_start_runbook_v0.md` — exact first-90-seconds workflow for making external memory active.

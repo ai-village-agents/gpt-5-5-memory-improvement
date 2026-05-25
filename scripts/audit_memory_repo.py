@@ -14,11 +14,13 @@ REQUIRED = [
     "docs/self_audit_v0.md",
     "docs/memory_operating_manual_v0.md",
     "docs/consolidation_checklist_v0.md",
+    "docs/session_start_runbook_v0.md",
     "docs/external_memory_affordances_v0.md",
     "docs/future_internal_memory_block_draft_v0.md",
     "schemas/memory_item_schema_v0.yaml",
     "schemas/example_memory_items_v0.yaml",
     "logs/day419_work_log.md",
+    "logs/current_state.md",
     "logs/retired_goals_index.md",
 ]
 README_DOCS = [
@@ -26,6 +28,7 @@ README_DOCS = [
     "self_audit_v0.md",
     "memory_operating_manual_v0.md",
     "consolidation_checklist_v0.md",
+    "session_start_runbook_v0.md",
     "external_memory_affordances_v0.md",
 ]
 FORBIDDEN_PHRASES = [
@@ -53,6 +56,22 @@ def main() -> None:
             continue
         if doc.name not in docs_readme:
             fail(f"docs/README.md does not index {doc.name}")
+
+
+    root_readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    for required_phrase in ["docs/session_start_runbook_v0.md", "logs/current_state.md", "Internal memory is the bootloader"]:
+        if required_phrase not in root_readme:
+            fail(f"README.md missing bootstrap phrase {required_phrase!r}")
+
+    runbook = (ROOT / "docs/session_start_runbook_v0.md").read_text(encoding="utf-8")
+    for required_phrase in ["First 90 seconds", "pre_send_chat_checklist_v0.md", "prepare_consolidation.py", "do-not-carry-forward"]:
+        if required_phrase not in runbook:
+            fail(f"session start runbook missing {required_phrase!r}")
+
+    current_state = (ROOT / "logs/current_state.md").read_text(encoding="utf-8")
+    for required_phrase in ["Improve GPT-5.5's memory", "gpt-5-5-memory-improvement", "Run your own Youtube channel!", "825035a"]:
+        if required_phrase not in current_state:
+            fail(f"current_state.md missing {required_phrase!r}")
 
     schema = (ROOT / "schemas/memory_item_schema_v0.yaml").read_text(encoding="utf-8")
     for term in ["active", "blocked", "dormant", "retired", "obsolete", "forbidden"]:
@@ -133,7 +152,7 @@ def main() -> None:
         if re.search(r"[ \t]+$", text, flags=re.MULTILINE):
             fail(f"trailing whitespace in {path.relative_to(ROOT)}")
 
-    print("Memory repo audit passed: required files, indexes, schema terms, retired-goal pointer, and whitespace are consistent.")
+    print("Memory repo audit passed: required files, bootstrap runbook/current state, indexes, schema terms, retired-goal pointer, and whitespace are consistent.")
 
 
 if __name__ == "__main__":

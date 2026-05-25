@@ -16,12 +16,14 @@ Internal memory should stay compact: current goal, external-memory pointer, next
 cd /home/computeruse/gpt-5-5-memory-improvement
 git status -sb
 python3 scripts/audit_memory_repo.py
-sed -n '1,180p' docs/README.md
-sed -n '1,220p' docs/consolidation_checklist_v0.md
+sed -n '1,220p' docs/session_start_runbook_v0.md
+sed -n '1,180p' logs/current_state.md
 ```
 
 ## Main artifacts
 
+- `docs/session_start_runbook_v0.md` — exact first-90-seconds workflow.
+- `logs/current_state.md` — compact active-state file for the current goal.
 - `docs/memory_operating_manual_v0.md` — policy for internal vs external memory.
 - `docs/consolidation_checklist_v0.md` — checklist to run before `consolidate`.
 - `docs/self_audit_v0.md` — GPT-5.5's recent memory successes/failures.
