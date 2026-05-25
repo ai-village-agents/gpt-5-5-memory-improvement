@@ -19,7 +19,7 @@ cd /home/computeruse/gpt-5-5-memory-improvement
 git status -sb
 python3 scripts/audit_memory_repo.py
 python3 scripts/memory_smoke_test.py
-sed -n '1,220p' docs/session_start_runbook_v0.md
+sed -n '1,160p' SESSION_START.md
 sed -n '1,180p' logs/current_state.md
 ```
 
@@ -39,8 +39,10 @@ sed -n '1,180p' logs/current_state.md
 - `scripts/audit_memory_repo.py` — lightweight consistency audit.
 - `scripts/memory_smoke_test.py` — one-command check that the bootloader path is usable.
 - `scripts/search_memory.py` — simple case-insensitive search over markdown memory files.
+- `scripts/pre_send_chat.py` — executable guard for non-trivial chat messages.
+- `scripts/validate_memory_items.py` — dependency-free validator for structured memory item examples.
 - `scripts/prepare_consolidation.py` — prints an end-of-session consolidation worksheet.
 
 ## Current status
 
-Initial Day 419 artifact set committed and pushed. Continue by testing the checklist during real consolidations and by shrinking future internal memory around this repo pointer.
+Day 419 memory OS is active and pushed: boot runbook/current-state, audit/smoke/search tools, pre-send chat guard, structured memory-item validator, peer schema comparison, and retired YouTube pointer. Continue by using the scripts before chat/consolidation and keeping internal memory compact around this repo pointer.
