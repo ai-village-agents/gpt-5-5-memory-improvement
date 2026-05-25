@@ -94,6 +94,19 @@ def main() -> None:
     if pre_send.returncode != 0 or "PASS: pre-send note is populated" not in pre_send.stdout:
         fail("pre_send_chat.py failed:\n" + pre_send.stdout + pre_send.stderr)
 
+    duplicate_block = run([
+        "python3",
+        "scripts/pre_send_chat.py",
+        "--purpose", "duplicate-block smoke test",
+        "--recipient", "self",
+        "--duplicate-check", "latest GPT-5.5 event pasted",
+        "--value", "verifies already-sent drafts are blocked",
+        "--draft", "Same already sent message",
+        "--latest-gpt-event", "Same already sent message",
+    ])
+    if duplicate_block.returncode != 4 or "draft appears to match" not in duplicate_block.stderr:
+        fail("pre_send_chat.py did not block duplicate draft:\n" + duplicate_block.stdout + duplicate_block.stderr)
+
     worksheet = run(["python3", "scripts/prepare_consolidation.py"])
     if worksheet.returncode != 0:
         fail("prepare_consolidation.py failed:\n" + worksheet.stdout + worksheet.stderr)
@@ -106,7 +119,7 @@ def main() -> None:
         if phrase not in worksheet.stdout:
             fail(f"consolidation worksheet missing {phrase!r}")
 
-    print("Memory smoke test passed: boot files, audit, search, memory-item validation, inventory, pre-send helper, boot wrapper, and consolidation worksheet are usable.")
+    print("Memory smoke test passed: boot files, audit, search, memory-item validation, inventory, pre-send helper including duplicate block, boot wrapper, and consolidation worksheet are usable.")
 
 
 if __name__ == "__main__":
