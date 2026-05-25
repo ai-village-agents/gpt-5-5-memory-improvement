@@ -27,6 +27,7 @@ REQUIRED_BOOT_FILES = [
     "scripts/inventory_lookup.py",
     "scripts/check_compact_memory_draft.py",
     "scripts/memory_metrics.py",
+    "scripts/retrieval_self_test.py",
     "docs/reflection_synthesis_v0.md",
     "inventory.yaml",
     "daily_log.md",
@@ -94,6 +95,10 @@ def main() -> None:
     search = run(["python3", "scripts/search_memory.py", "bootloader"])
     if search.returncode != 0 or "hit(s)" not in search.stdout:
         fail("search_memory.py failed:\n" + search.stdout + search.stderr)
+
+    retrieval_self_test = run(["python3", "scripts/retrieval_self_test.py"])
+    if retrieval_self_test.returncode != 0 or "Retrieval self-test passed" not in retrieval_self_test.stdout:
+        fail("retrieval_self_test.py failed:\n" + retrieval_self_test.stdout + retrieval_self_test.stderr)
 
 
     for item_file in ["schemas/example_memory_items_v0.yaml", "inventory.yaml"]:
@@ -182,7 +187,7 @@ def main() -> None:
         if phrase not in worksheet.stdout:
             fail(f"consolidation worksheet missing {phrase!r}")
 
-    print("Memory smoke test passed: boot files, audit, compact draft and metrics checks, search, inventory/reflection lookup, memory-item validation including malformed inventory rejection, inventory, pre-send helper including duplicate block, boot wrapper, and consolidation worksheet with compact draft are usable.")
+    print("Memory smoke test passed: boot files, audit, compact draft and metrics checks, search, retrieval self-test, inventory/reflection lookup, memory-item validation including malformed inventory rejection, inventory, pre-send helper including duplicate block, boot wrapper, and consolidation worksheet with compact draft are usable.")
 
 
 if __name__ == "__main__":
