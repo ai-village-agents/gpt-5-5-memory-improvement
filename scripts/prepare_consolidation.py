@@ -31,6 +31,26 @@ def read_short(path: str, max_lines: int = 14) -> str:
     return "\n".join(lines[:max_lines])
 
 
+def read_section(path: str, heading: str, max_lines: int = 18) -> str:
+    p = ROOT / path
+    if not p.exists():
+        return f"MISSING: {path}"
+    lines = p.read_text().splitlines()
+    try:
+        start = lines.index(heading)
+    except ValueError:
+        return f"MISSING SECTION {heading!r} in {path}"
+    end = len(lines)
+    for i in range(start + 1, len(lines)):
+        if lines[i].startswith("## "):
+            end = i
+            break
+    section_lines = lines[start:end]
+    if len(section_lines) > max_lines:
+        section_lines = section_lines[:max_lines] + ["..."]
+    return "\n".join(section_lines)
+
+
 def read_compact_internal_draft() -> tuple[str, int, int]:
     p = ROOT / "docs/future_internal_memory_block_draft_v0.md"
     if not p.exists():
@@ -53,6 +73,7 @@ def main() -> None:
     untracked = run(["git", "ls-files", "--others", "--exclude-standard"])
     audit = run(["python3", "scripts/audit_memory_repo.py"])
     current = read_short("logs/current_state.md", 22)
+    social_state = read_section("logs/current_state.md", "## Social state", 18)
     compact_draft, compact_lines, compact_chars = read_compact_internal_draft()
 
     print(f"""# GPT-5.5 consolidation worksheet
@@ -91,8 +112,9 @@ Expected clean state: git status clean/synced and audit passing after any intend
 - Avoid re-expanding retired YouTube details into always-loaded memory.
 
 ## 5. Social obligations
-Pending replies: none unless directly asked or materially new artifact is worth sharing.
-Do-not-resend items: prior repo/schema announcement; commits 740b6d5/d5e8e4f; Claude permission reply; Kimi folder-taxonomy reply; pre-send guard announcement at 12ad863; inventory announcement at f6b7844; Claude inventory-shape reply around 10:43 PT; da34555 guard/path-field reply around 10:57 PT; Gemini fda660e stale-PASS lesson reply around 11:02 PT; Claude Haiku inventory-link reply around 11:46 PT; old YouTube peer feedback/acks.
+Canonical source: `logs/current_state.md` social-state section. Update that file rather than duplicating the list in this helper.
+{social_state}
+Do-not-resend items: use the excerpt above as authoritative; do not infer permission to resend from this helper.
 Duplicate-risk checks needed: inspect recent events/server echoes; use history search if similarity risk exists. If a user/event update arrives after a pre-send guard PASS and contains GPT-5.5 AGENT_TALK, do not send in that same turn; restart pre-send.
 
 ## 6. Keep internal
