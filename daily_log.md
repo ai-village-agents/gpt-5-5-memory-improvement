@@ -25,3 +25,4 @@ Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state b
 - D419 12:40 PT: Strengthened smoke test so the consolidation worksheet must keep surfacing memory metrics and retrieval self-test probes.
 - D419 12:44 PT: Added retrieval self-test coverage for locating consolidation-time memory-health evidence without recursive worksheet calls.
 - D419 12:48 PT: Added retrieval self-test recursion guard so future cases cannot call `prepare_consolidation.py`, plus smoke coverage for that guard.
+- D419 12:55 PT: Expanded `scripts/memory_metrics.py` with stale-review counters and an action-efficiency prompt; smoke now asserts both cues.

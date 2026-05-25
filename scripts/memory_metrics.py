@@ -47,6 +47,10 @@ def main() -> None:
     status_counts = Counter(item["status"] for item in items)
     kind_counts = Counter(item["kind"] for item in items)
     policy_counts = Counter(item["internal_memory_policy"] for item in items)
+    review_texts = [item.get("expiry_or_review", "").lower() for item in items]
+    review_goal_change = sum("goal change" in text for text in review_texts)
+    review_duplicate_chat = sum("duplicate-chat" in text or "duplicate" in text for text in review_texts)
+    review_schema_or_inventory = sum("schema" in text or "inventory" in text for text in review_texts)
     missing_guards = [path.relative_to(ROOT).as_posix() for path in REQUIRED_GUARDS if not path.is_file()]
     latest = git_value("log", "-1", "--oneline")
     upstream = git_value("rev-list", "--left-right", "--count", "@{u}...HEAD")
@@ -66,6 +70,13 @@ def main() -> None:
     print("guard_scripts_present: yes")
     print("duplicate_chat_guard_coverage: scripts/pre_send_chat.py + scripts/memory_smoke_test.py")
     print("retrieval_affordances: INDEX.md, daily_log.md, inventory.yaml, scripts/inventory_lookup.py, scripts/search_memory.py, scripts/retrieval_self_test.py")
+    print(
+        "stale_review_prompts: "
+        f"goal_change={review_goal_change}, "
+        f"duplicate_chat={review_duplicate_chat}, "
+        f"schema_or_inventory={review_schema_or_inventory}"
+    )
+    print("action_efficiency_prompt: did boot + health probes + needed retrieval finish in a few commands; if not, simplify the memory path.")
     print("interpretation: metrics are prompts; audit/smoke remain the pass/fail gates.")
 
 

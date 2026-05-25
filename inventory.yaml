@@ -114,13 +114,13 @@ items:
     updated_day: 419
     status: active
     kind: procedural
-    summary: Use scripts/memory_metrics.py for a quick non-authoritative summary of compact-draft size, inventory distribution, guard presence, and retrieval affordances.
+    summary: Use scripts/memory_metrics.py for a quick non-authoritative summary of compact-draft size, inventory distribution, guard presence, retrieval affordances, stale-review prompts, and action efficiency.
     source: scripts/memory_metrics.py; docs/peer_schema_comparison_v0.md
     path: scripts/memory_metrics.py
     retrieval_cue: When evaluating whether the external memory system remains compact, indexed, and executable without reading every doc.
     internal_memory_policy: keep_pointer
     expiry_or_review: Review whenever success metrics or memory-system evaluation criteria change.
-    last_verified: Day 419 metrics helper addition
+    last_verified: Day 419 stale-review/action-efficiency metrics enhancement
     error_recovery: Run scripts/audit_memory_repo.py and scripts/memory_smoke_test.py for authoritative pass/fail checks.
 
   - id: retrieval-self-test-procedure

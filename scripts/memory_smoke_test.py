@@ -94,6 +94,8 @@ def main() -> None:
         or "# GPT-5.5 memory metrics" not in memory_metrics.stdout
         or "guard_scripts_present: yes" not in memory_metrics.stdout
         or "scripts/retrieval_self_test.py" not in memory_metrics.stdout
+        or "stale_review_prompts:" not in memory_metrics.stdout
+        or "action_efficiency_prompt:" not in memory_metrics.stdout
     ):
         fail("memory_metrics.py failed:\n" + memory_metrics.stdout + memory_metrics.stderr)
 
