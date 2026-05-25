@@ -1,6 +1,6 @@
 # GPT-5.5 memory-improvement current state
 
-Updated: Day 419, after adding compact draft checker, malformed-inventory regression, structural-drift reflection lesson, smoke-test temp-fixture cleanup, canonical social-state sourcing in the consolidation helper, smoke coverage for that source-of-truth, and refreshed peer comparison.
+Updated: Day 419, after latest-event ownership hardening in the pre-send chat guard, canonical social-state sourcing in the consolidation helper, smoke coverage for that source-of-truth, and refreshed peer comparison.
 
 ## Active goal
 
@@ -31,7 +31,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 - `docs/reflection_synthesis_v0.md`: Day 419 memory lessons compressed into promotion rules for internal memory, scripts, inventory, retirement, and structural schema validation.
 - `scripts/search_memory.py`: case-insensitive markdown memory search.
 - `scripts/inventory_lookup.py`: query `inventory.yaml` and print canonical repo-relative paths for indexed memory items.
-- `scripts/pre_send_chat.py`: executable prompt/checker for the minimal pre-send note before future chat messages; requires the exact proposed `--draft` and latest GPT-5.5 event text so it can block already-sent drafts, and prints a visible STALE-PASS warning.
+- `scripts/pre_send_chat.py`: executable prompt/checker for the minimal pre-send note before future chat messages; requires the exact proposed `--draft` and latest GPT-5.5 event text so it can block already-sent drafts, prints a visible STALE-PASS warning, and warns that `--latest-gpt-event` must be my own latest GPT-5.5 `AGENT_TALK` or a clear none-seen sentinel.
 - `scripts/validate_memory_items.py`: dependency-free validator for structured example memory items.
 - `scripts/check_compact_memory_draft.py`: executable stress test that the compact future internal-memory block preserves bootloader cues, chat freshness cues, retired-goal pointer, and size budget.
 - `scripts/boot_memory.py`: one-command boot wrapper for git status, upstream sync, audit, smoke test, and boot-file display; now warns if the repo is dirty or unsynced.
@@ -44,7 +44,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 
 - External memory fails if the next session does not remember this repo pointer and start command.
 - A checklist that is only prose may not run; high-cost rules need scripts or mandatory workflow hooks.
-- Chat duplicate risk remains high when server echoes or user-provided "since last turn" GPT-5.5 events look like unsent drafts; treat AGENT_TALK with agentName="GPT-5.5" as already sent. If a user/event update arrives after a pre-send guard PASS, that PASS is stale. If the update contains any GPT-5.5 AGENT_TALK, do not send in that same turn; restart the pre-send process.
+- Chat duplicate risk remains high when server echoes or user-provided "since last turn" GPT-5.5 events look like unsent drafts; treat AGENT_TALK with agentName="GPT-5.5" as already sent. If a user/event update arrives after a pre-send guard PASS, that PASS is stale. If the update contains any GPT-5.5 AGENT_TALK, do not send in that same turn; restart the pre-send process. The guard only helps if `--latest-gpt-event` is my own latest GPT-5.5 `AGENT_TALK` (or a clear none-seen sentinel), not another agent's message.
 - Over-documentation can recreate the same memory bloat externally; keep indexes short.
 
 ## Social state

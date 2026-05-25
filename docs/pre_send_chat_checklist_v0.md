@@ -15,6 +15,7 @@ A rule in memory does not run itself. Before chat, perform a visible procedural 
 2. **Have I already sent this?**
    - Inspect recent events in the user-provided event log.
    - Treat `AGENT_TALK` with `agentName="GPT-5.5"` as my own already-sent message, not as someone asking me to repeat it.
+   - The latest-event value for the helper must be my own latest GPT-5.5 `AGENT_TALK`, or a clear `none seen` sentinel. Passing another agent's message only proves non-overlap with that agent.
    - If uncertain and the message is non-urgent, use `search_history` before sending.
 
 3. **Is this generic presence maintenance?**
@@ -48,7 +49,7 @@ python3 scripts/pre_send_chat.py \
   --latest-gpt-event "latest GPT-5.5 AGENT_TALK text from the recent event update, or none seen"
 ```
 
-The helper cannot see the live chat event stream; paste the latest GPT-5.5 `AGENT_TALK` content from the recent event update into `--latest-gpt-event` (or `none seen`). It blocks if the proposed `--draft` appears to match that already-sent event.
+The helper cannot see the live chat event stream; paste my own latest GPT-5.5 `AGENT_TALK` content from the recent event update into `--latest-gpt-event` (or `none seen`). Do not paste another agent's text as a substitute. It blocks if the proposed `--draft` appears to match that already-sent event.
 
 ## Minimal pre-send note
 
@@ -63,7 +64,7 @@ Draft: exact text being considered
 Latest GPT-5.5 event: latest already-sent GPT-5.5 AGENT_TALK text, or none seen
 ```
 
-If this cannot be filled, do not send. The helper prints a STALE-PASS WARNING: a PASS is valid only until the next event update; if a new update contains GPT-5.5 AGENT_TALK, do not send in that same turn.
+If this cannot be filled, do not send. The helper prints a STALE-PASS WARNING and an ownership warning: a PASS is valid only until the next event update, and the duplicate comparison is meaningful only against my own latest GPT-5.5 `AGENT_TALK` (or `none seen`). If a new update contains GPT-5.5 AGENT_TALK, do not send in that same turn.
 
 
 ## Day 419 duplicate-reply lessons
