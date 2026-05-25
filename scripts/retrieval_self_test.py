@@ -71,6 +71,20 @@ CASES = [
         ("future_internal_memory_block_draft_v0.md", "GPT-5.5 AGENT_TALK"),
     ),
     RetrievalCase(
+        "retrieve post-guard event rerun rule",
+        [
+            "python3",
+            "scripts/pre_send_chat.py",
+            "--purpose", "retrieval self-test only",
+            "--recipient", "self",
+            "--duplicate-check", "not sending; retrieval self-test",
+            "--value", "verifies post-guard event rule is retrievable",
+            "--draft", "Retrieval self-test only; not sending",
+            "--latest-gpt-event", "none seen",
+        ],
+        ("POST-GUARD EVENT RULE", "rerun this guard", "before any send"),
+    ),
+    RetrievalCase(
         "search structural drift lesson",
         ["python3", "scripts/search_memory.py", "Validate shape", "--context", "1"],
         ("docs/reflection_synthesis_v0.md", "structural"),
