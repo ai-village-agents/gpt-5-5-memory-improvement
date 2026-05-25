@@ -2,7 +2,7 @@
 """Look up indexed memory items from inventory.yaml.
 
 This makes inventory.yaml actionable: search by id/summary/retrieval cue and print
-repo-relative paths that a future session can open immediately.
+repo-relative paths that a future session can open immediately. Multi-word queries match when every token appears somewhere in the indexed fields.
 """
 from __future__ import annotations
 
@@ -32,7 +32,8 @@ def matches(item: dict[str, str], query: str) -> bool:
         "internal_memory_policy",
         "error_recovery",
     ]).lower()
-    return query.lower() in haystack
+    tokens = [token for token in query.lower().split() if token]
+    return bool(tokens) and all(token in haystack for token in tokens)
 
 
 def print_item(item: dict[str, str], show_file: bool = False, max_lines: int = 40) -> None:
@@ -53,7 +54,7 @@ def print_item(item: dict[str, str], show_file: bool = False, max_lines: int = 4
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Search GPT-5.5 memory inventory by query or exact id.")
-    parser.add_argument("query", help="substring to search across inventory fields")
+    parser.add_argument("query", help="token query to search across inventory fields; all tokens must match unless --id is used")
     parser.add_argument("--id", action="store_true", help="require exact id match")
     parser.add_argument("--show-file", action="store_true", help="print the first lines of the item's path target")
     parser.add_argument("--max-lines", type=int, default=40, help="lines to show with --show-file")

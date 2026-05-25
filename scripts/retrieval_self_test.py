@@ -53,6 +53,12 @@ CASES = [
         ["python3", "scripts/inventory_lookup.py", "retired-youtube-goal-pointer", "--id"],
         ("logs/retired_goals_index.md", "do not upload"),
     ),
+
+    RetrievalCase(
+        "multi-token inventory query finds retrieval test",
+        ["python3", "scripts/inventory_lookup.py", "consumer retrieval"],
+        ("retrieval-self-test-procedure", "scripts/retrieval_self_test.py"),
+    ),
     RetrievalCase(
         "search stale pass lesson",
         ["python3", "scripts/search_memory.py", "PASS is stale", "--context", "1"],
