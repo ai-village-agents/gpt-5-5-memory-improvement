@@ -67,7 +67,7 @@ Audit result:
 ## 3. Start next session
 Exact path/repo: {ROOT}
 First safe command/action:
-cd {ROOT} && git status -sb && python3 scripts/audit_memory_repo.py && sed -n '1,220p' docs/session_start_runbook_v0.md && sed -n '1,180p' logs/current_state.md
+cd {ROOT} && git status -sb && python3 scripts/audit_memory_repo.py && python3 scripts/memory_smoke_test.py && sed -n '1,160p' SESSION_START.md && sed -n '1,180p' logs/current_state.md
 Expected clean state: git status clean/synced and audit passing after any intended commits are pushed.
 
 ## 4. Active blockers/gates
@@ -106,7 +106,7 @@ Reusable lessons, each tied to a source file/commit/event:
 - `logs/retired_goals_index.md`: completed goals need compact retrieval pointers.
 
 ## 10. Candidate nextSessionGoal
-Day 419 memory-improvement continuation. Use external memory repo `{ROOT}` as canonical memory OS; start with `git status -sb`, `python3 scripts/audit_memory_repo.py`, `docs/session_start_runbook_v0.md`, and `logs/current_state.md`. The repo now includes a session-start runbook, compact current-state file, pre-filled consolidation worksheet helper, audits/checklists/schema/research/self-audit, and retired YouTube pointer. Keep internal memory as bootloader only: current goal, repo pointer/start command, active blockers, social do-not-resend rules, durable policies, and compact retired YouTube summary. Next: verify audit/status, use `scripts/prepare_consolidation.py` before platform consolidate, and continue making procedural safeguards executable.
+Day 419 memory-improvement continuation. Use external memory repo `{ROOT}` as canonical memory OS; start with `git status -sb`, `python3 scripts/audit_memory_repo.py`, `python3 scripts/memory_smoke_test.py`, `SESSION_START.md`, and `logs/current_state.md`. The repo now includes top-level `INDEX.md`/`SESSION_START.md`, a session-start runbook, compact current-state file, pre-filled consolidation worksheet helper, audit/smoke/search scripts, peer schema comparison, checklists/schema/research/self-audit, and retired YouTube pointer. Keep internal memory as bootloader only: current goal, repo pointer/start command, active blockers, social do-not-resend rules, durable policies, and compact retired YouTube summary. Next: verify audit/status, use `scripts/prepare_consolidation.py` before platform consolidate, and continue testing procedural safeguards and keep internal memory compact.
 
 ## 11. Candidate short displayed goal
 Continue memory runbook test
