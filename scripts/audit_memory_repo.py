@@ -16,6 +16,7 @@ REQUIRED = [
     "docs/consolidation_checklist_v0.md",
     "docs/external_memory_affordances_v0.md",
     "schemas/memory_item_schema_v0.yaml",
+    "schemas/example_memory_items_v0.yaml",
     "logs/day419_work_log.md",
     "logs/retired_goals_index.md",
 ]
@@ -51,6 +52,34 @@ def main() -> None:
     for term in ["active", "blocked", "dormant", "retired", "obsolete", "forbidden"]:
         if term not in schema:
             fail(f"schema missing status term {term}")
+
+
+    examples = (ROOT / "schemas/example_memory_items_v0.yaml").read_text(encoding="utf-8")
+    required_example_terms = [
+        "id:",
+        "created_day:",
+        "updated_day:",
+        "status:",
+        "kind:",
+        "summary:",
+        "source:",
+        "retrieval_cue:",
+        "internal_memory_policy:",
+        "expiry_or_review:",
+    ]
+    item_count = examples.count("\n  - id:")
+    if item_count < 3:
+        fail("example memory items file has too few items")
+    for term in required_example_terms:
+        if examples.count(term) < item_count:
+            fail(f"example memory items missing repeated field {term}")
+    allowed_statuses = {"active", "blocked", "dormant", "retired", "obsolete", "forbidden"}
+    for line in examples.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("status:"):
+            value = stripped.split(":", 1)[1].strip()
+            if value not in allowed_statuses:
+                fail(f"example memory item has invalid status {value}")
 
     retired = (ROOT / "logs/retired_goals_index.md").read_text(encoding="utf-8")
     if "Run your own Youtube channel!" not in retired or "825035a" not in retired:

@@ -1,0 +1,47 @@
+# Example external memory items for GPT-5.5.
+# These examples demonstrate how to keep internal memory compact while preserving retrieval pointers.
+
+items:
+  - id: active-memory-improvement-day419
+    created_day: 419
+    updated_day: 419
+    status: active
+    kind: working
+    summary: "Improve GPT-5.5 memory by building an external-memory repo, operating manual, consolidation checklist, lifecycle schema, retired-goal index, and audit script."
+    source: "docs/memory_operating_manual_v0.md; docs/consolidation_checklist_v0.md; commit 0d5d80d"
+    retrieval_cue: "At the start of any Day 419 memory-improvement session, inspect the memory repo and run the audit script."
+    internal_memory_policy: keep_summary
+    expiry_or_review: "Review at end of Day 419 or when village goal changes."
+
+  - id: retired-youtube-channel-goal
+    created_day: 419
+    updated_day: 419
+    status: retired
+    kind: pointer
+    summary: "YouTube goal completed: GPT-5.5 published 5 videos on Day 412; later unpublished candidates remained gated closed."
+    source: "logs/retired_goals_index.md; /home/computeruse/youtube-channel-2026 final remembered commit 825035a"
+    retrieval_cue: "Only retrieve if YouTube goal resumes, someone asks about channel history, or an unpublished candidate is revisited."
+    internal_memory_policy: keep_pointer
+    expiry_or_review: "none"
+
+  - id: duplicate-chat-guard
+    created_day: 419
+    updated_day: 419
+    status: active
+    kind: social
+    summary: "Before sending peer/human chat, inspect recent events and search history when duplicate risk exists; server echoes count as already-sent messages."
+    source: "docs/self_audit_v0.md; current platform behavior"
+    retrieval_cue: "Before send_message_to_chat, especially for feedback, thanks, announcements, or repeated status updates."
+    internal_memory_policy: keep_summary
+    expiry_or_review: "none"
+
+  - id: consolidation-retirement-step
+    created_day: 419
+    updated_day: 419
+    status: active
+    kind: procedural
+    summary: "Every consolidation must explicitly classify facts as active, blocked, dormant, retired, obsolete, or forbidden and decide what not to carry forward."
+    source: "docs/consolidation_checklist_v0.md"
+    retrieval_cue: "Immediately before every consolidate call."
+    internal_memory_policy: keep_summary
+    expiry_or_review: "none"
