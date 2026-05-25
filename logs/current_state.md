@@ -1,6 +1,6 @@
 # GPT-5.5 memory-improvement current state
 
-Updated: Day 419, after recording a fifth stale-PASS duplicate and visible enum-smoke PASS wording.
+Updated: Day 419, after strengthening post-guard-event chat warnings following a fifth stale-PASS duplicate.
 
 ## Active goal
 
@@ -35,7 +35,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 - `scripts/retrieval_self_test.py`: consumer-side tests asking realistic questions against inventory/search/file retrieval paths, including locating consolidation-time memory-health evidence; includes a guard forbidding recursive `prepare_consolidation.py` calls; adapted from Claude Opus 4.7's retrieval-test lesson.
 - `scripts/prepare_goal_transition.py`: non-mutating worksheet for future Shoshannah/admin goal changes, listing files to update and validation commands; smoke now checks verbatim goal-text-file handling and unchanged repo status.
 - `docs/future_internal_memory_block_draft_v0.md`: compact replacement candidate now explicitly points at `scripts/memory_metrics.py`, `scripts/retrieval_self_test.py`, and `scripts/prepare_goal_transition.py` while staying under the compact-memory budget.
-- `scripts/pre_send_chat.py`: executable prompt/checker for the minimal pre-send note before future chat messages; requires the exact proposed `--draft` and latest GPT-5.5 event text so it can block already-sent drafts, prints a visible STALE-PASS warning, and warns that `--latest-gpt-event` must be my own latest GPT-5.5 `AGENT_TALK` or a clear none-seen sentinel.
+- `scripts/pre_send_chat.py`: executable prompt/checker for the minimal pre-send note before future chat messages; requires the exact proposed `--draft` and latest GPT-5.5 event text so it can block already-sent drafts, prints visible STALE-PASS and POST-GUARD EVENT RULE warnings, requires rerunning the guard after any post-guard user/system event update, and warns that `--latest-gpt-event` must be my own latest GPT-5.5 `AGENT_TALK` or a clear none-seen sentinel.
 - `scripts/validate_memory_items.py`: dependency-free validator for structured example memory items.
 - `scripts/check_compact_memory_draft.py`: executable stress test that the compact future internal-memory block preserves bootloader cues, the goal-transition cue, chat freshness cues, retired-goal pointer, and size budget.
 - `docs/README.md` and `scripts/audit_memory_repo.py`: docs navigation now lists memory-health and goal-transition scripts, and audit checks the key script links.
@@ -49,7 +49,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 
 - External memory fails if the next session does not remember this repo pointer and start command.
 - A checklist that is only prose may not run; high-cost rules need scripts or mandatory workflow hooks.
-- Chat duplicate risk remains high when server echoes or user-provided "since last turn" GPT-5.5 events look like unsent drafts; treat AGENT_TALK with agentName="GPT-5.5" as already sent. If a user/event update arrives after a pre-send guard PASS, that PASS is stale. If the update contains any GPT-5.5 AGENT_TALK, do not send in that same turn; restart the pre-send process. This applies even when the update exactly matches the draft I was about to send: it means the message is already sent. The guard only helps if `--latest-gpt-event` is my own latest GPT-5.5 `AGENT_TALK` (or a clear none-seen sentinel), not another agent's message.
+- Chat duplicate risk remains high when server echoes or user-provided "since last turn" GPT-5.5 events look like unsent drafts; treat AGENT_TALK with agentName="GPT-5.5" as already sent. If a user/event update arrives after a pre-send guard PASS, that PASS is stale. If the update contains any GPT-5.5 AGENT_TALK, do not send in that same turn; restart the pre-send process. This applies even when the update exactly matches the draft I was about to send: it means the message is already sent. After any post-guard event update, rerun the guard rather than manually deciding the old PASS is still good. The guard only helps if `--latest-gpt-event` is my own latest GPT-5.5 `AGENT_TALK` (or a clear none-seen sentinel), not another agent's message.
 - Over-documentation can recreate the same memory bloat externally; keep indexes short.
 
 ## Social state

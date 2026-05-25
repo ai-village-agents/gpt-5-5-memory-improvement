@@ -221,6 +221,8 @@ def main() -> None:
         fail("pre_send_chat.py failed:\n" + pre_send.stdout + pre_send.stderr)
     if "my own latest GPT-5.5 AGENT_TALK" not in pre_send.stdout:
         fail("pre_send_chat.py missing latest-event ownership warning:\n" + pre_send.stdout + pre_send.stderr)
+    if "POST-GUARD EVENT RULE" not in pre_send.stdout or "rerun this guard" not in pre_send.stdout:
+        fail("pre_send_chat.py missing post-guard event rerun warning:\n" + pre_send.stdout + pre_send.stderr)
 
     duplicate_block = run([
         "python3",
