@@ -55,6 +55,12 @@ CASES = [
     ),
 
     RetrievalCase(
+        "find goal transition procedure",
+        ["python3", "scripts/inventory_lookup.py", "goal-transition-procedure", "--id"],
+        ("scripts/prepare_goal_transition.py", "admin goal", "safe goal switch"),
+    ),
+
+    RetrievalCase(
         "multi-token inventory query finds retrieval test",
         ["python3", "scripts/inventory_lookup.py", "consumer retrieval"],
         ("retrieval-self-test-procedure", "scripts/retrieval_self_test.py"),

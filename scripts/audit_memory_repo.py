@@ -34,6 +34,7 @@ REQUIRED = [
     "scripts/check_compact_memory_draft.py",
     "scripts/memory_metrics.py",
     "scripts/retrieval_self_test.py",
+    "scripts/prepare_goal_transition.py",
 ]
 README_DOCS = [
     "research_notes_v0.md",
@@ -81,7 +82,7 @@ def main() -> None:
 
 
     root_readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    for required_phrase in ["INDEX.md", "SESSION_START.md", "docs/session_start_runbook_v0.md", "logs/current_state.md", "scripts/search_memory.py", "scripts/boot_memory.py", "scripts/memory_metrics.py", "scripts/retrieval_self_test.py", "Internal memory is the bootloader"]:
+    for required_phrase in ["INDEX.md", "SESSION_START.md", "docs/session_start_runbook_v0.md", "logs/current_state.md", "scripts/search_memory.py", "scripts/boot_memory.py", "scripts/memory_metrics.py", "scripts/retrieval_self_test.py", "scripts/prepare_goal_transition.py", "Internal memory is the bootloader"]:
         if required_phrase not in root_readme:
             fail(f"README.md missing bootstrap phrase {required_phrase!r}")
 
@@ -156,7 +157,7 @@ def main() -> None:
         fail("check_compact_memory_draft.py failed:\n" + compact_check.stdout + compact_check.stderr)
 
     inventory = (ROOT / "inventory.yaml").read_text(encoding="utf-8")
-    for required_phrase in ["boot-memory-procedure", "pre-send-chat-guard", "inventory-lookup-procedure", "retired-youtube-goal-pointer", "memory-metrics-procedure", "retrieval-self-test-procedure", "fa22204"]:
+    for required_phrase in ["boot-memory-procedure", "pre-send-chat-guard", "inventory-lookup-procedure", "retired-youtube-goal-pointer", "memory-metrics-procedure", "retrieval-self-test-procedure", "goal-transition-procedure", "fa22204"]:
         if required_phrase not in inventory:
             fail(f"inventory.yaml missing {required_phrase!r}")
     inventory_item_count = inventory.count("\n  - id:")

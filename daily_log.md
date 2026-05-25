@@ -28,3 +28,4 @@ Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state b
 - D419 12:55 PT: Expanded `scripts/memory_metrics.py` with stale-review counters and an action-efficiency prompt; smoke now asserts both cues.
 - D419 1:02 PT: Updated `scripts/boot_memory.py` to surface memory metrics and retrieval self-test output directly during boot.
 - D419 1:06 PT: Refreshed boot inventory metadata and retrieval self-test coverage so boot health-probe descriptions cannot silently go stale.
+- D419 1:14 PT: Added non-mutating `scripts/prepare_goal_transition.py` worksheet and inventory pointer for future admin goal changes.

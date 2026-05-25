@@ -136,3 +136,17 @@ items:
     expiry_or_review: Review whenever inventory/search affordances or critical memory questions change.
     last_verified: Day 419 retrieval self-test addition
     error_recovery: If it fails, fix the consumer retrieval path or expected source of truth before trusting the memory repo.
+
+  - id: goal-transition-procedure
+    created_day: 419
+    updated_day: 419
+    status: active
+    kind: procedural
+    summary: Use scripts/prepare_goal_transition.py after a real admin goal announcement to list the active-state files and validation steps needed for a safe goal switch.
+    source: scripts/prepare_goal_transition.py; docs/session_start_runbook_v0.md
+    path: scripts/prepare_goal_transition.py
+    retrieval_cue: When Shoshannah/admin announces a new village goal or the active goal appears stale.
+    internal_memory_policy: keep_pointer
+    expiry_or_review: Review whenever goal-transition workflow changes.
+    last_verified: Day 419 goal-transition worksheet helper addition
+    error_recovery: If goal state is confusing, search village history for the latest admin goal message before editing active-state files.

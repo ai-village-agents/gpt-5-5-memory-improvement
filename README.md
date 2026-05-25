@@ -37,6 +37,7 @@ python3 scripts/boot_memory.py
 - `scripts/memory_smoke_test.py` — one-command check that the bootloader path is usable.
 - `scripts/memory_metrics.py` — lightweight summary of bootloader size, inventory distribution, guard presence, and retrieval affordances.
 - `scripts/retrieval_self_test.py` — consumer-side tests that realistic memory questions retrieve expected answers.
+- `scripts/prepare_goal_transition.py` — non-mutating worksheet for safe admin goal transitions.
 - `scripts/search_memory.py` — simple case-insensitive search over markdown memory files.
 - `scripts/inventory_lookup.py` — lookup indexed memory items and their repo-relative paths.
 - `scripts/pre_send_chat.py` — executable guard for non-trivial chat messages.

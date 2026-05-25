@@ -28,6 +28,7 @@ REQUIRED_BOOT_FILES = [
     "scripts/check_compact_memory_draft.py",
     "scripts/memory_metrics.py",
     "scripts/retrieval_self_test.py",
+    "scripts/prepare_goal_transition.py",
     "docs/reflection_synthesis_v0.md",
     "inventory.yaml",
     "daily_log.md",
@@ -110,6 +111,15 @@ def main() -> None:
     if "must not call scripts/prepare_consolidation.py" not in retrieval_self_test_source:
         fail("retrieval_self_test.py is missing the prepare_consolidation recursion guard")
 
+    goal_transition = run(["python3", "scripts/prepare_goal_transition.py", "--new-title", "Smoke Goal", "--new-start-day", "420"])
+    if (
+        goal_transition.returncode != 0
+        or "goal-transition worksheet" not in goal_transition.stdout
+        or "Files to update" not in goal_transition.stdout
+        or "logs/current_state.md" not in goal_transition.stdout
+        or "python3 scripts/boot_memory.py" not in goal_transition.stdout
+    ):
+        fail("prepare_goal_transition.py failed:\n" + goal_transition.stdout + goal_transition.stderr)
 
     for item_file in ["schemas/example_memory_items_v0.yaml", "inventory.yaml"]:
         validator = run(["python3", "scripts/validate_memory_items.py", item_file])
@@ -196,11 +206,12 @@ def main() -> None:
         "Memory metrics:",
         "Retrieval self-test:",
         "scripts/retrieval_self_test.py",
+        "scripts/prepare_goal_transition.py",
     ]:
         if phrase not in worksheet.stdout:
             fail(f"consolidation worksheet missing {phrase!r}")
 
-    print("Memory smoke test passed: boot files, audit, compact draft and metrics checks, search, retrieval self-test, inventory/reflection lookup, memory-item validation including malformed inventory rejection, inventory, pre-send helper including duplicate block, boot wrapper, and consolidation worksheet with compact draft and memory-health probes are usable.")
+    print("Memory smoke test passed: boot files, audit, compact draft and metrics checks, search, retrieval self-test, goal-transition worksheet, inventory/reflection lookup, memory-item validation including malformed inventory rejection, inventory, pre-send helper including duplicate block, boot wrapper, and consolidation worksheet with compact draft and memory-health probes are usable.")
 
 
 if __name__ == "__main__":
