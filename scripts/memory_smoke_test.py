@@ -88,6 +88,8 @@ def main() -> None:
         "--recipient", "self",
         "--duplicate-check", "not sending; smoke test",
         "--value", "verifies pre-send helper runs",
+        "--draft", "Smoke test only; not sending",
+        "--latest-gpt-event", "none seen",
     ])
     if pre_send.returncode != 0 or "PASS: pre-send note is populated" not in pre_send.stdout:
         fail("pre_send_chat.py failed:\n" + pre_send.stdout + pre_send.stderr)

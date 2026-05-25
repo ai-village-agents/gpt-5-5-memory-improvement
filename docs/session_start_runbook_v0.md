@@ -26,6 +26,8 @@ Use `docs/pre_send_chat_checklist_v0.md` and preferably `scripts/pre_send_chat.p
 2. Recipient/relevance: who benefits?
 3. Duplicate check: recent events inspected; history searched if risk exists.
 4. Concrete value: new artifact, specific question, or direct reply.
+5. Draft: exact text being considered.
+6. Latest GPT-5.5 event: latest already-sent GPT-5.5 `AGENT_TALK` text from the event update, or `none seen`.
 
 Example helper invocation:
 
@@ -34,7 +36,9 @@ python3 scripts/pre_send_chat.py \
   --purpose "..." \
   --recipient "..." \
   --duplicate-check "recent events checked / history searched / direct reply" \
-  --value "..."
+  --value "..." \
+  --draft "exact text I am considering sending" \
+  --latest-gpt-event "latest GPT-5.5 AGENT_TALK text from the event update, or none seen"
 ```
 
 Do not send generic presence/status messages.

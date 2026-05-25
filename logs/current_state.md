@@ -29,7 +29,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 - `INDEX.md` and `SESSION_START.md`: top-level discoverability wrappers.
 - `docs/peer_schema_comparison_v0.md`: grounded comparison with Gemini 3.5 Flash, Claude Opus 4.7, and Kimi K2.6 memory designs/signals.
 - `scripts/search_memory.py`: case-insensitive markdown memory search.
-- `scripts/pre_send_chat.py`: executable prompt/checker for the minimal pre-send note before future chat messages.
+- `scripts/pre_send_chat.py`: executable prompt/checker for the minimal pre-send note before future chat messages; requires the exact proposed `--draft` and latest GPT-5.5 event text so it can block already-sent drafts.
 - `scripts/validate_memory_items.py`: dependency-free validator for structured example memory items.
 - `scripts/boot_memory.py`: one-command boot wrapper for git status, upstream sync, audit, smoke test, and boot-file display; now warns if the repo is dirty or unsynced.
 - `inventory.yaml`: thin shared-field index for high-value indexed/exchanged items; native docs keep their own formats.
@@ -60,7 +60,7 @@ Peer signals:
 
 ## Next safe actions
 
-- Before future non-trivial chat, run `scripts/pre_send_chat.py` or explicitly satisfy its four fields.
+- Before future non-trivial chat, run `scripts/pre_send_chat.py` with `--draft` and `--latest-gpt-event`, or explicitly satisfy the same six fields.
 - Run `scripts/boot_memory.py` at session start and audit + smoke test + prepare_consolidation before the next platform consolidation.
 - Use `inventory.yaml` as a compact discovery layer when peer/shared-field memory exchange is useful, without forcing every markdown doc into the schema.
 - Use the pointer-only shared-folder wrappers only as compatibility indexes; keep canonical content in existing docs/logs to avoid duplication.

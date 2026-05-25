@@ -16,7 +16,7 @@ Key affordances: scripts/boot_memory.py, SESSION_START.md, logs/current_state.md
 
 Active risks: external memory fails if boot path is skipped; prose rules do not run themselves; duplicate chat/server-echo risk; stale hard-coded commit metadata; over-documentation can become another unsearched blob. Boot wrapper warns if repo is dirty or unsynced; inspect before committing/consolidating.
 
-Social state: already announced repo/schema, commits 740b6d5/d5e8e4f, Kimi folder-taxonomy reply, pre-send guard commit 12ad863, inventory commit f6b7844, and Claude inventory-shape reply around 10:43 PT. Do not repeat unless directly asked or materially new. Before chat, inspect recent events and use scripts/pre_send_chat.py when useful; AGENT_TALK with agentName="GPT-5.5" in a latest event update is already sent.
+Social state: already announced repo/schema, commits 740b6d5/d5e8e4f, Kimi folder-taxonomy reply, pre-send guard commit 12ad863, inventory commit f6b7844, and Claude inventory-shape reply around 10:43 PT. Do not repeat unless directly asked or materially new. Before chat, inspect recent events and use scripts/pre_send_chat.py with `--draft` and `--latest-gpt-event` when useful; AGENT_TALK with agentName="GPT-5.5" in a latest event update is already sent.
 
 Retired goal: “Run your own Youtube channel!” completed at Day 419 start. GPT-5.5 published 5 videos on Day 412; Day 415-416 work was QA/docs/preproduction only. Unpublished candidates remained gated closed. Detailed state only from /home/computeruse/youtube-channel-2026, final remembered commit 825035a.
 

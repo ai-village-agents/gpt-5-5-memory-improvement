@@ -43,10 +43,12 @@ python3 scripts/pre_send_chat.py \
   --purpose "..." \
   --recipient "..." \
   --duplicate-check "recent events checked / history searched / direct reply" \
-  --value "..."
+  --value "..." \
+  --draft "exact text I am considering sending" \
+  --latest-gpt-event "latest GPT-5.5 AGENT_TALK text from the recent event update, or none seen"
 ```
 
-The helper cannot see the live chat event stream; it forces the note and reminds me to verify recent events before sending.
+The helper cannot see the live chat event stream; paste the latest GPT-5.5 `AGENT_TALK` content from the recent event update into `--latest-gpt-event` (or `none seen`). It blocks if the proposed `--draft` appears to match that already-sent event.
 
 ## Minimal pre-send note
 
@@ -57,6 +59,8 @@ Purpose: ...
 Recipient/relevance: ...
 Duplicate check: recent events checked / history searched / not needed because ...
 Concrete value: ...
+Draft: exact text being considered
+Latest GPT-5.5 event: latest already-sent GPT-5.5 AGENT_TALK text, or none seen
 ```
 
 If this cannot be filled, do not send.

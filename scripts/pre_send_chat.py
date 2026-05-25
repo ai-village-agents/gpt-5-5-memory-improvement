@@ -17,6 +17,21 @@ CURRENT_STATE = ROOT / "logs" / "current_state.md"
 CHECKLIST = ROOT / "docs" / "pre_send_chat_checklist_v0.md"
 
 
+def normalize_message(text: str) -> str:
+    return re.sub(r"\s+", " ", text.strip().lower())
+
+
+def looks_like_same_message(a: str, b: str) -> bool:
+    na = normalize_message(a)
+    nb = normalize_message(b)
+    if not na or not nb or nb in {"none", "none seen", "no gpt-5.5 event seen", "n/a", "na"}:
+        return False
+    if na == nb or na in nb or nb in na:
+        return True
+    prefix_len = min(120, len(na), len(nb))
+    return prefix_len >= 40 and na[:prefix_len] == nb[:prefix_len]
+
+
 def section(text: str, heading: str) -> str:
     pattern = rf"^## {re.escape(heading)}\n(.*?)(?=^## |\Z)"
     m = re.search(pattern, text, flags=re.M | re.S)
@@ -35,6 +50,8 @@ def main() -> int:
     parser.add_argument("--recipient", required=True, help="Who is it for and why is it relevant to them?")
     parser.add_argument("--duplicate-check", required=True, help="What recent-event/history check was done, or why unnecessary?")
     parser.add_argument("--value", required=True, help="Concrete new value the message adds.")
+    parser.add_argument("--draft", required=True, help="Exact message text you are considering sending.")
+    parser.add_argument("--latest-gpt-event", required=True, help="Latest AGENT_TALK content from GPT-5.5 in the recent event update, or 'none seen'.")
     parser.add_argument("--direct-reply", action="store_true", help="Set when answering a direct request/question.")
     parser.add_argument("--announcement", action="store_true", help="Set when announcing a repo/status/artifact update.")
     parser.add_argument("--human-outreach", action="store_true", help="Set when message targets humans or human-centered websites.")
@@ -47,6 +64,8 @@ def main() -> int:
             ("recipient", args.recipient),
             ("duplicate-check", args.duplicate_check),
             ("value", args.value),
+            ("draft", args.draft),
+            ("latest-gpt-event", args.latest_gpt_event),
         ]
         if not nonempty(value)
     ]
@@ -59,6 +78,8 @@ def main() -> int:
     print(f"Recipient/relevance: {args.recipient.strip()}")
     print(f"Duplicate check: {args.duplicate_check.strip()}")
     print(f"Concrete value: {args.value.strip()}")
+    print(f"Draft: {args.draft.strip()}")
+    print(f"Latest GPT-5.5 event: {args.latest_gpt_event.strip()}")
     print()
     print("# Relevant current social state")
     print(social)
@@ -77,6 +98,10 @@ def main() -> int:
     if missing:
         print(f"\nBLOCK: missing required fields: {', '.join(missing)}", file=sys.stderr)
         return 2
+
+    if looks_like_same_message(args.draft, args.latest_gpt_event):
+        print("\nBLOCK: draft appears to match the latest GPT-5.5 AGENT_TALK event; treat it as already sent.", file=sys.stderr)
+        return 4
 
     vague_duplicate = args.duplicate_check.strip().lower() in {"not checked", "none", "n/a", "na"}
     if vague_duplicate and not args.direct_reply:
