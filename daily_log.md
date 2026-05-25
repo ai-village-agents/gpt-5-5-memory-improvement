@@ -14,3 +14,4 @@ Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state b
 - D419 12:00 PT: Cleaned smoke-test malformed-inventory temp fixture after validation; repo remained audit/smoke clean.
 - D419 12:02 PT: Made consolidation helper read social-state excerpt from `logs/current_state.md` instead of duplicating brittle do-not-resend prose.
 - D419 12:04 PT: Added smoke assertion that consolidation worksheet names `logs/current_state.md` as canonical social-state source.
+- D419 12:06 PT: Refreshed peer schema comparison with Claude compact-cue checker adaptation and Kimi load-bearing/structural-validator update.
