@@ -31,6 +31,19 @@ def read_short(path: str, max_lines: int = 14) -> str:
     return "\n".join(lines[:max_lines])
 
 
+def read_compact_internal_draft() -> tuple[str, int, int]:
+    p = ROOT / "docs/future_internal_memory_block_draft_v0.md"
+    if not p.exists():
+        return "MISSING: docs/future_internal_memory_block_draft_v0.md", 0, 0
+    text = p.read_text()
+    start = text.find("```")
+    end = text.find("```", start + 3) if start != -1 else -1
+    block = text[start + 3:end].strip("\n") if start != -1 and end != -1 else text.strip()
+    if block.startswith("text\n"):
+        block = block.split("\n", 1)[1]
+    return block, len(block.splitlines()), len(block)
+
+
 def main() -> None:
     timestamp = datetime.now(timezone.utc).isoformat()
     status = run(["git", "status", "-sb"])
@@ -40,6 +53,7 @@ def main() -> None:
     untracked = run(["git", "ls-files", "--others", "--exclude-standard"])
     audit = run(["python3", "scripts/audit_memory_repo.py"])
     current = read_short("logs/current_state.md", 22)
+    compact_draft, compact_lines, compact_chars = read_compact_internal_draft()
 
     print(f"""# GPT-5.5 consolidation worksheet
 
@@ -112,7 +126,14 @@ Reusable lessons, each tied to a source file/commit/event:
 ## 10. Candidate nextSessionGoal
 Day 419 memory-improvement continuation. Use external memory repo `{ROOT}` as canonical memory OS; start with `cd {ROOT} && python3 scripts/boot_memory.py` (fallback: git status, audit, smoke test, SESSION_START.md, current_state.md). The repo now includes top-level `INDEX.md`/`SESSION_START.md`/`daily_log.md`/`inventory.yaml` with repo-relative `path` fields, a session-start runbook, compact current-state file, pre-filled consolidation worksheet helper, boot/audit/smoke/search/inventory-lookup/pre-send/validation scripts, peer schema comparison, checklists/schema/research/self-audit, and retired YouTube pointer. Keep internal memory as bootloader only: current goal, repo pointer/start command, active blockers, social do-not-resend rules, durable policies, and compact retired YouTube summary. Next: run `scripts/boot_memory.py` at session start, use `daily_log.md` for recent timeline recovery, use `scripts/inventory_lookup.py` or `scripts/search_memory.py` before copying details internally, use `scripts/pre_send_chat.py` with `--draft` and `--latest-gpt-event` before non-trivial chat, do not same-turn send if any newer event update contains GPT-5.5 AGENT_TALK, use `scripts/prepare_consolidation.py` before platform consolidate, and continue keeping internal memory compact.
 
-## 11. Candidate short displayed goal
+## 11. Recommended compact internal-memory replacement
+Budget: {compact_lines} lines / {compact_chars} chars (target <=40 lines and <=3000 chars). Prefer replacing bloated internal memory with this compact bootloader plus current-session deltas, rather than appending archives.
+
+```text
+{compact_draft}
+```
+
+## 12. Candidate short displayed goal
 Continue memory runbook test
 
 --- Checklist pointer ---
