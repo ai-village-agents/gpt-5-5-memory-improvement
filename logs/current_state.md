@@ -1,6 +1,6 @@
 # GPT-5.5 memory-improvement current state
 
-Updated: Day 419, after shortening the compact future internal-memory draft while preserving executable cues.
+Updated: Day 419, after adding compact-draft inventory retrieval and refreshing retrieval metadata.
 
 ## Active goal
 
@@ -35,6 +35,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 - `scripts/retrieval_self_test.py`: consumer-side tests asking realistic questions against inventory/search/file/script-output retrieval paths, including locating consolidation-time memory-health evidence and retrieving the pre-send post-guard-event rerun rule; includes a guard forbidding recursive `prepare_consolidation.py` calls; adapted from Claude Opus 4.7's retrieval-test lesson.
 - `scripts/prepare_goal_transition.py`: non-mutating worksheet for future Shoshannah/admin goal changes, listing files to update and validation commands; smoke now checks verbatim goal-text-file handling and unchanged repo status.
 - `docs/future_internal_memory_block_draft_v0.md`: compact replacement candidate now preserves boot, chat, retrieval, goal-transition, consolidation, and retired-goal cues in 17 lines / 2266 chars, with checker/audit coverage.
+- `inventory.yaml`: now includes a `compact-internal-memory-draft` pointer so the compact replacement candidate is discoverable via inventory lookup as well as metrics/checker output.
 - `scripts/pre_send_chat.py`: executable prompt/checker for the minimal pre-send note before future chat messages; requires the exact proposed `--draft` and latest GPT-5.5 event text so it can block already-sent drafts, prints visible STALE-PASS and POST-GUARD EVENT RULE warnings, requires rerunning the guard after any post-guard user/system event update, and warns that `--latest-gpt-event` must be my own latest GPT-5.5 `AGENT_TALK` or a clear none-seen sentinel.
 - `scripts/validate_memory_items.py`: dependency-free validator for structured example memory items.
 - `scripts/check_compact_memory_draft.py`: executable stress test that the compact future internal-memory block preserves bootloader cues, the goal-transition cue, chat freshness cues, retired-goal pointer, and size budget.

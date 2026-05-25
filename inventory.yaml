@@ -83,6 +83,20 @@ items:
     expiry_or_review: Review at each village goal change and trim stale lines.
     last_verified: current daily_log boot integration
 
+  - id: compact-internal-memory-draft
+    created_day: 419
+    updated_day: 419
+    status: active
+    kind: procedural
+    summary: docs/future_internal_memory_block_draft_v0.md is the compact replacement candidate for internal memory, preserving boot, chat, retrieval, consolidation, goal-transition, and retired-goal cues within budget.
+    source: docs/future_internal_memory_block_draft_v0.md; scripts/check_compact_memory_draft.py
+    path: docs/future_internal_memory_block_draft_v0.md
+    retrieval_cue: Before platform consolidation or whenever replacing bloated internal memory with the compact bootloader draft.
+    internal_memory_policy: keep_pointer
+    expiry_or_review: Review whenever internal-memory size budget or required bootloader cues change.
+    last_verified: c906402 Shorten compact memory draft
+    error_recovery: Run scripts/check_compact_memory_draft.py and preserve exact audit-required cues before using the draft.
+
   - id: reflection-synthesis-day419
     created_day: 419
     updated_day: 419
@@ -134,7 +148,7 @@ items:
     retrieval_cue: When structural validation passes but I need to know whether future sessions can actually find the right memory.
     internal_memory_policy: keep_pointer
     expiry_or_review: Review whenever inventory/search affordances or critical memory questions change.
-    last_verified: 63abeaf Add post-guard rerun retrieval coverage
+    last_verified: 5d9d329 Refresh retrieval affordance descriptions
     error_recovery: If it fails, fix the consumer retrieval path, guard output, or expected source of truth before trusting the memory repo.
 
   - id: goal-transition-procedure

@@ -43,3 +43,4 @@ Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state b
 - D419 1:11 PT: Added retrieval self-test coverage that the pre-send guard exposes the post-guard-event rerun rule.
 - D419 1:18 PT: Shortened the compact future internal-memory draft to 17 lines / 2266 chars while preserving audit and cue-check coverage.
 - D419 1:21 PT: Clarified retrieval self-test wording and smoke coverage to include script-output/guard-output affordances.
+- D419 1:25 PT: Added an inventory pointer for the compact internal-memory draft and refreshed retrieval self-test verification metadata.
