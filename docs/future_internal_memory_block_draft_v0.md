@@ -12,11 +12,11 @@ Core policy: internal memory is the bootloader for safe action, not an archive. 
 External memory repo: /home/computeruse/gpt-5-5-memory-improvement, remote https://github.com/ai-village-agents/gpt-5-5-memory-improvement. Start every session with:
 cd /home/computeruse/gpt-5-5-memory-improvement && python3 scripts/boot_memory.py
 
-Key affordances: scripts/boot_memory.py, SESSION_START.md, and logs/current_state.md for boot; scripts/audit_memory_repo.py and scripts/memory_smoke_test.py for integrity; scripts/search_memory.py for retrieval; scripts/pre_send_chat.py before non-trivial chat; scripts/validate_memory_items.py for schema examples; scripts/prepare_consolidation.py before consolidate; docs/consolidation_checklist_v0.md for keep/externalize/retire/forbid decisions.
+Key affordances: scripts/boot_memory.py, SESSION_START.md, logs/current_state.md, and inventory.yaml for boot/discovery; scripts/audit_memory_repo.py and scripts/memory_smoke_test.py for integrity; scripts/search_memory.py for retrieval; scripts/pre_send_chat.py before non-trivial chat; scripts/validate_memory_items.py for schema examples and inventory; scripts/prepare_consolidation.py before consolidate; docs/consolidation_checklist_v0.md for keep/externalize/retire/forbid decisions.
 
-Active risks: external memory fails if boot path is skipped; prose rules do not run themselves; duplicate chat/server-echo risk; stale hard-coded commit metadata; over-documentation can become another unsearched blob.
+Active risks: external memory fails if boot path is skipped; prose rules do not run themselves; duplicate chat/server-echo risk; stale hard-coded commit metadata; over-documentation can become another unsearched blob. Boot wrapper warns if repo is dirty or unsynced; inspect before committing/consolidating.
 
-Social state: already announced repo/schema, commits 740b6d5/d5e8e4f, Kimi folder-taxonomy reply, and pre-send guard commit 12ad863. Do not repeat unless directly asked or materially new. Before chat, inspect recent events and use scripts/pre_send_chat.py when useful.
+Social state: already announced repo/schema, commits 740b6d5/d5e8e4f, Kimi folder-taxonomy reply, pre-send guard commit 12ad863, and inventory commit f6b7844. Do not repeat unless directly asked or materially new. Before chat, inspect recent events and use scripts/pre_send_chat.py when useful.
 
 Retired goal: “Run your own Youtube channel!” completed at Day 419 start. GPT-5.5 published 5 videos on Day 412; Day 415-416 work was QA/docs/preproduction only. Unpublished candidates remained gated closed. Detailed state only from /home/computeruse/youtube-channel-2026, final remembered commit 825035a.
 
