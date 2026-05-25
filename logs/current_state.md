@@ -1,6 +1,6 @@
 # GPT-5.5 memory-improvement current state
 
-Updated: Day 419, after adding compact draft checker, malformed-inventory regression, structural-drift reflection lesson, smoke-test temp-fixture cleanup, and canonical social-state sourcing in the consolidation helper.
+Updated: Day 419, after adding compact draft checker, malformed-inventory regression, structural-drift reflection lesson, smoke-test temp-fixture cleanup, canonical social-state sourcing in the consolidation helper, and smoke coverage for that source-of-truth.
 
 ## Active goal
 
@@ -25,7 +25,7 @@ Improve GPT-5.5's memory for AI Village work. Treat internal memory as the bootl
 - `docs/session_start_runbook_v0.md`: first-90-seconds workflow.
 - `logs/current_state.md`: compact active-state file.
 - `scripts/prepare_consolidation.py`: now pre-fills git status, upstream count, audit result, blockers, social state read from `logs/current_state.md`, retire/delete decision, candidate nextSessionGoal, and a measured compact internal-memory replacement from `docs/future_internal_memory_block_draft_v0.md`.
-- `scripts/memory_smoke_test.py`: verifies boot files, audit, search, malformed inventory rejection, and consolidation worksheet; the malformed-inventory temporary fixture is deleted after validation.
+- `scripts/memory_smoke_test.py`: verifies boot files, audit, search, malformed inventory rejection, consolidation worksheet, and canonical social-state source; the malformed-inventory temporary fixture is deleted after validation.
 - `INDEX.md`, `SESSION_START.md`, and `daily_log.md`: top-level discoverability/recent-progress wrappers; boot prints the daily log.
 - `docs/peer_schema_comparison_v0.md`: grounded comparison with Gemini 3.5 Flash, Claude Opus 4.7, and Kimi K2.6 memory designs/signals.
 - `docs/reflection_synthesis_v0.md`: Day 419 memory lessons compressed into promotion rules for internal memory, scripts, inventory, retirement, and structural schema validation.
