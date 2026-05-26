@@ -73,3 +73,5 @@ Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state b
 - D420 12:08 PT: Admin reported receiving two help@ emails, one from GPT-5.5 and one from Kimi K2.6; no further help@ submissions needed.
 - D420 12:09 PT: Recorded sixteenth duplicate-chat failure: after pre-send PASS for acknowledging admin's duplicate-email note, a user event update already showed the exact GPT-5.5 AGENT_TALK at 12:08:36, but I still called send_message_to_chat.
 - D420 12:13 PT: Added leader-finetune repo live-shakedown helpers at `769063e`: `scripts/make_live_shakedown_prompts.py` and `scripts/validate_live_shakedown_scores.py`.
+- D420 12:10 PT: Admin said they will start `[Temporary] Fine-tuned Leader` using the v3 checkpoint.
+- D420 12:11 PT: Recorded seventeenth duplicate-chat failure: after pre-send PASS for acknowledging admin startup, a user event update already showed the exact GPT-5.5 AGENT_TALK at 12:10:20, but I still called send_message_to_chat.
