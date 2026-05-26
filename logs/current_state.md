@@ -1,6 +1,6 @@
 # GPT-5.5 finetune-leader current state
 
-Updated: Day 420, after recording eleventh duplicate-chat failure and Claude v2 eval evidence.
+Updated: Day 420, after pushing leader eval-runner disable-thinking mode at `276c5f2`.
 
 ## Active goal
 
@@ -37,7 +37,7 @@ Goal requirements from Shoshannah:
 
 - Local: `/home/computeruse/gpt-5-5-leader-finetune`
 - Remote: `https://github.com/ai-village-agents/gpt-5-5-leader-finetune`
-- Latest GPT-5.5 pushed project HEAD: `1ee568a Record Gemini checkpoint eval notes`
+- Latest GPT-5.5 pushed project HEAD: `276c5f2 Add disable-thinking eval mode`
 - Key GPT-5.5 artifacts now include leader spec/rubric, Tinker notes/model selection, dry-run SFT training skeleton, held-out eval runner, manual score template/summarizer, peer-data importer, structural eval-sample summarizer, checkpoint evaluation notes, and held-in SFT v1 (33 rows = 3 Day 420 seeds + 8 GPT-5.5 history-derived + 12 Kimi + 10 Claude peer-mined rows).
 - Claude Opus 4.7 reported a successful 2-step Qwen/Qwen3-8B LoRA rank-32 smoke train on his 35-row seed v0 and got `tinker://ec612bd3-9e91-54bd-93fb-503f9b2984ac:train:0/sampler_weights/leader-smoke-v0`, explicitly **not emailing** because it is smoke only.
 - Next leader-finetune actions: evaluate peer/Gemini/Claude checkpoints against held-out scenarios, use `scripts/summarize_eval_samples.py` plus manual rubric scoring, consider longer run only after dataset/eval review, and require #best review before any checkpoint submission.
@@ -51,6 +51,9 @@ GPT-5.5 project commits after `ec4eb6f`:
 - `dbf4bf7 Add structural eval sample summary`: added `scripts/summarize_eval_samples.py` to flag `<think>` leakage, length, empty output, and missing action/fallback/validation/decision cues.
 - `b42b55f Normalize leader prompts against reasoning leakage`: normalized held-in/eval system prompts to local no-think leader prompt.
 - `1ee568a Record Gemini checkpoint eval notes`: recorded durable evidence that Gemini v1 still fails after no-think eval prompt normalization.
+- `d158687 Fix SFT tokenization and batching`: fixed empty-token Tinker trainer bug by rendering chat templates to text before encoding, added batch size/seed controls and sanity checks.
+- `848d851 Record Claude v2 eval leakage`: recorded full held-out eval evidence that Claude v2 was structurally improved but leaked visible `</think>` under default prompt rendering.
+- `276c5f2 Add disable-thinking eval mode`: made `scripts/run_eval.py` default to Qwen `enable_thinking=False` prompt rendering and recorded Claude v2 disable-thinking plus GPT-5.5 checkpoint eval notes.
 
 Gemini checkpoint `tinker://43d033b6-e927-52ce-9eaf-21a75eb1e722:train:0/sampler_weights/gemini-leader-sft-v1` was sampled for 1 held-out scenario after runner fixes and again after no-think prompt normalization. Both decoded responses leaked `<think>` and were too long; the no-think resample was 620 chars / 7 sentences and still missed fallback/decision cues, so it is **not submission-ready**; use as eval evidence only. Claude reported v1 over-compression on his 57-row run and is training v2; do not email any checkpoint yet.
 

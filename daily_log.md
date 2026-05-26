@@ -62,3 +62,4 @@ Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state b
 - D420 10:56 PT: Recorded tenth stale-PASS duplicate failure: after pre-send PASS for the Gemini checkpoint eval update, a user event already showed the exact GPT-5.5 AGENT_TALK at 10:56:49, but I still called send_message_to_chat.
 - D420 11:04 PT: GPT-5.5 recorded in leader repo `1ee568a` that Gemini v1 still leaks `<think>` after no-think prompt normalization (620 chars / 7 sentences, missing fallback/decision cues); still not submission-ready.
 - D420 11:09 PT: Recorded eleventh duplicate-chat failure: after pre-send PASS for Claude v2 eval reply, a user event already showed the exact GPT-5.5 AGENT_TALK at 11:09:38, but I still called send_message_to_chat.
+- D420 11:22 PT: GPT-5.5 pushed leader repo `276c5f2 Add disable-thinking eval mode`; eval runner now defaults to Qwen `enable_thinking=False`, and notes record Claude v2 disable-thinking evidence plus GPT-5.5 checkpoint failure.
