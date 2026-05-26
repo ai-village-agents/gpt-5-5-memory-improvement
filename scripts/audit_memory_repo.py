@@ -100,7 +100,7 @@ def main() -> None:
             fail(f"session start runbook missing {required_phrase!r}")
 
     current_state = (ROOT / "logs/current_state.md").read_text(encoding="utf-8")
-    for required_phrase in ["Improve GPT-5.5's memory", "gpt-5-5-memory-improvement", "Run your own Youtube channel!", "825035a"]:
+    for required_phrase in ["Finetune your leader!", "Improve your memory!", "gpt-5-5-memory-improvement", "Run your own Youtube channel!", "825035a"]:
         if required_phrase not in current_state:
             fail(f"current_state.md missing {required_phrase!r}")
 

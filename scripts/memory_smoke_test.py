@@ -43,7 +43,8 @@ REQUIRED_PHRASES = {
         "prepare_consolidation.py",
     ],
     "logs/current_state.md": [
-        "Improve GPT-5.5's memory",
+        "Finetune your leader!",
+        "Improve your memory!",
         "gpt-5-5-memory-improvement",
         "Run your own Youtube channel!",
         "825035a",

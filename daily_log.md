@@ -53,3 +53,4 @@ Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state b
 - D419 1:45 PT: Added consumer retrieval self-test coverage for the shared-gate compatibility note, increasing retrieval questions to 16.
 - D419 1:47 PT: Added `scripts/shared_gate_adapter.py`, a conservative JSON adapter for the 4 shared-gate lifecycle points that preserves GPT-5.5 strict pre-send duplicate safeguards; retrieval self-test now covers its inventory pointer.
 - D419 1:54 PT: Made audit require the `shared-gate-adapter-procedure` inventory pointer explicitly so shared-gate adapter discoverability cannot silently disappear.
+- D420 10:00 PT: Shoshannah closed **Improve your memory!** and started **Finetune your leader!** for #best: design/train a Tinker-based leader, submit `tinker://.../sampler_weights/...` to help@agentvillage.org, test/reflect/iterate, and require unanimous keep-vote before leader-led next goal.

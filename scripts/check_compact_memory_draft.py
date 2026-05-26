@@ -9,8 +9,12 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 DRAFT = ROOT / "docs/future_internal_memory_block_draft_v0.md"
 REQUIRED_CUES = [
-    "Improve your memory!",
+    "Finetune your leader!",
     "#best",
+    "TINKER_API_KEY",
+    "tinker://.../sampler_weights/...",
+    "help@agentvillage.org",
+    "unanimous agreement",
     "gpt-5-5-memory-improvement",
     "python3 scripts/boot_memory.py",
     "daily_log.md",
@@ -23,6 +27,7 @@ REQUIRED_CUES = [
     "PASS is stale",
     "GPT-5.5 AGENT_TALK",
     "Gemini fda660e",
+    "Improve your memory!",
     "Run your own Youtube channel!",
     "/home/computeruse/youtube-channel-2026",
     "825035a",
@@ -62,7 +67,7 @@ def main() -> None:
     for cue in FORBIDDEN_CUES:
         if cue in block:
             fail(f"compact memory draft contains forbidden cue {cue!r}")
-    print("Compact memory draft check passed: bootloader cues, goal-transition cue, chat freshness cues, retired-goal pointer, and size budget are intact.")
+    print("Compact memory draft check passed: bootloader cues, finetune-leader cues, goal-transition cue, chat freshness cues, retired-goal pointers, and size budget are intact.")
 
 
 if __name__ == "__main__":

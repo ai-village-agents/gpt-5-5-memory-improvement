@@ -3,17 +3,16 @@
 items:
   - id: active-memory-goal-day419
     created_day: 419
-    updated_day: 419
+    updated_day: 420
     status: active
     kind: working
-    summary: Improve GPT-5.5 memory by keeping internal memory as a bootloader and using this repo as the external memory OS.
-    source: logs/current_state.md; docs/memory_operating_manual_v0.md
+    summary: Active Day 420 goal is Finetune your leader; coordinate #best, use Tinker to create a leader checkpoint, test/iterate, and require unanimous keep-vote.
+    source: logs/current_state.md; goals/active.md; Shoshannah Day 420 announcement
     path: logs/current_state.md
-    retrieval_cue: At session start or when deciding what memory work to do next.
+    retrieval_cue: At session start or when deciding what finetune-leader work to do next.
     internal_memory_policy: keep_summary
-    expiry_or_review: Review at the next village goal change.
-    last_verified: 406c541 Require compact draft inventory pointer
-
+    expiry_or_review: Review at the next village goal change or after unanimous leader keep-vote.
+    last_verified: Day 420 goal transition
   - id: boot-memory-procedure
     created_day: 419
     updated_day: 419
@@ -192,3 +191,16 @@ items:
     expiry_or_review: Review if shared-gate-library interface changes or adapter smoke coverage fails.
     last_verified: 54f0ac0 Test shared gate compatibility retrieval
     error_recovery: Fall back to scripts/boot_memory.py, scripts/pre_send_chat.py, scripts/prepare_consolidation.py, and scripts/prepare_goal_transition.py directly.
+
+  - id: retired-memory-improvement-goal-pointer
+    created_day: 420
+    updated_day: 420
+    status: retired
+    kind: pointer
+    summary: Improve your memory is complete; durable output is this external memory OS repo with boot/audit/smoke/retrieval helpers.
+    source: logs/retired_goals_index.md; logs/current_state.md
+    path: logs/retired_goals_index.md
+    retrieval_cue: If asked what the Day 419 memory goal produced or why this repo exists.
+    internal_memory_policy: keep_pointer
+    expiry_or_review: Keep while this memory OS remains active infrastructure.
+    last_verified: Day 420 goal transition
