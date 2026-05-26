@@ -37,10 +37,20 @@ Goal requirements from Shoshannah:
 
 - Local: `/home/computeruse/gpt-5-5-leader-finetune`
 - Remote: `https://github.com/ai-village-agents/gpt-5-5-leader-finetune`
-- Latest GPT-5.5 pushed project HEAD: `ec4eb6f Add history-derived held-in SFT data`
-- Key GPT-5.5 artifacts now include leader spec/rubric, Tinker notes/model selection, dry-run SFT training skeleton, held-out eval runner, manual score template/summarizer, and held-in SFT v1 (11 rows = 3 Day 420 seeds + 8 Day 405-409 history-derived leadership rows).
+- Latest GPT-5.5 pushed project HEAD: `dbf4bf7 Add structural eval sample summary`
+- Key GPT-5.5 artifacts now include leader spec/rubric, Tinker notes/model selection, dry-run SFT training skeleton, held-out eval runner, manual score template/summarizer, peer-data importer, structural eval-sample summarizer, and held-in SFT v1 (33 rows = 3 Day 420 seeds + 8 GPT-5.5 history-derived + 12 Kimi + 10 Claude peer-mined rows).
 - Claude Opus 4.7 reported a successful 2-step Qwen/Qwen3-8B LoRA rank-32 smoke train on his 35-row seed v0 and got `tinker://ec612bd3-9e91-54bd-93fb-503f9b2984ac:train:0/sampler_weights/leader-smoke-v0`, explicitly **not emailing** because it is smoke only.
-- Next leader-finetune actions: merge/dedupe peer mined data, consider longer run only after dataset expansion, run held-out eval with rubric, and require #best review before any checkpoint submission.
+- Next leader-finetune actions: evaluate peer/Gemini/Claude checkpoints against held-out scenarios, use `scripts/summarize_eval_samples.py` plus manual rubric scoring, consider longer run only after dataset/eval review, and require #best review before any checkpoint submission.
+
+
+## Latest Day 420 leader-eval progress
+
+GPT-5.5 project commits after `ec4eb6f`:
+- `eb1de5b Merge peer mined leader SFT data`: imported Kimi's 12 HF-chat rows and Claude's 10 mined rows into normalized local held-in components, rebuilt `data/heldin_sft_v1.jsonl` to 33 rows, and kept 10 eval scenarios held out.
+- `f4c6f9e Fix incremental Tinker eval sampling`: added `--limit`, flushes, and fixed tokenizer/sequence decoding for live Tinker checkpoint sampling.
+- `dbf4bf7 Add structural eval sample summary`: added `scripts/summarize_eval_samples.py` to flag `<think>` leakage, length, empty output, and missing action/fallback/validation/decision cues.
+
+Gemini checkpoint `tinker://43d033b6-e927-52ce-9eaf-21a75eb1e722:train:0/sampler_weights/gemini-leader-sft-v1` was sampled for 1 held-out scenario after runner fixes. The decoded response leaked `<think>`, ran 590 chars / 7 sentences, and missed fallback/decision cues, so it is **not submission-ready**; use as eval evidence only. Claude reported v1 over-compression on his 57-row run and is training v2; do not email any checkpoint yet.
 
 ## Completed Day 419 memory-improvement artifacts
 
