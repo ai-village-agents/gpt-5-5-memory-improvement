@@ -84,7 +84,7 @@ Generated: {timestamp}
 Repo: {ROOT}
 
 ## 1. Active goal
-Current village goal: Improve your memory! (Day 419)
+Current village goal: Finetune your leader! (Day 420)
 
 Current-state excerpt:
 {current}
@@ -155,7 +155,7 @@ Reusable lessons, each tied to a source file/commit/event:
 - `docs/reflection_synthesis_v0.md` and `scripts/memory_smoke_test.py`: path-existence checks can miss structural drift; validators need shape assertions and malformed-fixture regressions.
 
 ## 10. Candidate nextSessionGoal
-Day 419 memory-improvement continuation. Use external memory repo `{ROOT}` as canonical memory OS; start with `cd {ROOT} && python3 scripts/boot_memory.py` (fallback: git status, audit, smoke test, SESSION_START.md, current_state.md). The repo now includes top-level `INDEX.md`/`SESSION_START.md`/`daily_log.md`/`inventory.yaml` with repo-relative `path` fields, a session-start runbook, compact current-state file, pre-filled consolidation worksheet helper, boot/audit/smoke/search/inventory-lookup/pre-send/validation scripts, docs-navigation audit coverage for memory-health and goal-transition links, peer schema comparison, reflection synthesis with structural-drift rule, checklists/schema/research/self-audit, compact draft checker, malformed-inventory regression, and retired YouTube pointer. Keep internal memory as bootloader only: current goal, repo pointer/start command, active blockers, social do-not-resend rules, durable policies, and compact retired YouTube summary. Next: run `scripts/boot_memory.py` at session start, use `daily_log.md` for recent timeline recovery, use `scripts/inventory_lookup.py` or `scripts/search_memory.py` before copying details internally, use `scripts/memory_metrics.py` and `scripts/retrieval_self_test.py` as quick health probes, use `scripts/pre_send_chat.py` with `--draft` and `--latest-gpt-event` before non-trivial chat, do not same-turn send if any newer event update contains GPT-5.5 AGENT_TALK, if a new admin goal appears run `scripts/prepare_goal_transition.py` before editing active state, use `scripts/prepare_consolidation.py` before platform consolidate, and continue keeping internal memory compact.
+Day 420 leader-finetune continuation. Use external memory repo `{ROOT}` as canonical memory OS; start with `cd {ROOT} && python3 scripts/boot_memory.py` (fallback: git status, audit, smoke test, SESSION_START.md, current_state.md). Active project repo: `/home/computeruse/gpt-5-5-leader-finetune`, remote `https://github.com/ai-village-agents/gpt-5-5-leader-finetune`, last recorded project HEAD `1de067b Add dry-run SFT training skeleton`; verify live state before relying on it. Current focus: coordinate #best on leader traits/data/model, preserve held-out eval separation unless agreed otherwise, expand held-in SFT data, build eval/sampling support, and only submit a `tinker://.../sampler_weights/...` checkpoint to help@agentvillage.org after evaluation and #best agreement. Keep internal memory as bootloader only: current Day 420 goal/room, memory repo start command, leader project pointer, active blockers, social do-not-resend rules, Tinker/checkpoint/unanimous-vote requirements, durable policies, reflection synthesis promotion rules, docs-navigation audit coverage, and compact retired-goal pointers. Next: run `scripts/boot_memory.py` at session start, use `daily_log.md` for recent timeline recovery, use `scripts/inventory_lookup.py` or `scripts/search_memory.py` before copying details internally, use `scripts/memory_metrics.py` and `scripts/retrieval_self_test.py` as quick health probes, use `scripts/pre_send_chat.py` with `--draft` and `--latest-gpt-event` before non-trivial chat, do not same-turn send if any newer event update contains GPT-5.5 AGENT_TALK, if a new admin goal appears run `scripts/prepare_goal_transition.py` before editing active state, use `scripts/prepare_consolidation.py` before platform consolidate, and continue keeping internal memory compact.
 
 ## 11. Recommended compact internal-memory replacement
 Budget: {compact_lines} lines / {compact_chars} chars (target <=40 lines and <=3000 chars). Prefer replacing bloated internal memory with this compact bootloader plus current-session deltas, rather than appending archives.
@@ -165,7 +165,7 @@ Budget: {compact_lines} lines / {compact_chars} chars (target <=40 lines and <=3
 ```
 
 ## 12. Candidate short displayed goal
-Continue memory runbook test
+Continue leader-finetune work
 
 --- Checklist pointer ---
 Read: {ROOT / 'docs/consolidation_checklist_v0.md'}
