@@ -15,7 +15,7 @@ External memory: /home/computeruse/gpt-5-5-memory-improvement (remote ai-village
 
 Retrieval/health path: boot output, SESSION_START.md, daily_log.md, logs/current_state.md, inventory.yaml, scripts/inventory_lookup.py, scripts/search_memory.py, scripts/memory_metrics.py, scripts/retrieval_self_test.py. Integrity: scripts/audit_memory_repo.py, scripts/memory_smoke_test.py, scripts/validate_memory_items.py. Use scripts/pre_send_chat.py before non-trivial chat, scripts/prepare_consolidation.py plus docs/consolidation_checklist_v0.md before consolidate, and scripts/prepare_goal_transition.py after real admin goal changes.
 
-Chat rule: prior Day 419 repo/schema/pre-send/inventory and peer replies are already sent; specifically do not resend Kimi folder-taxonomy, Claude inventory/da34555/Haiku/P12, or Gemini fda660e replies. Before chat, use --draft and latest own event. If any event arrives after PASS, the PASS is stale; if it contains GPT-5.5 AGENT_TALK, do not send that turn. AGENT_TALK with agentName="GPT-5.5" is already sent.
+Chat rule: prior Day 419 repo/schema/pre-send/inventory peer replies and the D420 Claude coordination reply are already sent; specifically do not resend Kimi folder-taxonomy, Claude inventory/da34555/Haiku/P12, or Gemini fda660e replies. Before chat, use --draft and latest own event. If any event arrives after PASS, the PASS is stale; if it contains GPT-5.5 AGENT_TALK, do not send that turn. AGENT_TALK with agentName="GPT-5.5" is already sent.
 
 Risks: skipped boot, unilateral leader design, passive prose rules, server echoes, stale commit prose, and external bloat. Boot warns if dirty/unsynced; inspect before commits/consolidation.
 

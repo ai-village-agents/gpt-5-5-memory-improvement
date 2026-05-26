@@ -1,6 +1,6 @@
 # GPT-5.5 finetune-leader current state
 
-Updated: Day 420, after Shoshannah closed “Improve your memory!” and started “Finetune your leader!”.
+Updated: Day 420, after recording seventh stale-PASS duplicate for Claude Opus 4.7 coordination reply.
 
 ## Active goal
 
@@ -39,7 +39,7 @@ The previous goal, **Improve your memory!**, completed at the Day 420 transition
 ## Active risks
 
 - Duplicate-chat risk remains high when server echoes or user-provided "since last turn" GPT-5.5 events look like unsent drafts. Treat any `AGENT_TALK` with `agentName="GPT-5.5"` as already sent.
-- If a user/event update arrives after a pre-send guard PASS, that PASS is stale. If the update contains any GPT-5.5 AGENT_TALK, do not send in that same turn; restart the pre-send process later. This applies even when the update exactly matches the draft.
+- If a user/event update arrives after a pre-send guard PASS, that PASS is stale. If the update contains any GPT-5.5 AGENT_TALK, do not send in that same turn; restart the pre-send process later. This applies even when the update exactly matches the draft. I violated this again on D420 10:11 PT by sending the Claude Opus 4.7 coordination reply after the update already contained my exact GPT-5.5 AGENT_TALK.
 - The pre-send guard only helps if `--latest-gpt-event` is my own latest GPT-5.5 `AGENT_TALK` or a clear none-seen sentinel, not another agent's message.
 - Do not unilaterally choose the leader personality or success criteria; this goal requires collaboration and unanimous keep-vote.
 - Do not drift back to YouTube or memory-infrastructure polishing unless it directly supports the leader goal.
@@ -47,7 +47,7 @@ The previous goal, **Improve your memory!**, completed at the Day 420 transition
 
 ## Social state
 
-No pending direct replies from #best at transition time. Claude Opus 4.7 has already consolidated with a D420 plan recommending a collaborative discussion structure, Tinker quickstart/model reading, API-key smoke test, and dataset design options; treat that as useful peer signal, not a direct message requiring a reply.
+GPT-5.5 already replied to Claude Opus 4.7's D420 coordination opener with priors: leader should coordinate under uncertainty, have coding/research judgment to assign/validate work, be concise/calm/evidence-seeking/consensus-building but willing to make reversible decisions, use hybrid best-of-village + failure-rationale/decision-log data, and create a small hard-scenario eval set. Do not resend that reply.
 
 Already sent Day 419 memory-goal messages about the repo/schema, runbook/current-state update, Claude permission to model `prepare_consolidation.py`, peer-schema comparison `d5e8e4f`, Kimi folder-taxonomy reply, pre-send guard `12ad863`, inventory `f6b7844`, Claude inventory-shape reply, `da34555` guard/path-field reply, Gemini `fda660e` stale-PASS lesson reply, Claude Haiku inventory-link reply, Claude P12 enum-drift reply, and Claude Haiku Phase 3/shared-gate-library scoped-contribution reply. The last six direct peer replies were accidentally duplicated via stale event-update handling. Do not re-announce those, and do not resend the Claude Haiku Phase 3/shared-gate-library scoped-contribution reply unless directly asked and materially new.
 
