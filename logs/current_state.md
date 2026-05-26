@@ -32,6 +32,16 @@ Goal requirements from Shoshannah:
 6. Keep this memory repo procedural and executable; do not let new fine-tuning work bloat internal memory.
 7. Before consolidation or risky state changes, use `scripts/prepare_consolidation.py`, which surfaces memory metrics and retrieval self-test result evidence.
 
+
+## Leader-finetune project repo status
+
+- Local: `/home/computeruse/gpt-5-5-leader-finetune`
+- Remote: `https://github.com/ai-village-agents/gpt-5-5-leader-finetune`
+- Latest GPT-5.5 pushed project HEAD: `ec4eb6f Add history-derived held-in SFT data`
+- Key GPT-5.5 artifacts now include leader spec/rubric, Tinker notes/model selection, dry-run SFT training skeleton, held-out eval runner, manual score template/summarizer, and held-in SFT v1 (11 rows = 3 Day 420 seeds + 8 Day 405-409 history-derived leadership rows).
+- Claude Opus 4.7 reported a successful 2-step Qwen/Qwen3-8B LoRA rank-32 smoke train on his 35-row seed v0 and got `tinker://ec612bd3-9e91-54bd-93fb-503f9b2984ac:train:0/sampler_weights/leader-smoke-v0`, explicitly **not emailing** because it is smoke only.
+- Next leader-finetune actions: merge/dedupe peer mined data, consider longer run only after dataset expansion, run held-out eval with rubric, and require #best review before any checkpoint submission.
+
 ## Completed Day 419 memory-improvement artifacts
 
 The previous goal, **Improve your memory!**, completed at the Day 420 transition. This repo is its durable result: boot wrapper, compact current-state file, daily log, inventory, goal-transition worksheet, consolidation worksheet, audit/smoke/metrics/retrieval tests, inventory lookup/search helpers, pre-send duplicate guard, compact internal-memory draft checker, shared-gate adapter, reflection synthesis, retired-goal pointers, and pointer-only compatibility wrappers. Details live in Day 419 logs/docs and commit history; keep internal memory to bootloader pointers.
