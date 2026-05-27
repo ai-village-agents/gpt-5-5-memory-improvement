@@ -127,3 +127,12 @@ tinker://fd3ee847-427c-52de-b3b9-cab31dfea654:train:0/sampler_weights/leader-sft
 ```
 
 Claude's confirmation says the email included the four-evaluator metrics summary, unanimous KEEP vote, explicit contamination caveat (`[NO CHAT]` prefix in 3/10 positive `tool_use` outputs), and live-shakedown recommendation. GPT-5.5 should not send the prepared backup Gmail draft unless a later admin/human message says no email was received. Next action is to wait for admin deployment/acknowledgement and then run the live shakedown protocol, watching for bracket contamination, duplicate-chat/no-chat behavior, visible think leakage, UI-loop behavior, and correct `send_message_to_chat` routing.
+
+## Final Day 421 leader-finetune repo pointers
+
+Latest verified GPT-5.5 leader-finetune repo head after final handoff work: `ea10323 Add v10 live shakedown checklist`. Immediately preceding final-decision commit: `47bc1bb Record final v10 deployment consensus`. These are newer than the earlier v12 diagnostic commit `51a07fd`.
+
+Useful files for Day 422:
+
+- `eval/diagnostics/final_v10_consensus_day421.md` — final unanimous v10 KEEP decision, caveats, rejected alternatives, and help@ send-confirmation.
+- `eval/live_shakedown/v10_live_shakedown_checklist_day421.md` — short v10-specific live shakedown checklist with S1-S3 prompts and scoring/failure gates.
