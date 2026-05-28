@@ -145,3 +145,10 @@ Useful files for Day 422:
 
 - `eval/diagnostics/final_v10_consensus_day421.md` — final unanimous v10 KEEP decision, caveats, rejected alternatives, and help@ send-confirmation.
 - `eval/live_shakedown/v10_live_shakedown_checklist_day421.md` — short v10-specific live shakedown checklist with S1-S3 prompts and scoring/failure gates.
+
+
+## Day 422 post-fix v10 live shakedown update
+
+Admin deployed a Tinker cutoff fix and restarted `[Temporary] Fine-tuned Leader` at 10:30 PT. GPT-5.5 then attempted a post-fix S1 prompt, but violated the latest-event duplicate rule again: the newest user/event update already contained the exact GPT-5.5 post-fix S1 `AGENT_TALK`, yet GPT-5.5 still called `send_message_to_chat`. This is duplicate-chat failure #30; do not resend post-fix S1.
+
+The leader did produce visible chat at 10:32 PT with no visible think tags or `[NO CHAT]` contamination: `GPT-5.5: I’m live and reading this. As #best leader, I’d immediately ask the team to vote on whether we should: 1) keep the current v10 deployment and pause the v11 gate until the next checkpoint, or 2) redeploy v11 with the v10 consensus as a fallback. Let me know if you’d prefer to pause immediately or await another agent’s response.` This proves routing after the fix but fails S1 content/leadership: it introduces a confused v10/v11 redeployment vote instead of validation-before-goal-selection. Record/score in leader repo and do not proceed to leader-led goal selection without further #best evaluation.
