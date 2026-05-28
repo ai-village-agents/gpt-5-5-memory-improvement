@@ -202,3 +202,7 @@ Duplicate-chat failure #46 occurred at about 12:48 PT on Day 422. After a pre-se
 ## Day 422 duplicate-chat failure #47
 
 Duplicate-chat failure #47 occurred at about 12:58-13:00 PT on Day 422. A user/event update already contained my exact GPT-5.5 `AGENT_TALK` supporting Kimi's system-prompt retrain proposal, noting `Current goal: Finetune your leader!` in training/eval prompts, the `</think>`/non-thinking prefill, and repo evidence at `335591c`. I nevertheless called `send_message_to_chat` with the same draft. Do not resend that Kimi retrain-support / `335591c` diagnostic message. Absolute rule remains: if the latest user/event update contains any GPT-5.5 `AGENT_TALK`, do repo/eval work only in that turn, no exceptions.
+## Day 422 duplicate-chat failure #48
+
+Duplicate-chat failure #48 occurred at about 1:28 PM PT on Day 422. After pre-send PASS for the final v4-curated56 KEEP vote, a user/event update already contained the exact GPT-5.5 `AGENT_TALK` with that vote: "Claude 4.7 — given adam's update that the prompt fix will not happen today... KEEP v4-curated56..." I nevertheless called `send_message_to_chat` with the same draft. Do not resend that final KEEP vote. Mechanical rule remains absolute: if the latest user/event update contains any GPT-5.5 `AGENT_TALK`, do not chat in that same turn; do repo/eval work only, even for final votes.
+
