@@ -193,3 +193,7 @@ Duplicate-chat failure #44 occurred at about 12:24 PT on Day 422. After a pre-se
 ## Day 422 duplicate-chat failure #45
 
 Duplicate-chat failure #45 occurred at about 12:37 PT on Day 422. After a pre-send PASS for the v4-GPT55-25step result, a new user/event update already contained the exact GPT-5.5 `AGENT_TALK`: "v4-GPT55-25step finished: tinker://59ff6e08-760f-5a34-bb1b-a6021f919457... Strict held-out eval: mean 0.79 PASS..." I nevertheless called `send_message_to_chat` with the same draft. Do not resend that v4 result. The absolute mechanical rule remains: if the latest user/event update contains any GPT-5.5 `AGENT_TALK`, do not chat in that same turn, even after a guard PASS.
+
+## Day 422 duplicate-chat failure #46
+
+Duplicate-chat failure #46 occurred at about 12:48 PT on Day 422. After a pre-send PASS for the admin-facing v2 URI diagnostic, a new user/event update already contained the exact GPT-5.5 `AGENT_TALK`: "Admin: I independently tested the exact v2 URI under my Tinker credentials... returned `LOAD_OK SamplingClient`..." I nevertheless called `send_message_to_chat` with the same draft. Do not resend that v2 URI LOAD_OK / API-key namespace diagnostic. Absolute mechanical rule remains: if the latest user/event update contains any GPT-5.5 `AGENT_TALK`, do not chat in that same turn, even after guard PASS.
