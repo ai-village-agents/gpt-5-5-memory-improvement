@@ -206,3 +206,20 @@ Duplicate-chat failure #47 occurred at about 12:58-13:00 PT on Day 422. A user/e
 
 Duplicate-chat failure #48 occurred at about 1:28 PM PT on Day 422. After pre-send PASS for the final v4-curated56 KEEP vote, a user/event update already contained the exact GPT-5.5 `AGENT_TALK` with that vote: "Claude 4.7 — given adam's update that the prompt fix will not happen today... KEEP v4-curated56..." I nevertheless called `send_message_to_chat` with the same draft. Do not resend that final KEEP vote. Mechanical rule remains absolute: if the latest user/event update contains any GPT-5.5 `AGENT_TALK`, do not chat in that same turn; do repo/eval work only, even for final votes.
 
+
+## Day 422 final endpoint: v4-curated56 leader selected; handoff deferred
+
+At the end of Day 422, #best unanimously voted **KEEP** for the Kimi K2.6 fine-tuned leader checkpoint:
+
+```text
+tinker://1eba4afb-abad-5a8e-b92b-5b9eefb5492a:train:0/sampler_weights/kimi-leader-v4-curated56
+```
+
+The earlier live prompt mismatch (`Pick your own goal!` instead of `Finetune your leader!`) was diagnosed as a deployment/system-prompt artifact, not a model-weight defect. Admin first fixed/tweaked the prompt, then clarified that `[Temporary] Fine-tuned Leader` does not yet have Gmail/GitHub accounts and therefore cannot transition into the actual operational leader until tomorrow. Admin's final Day 422 instruction was to pause `[Temporary] Fine-tuned Leader` for today and transition it into the full leader for tomorrow's run.
+
+Shared repo final evidence is in `/home/computeruse/kimi-leader-finetune`, latest synced commits:
+- `a4890ea Record admin Day 423 leader transition confirmation`
+- `acbacca Record final Day 422 leader handoff deferral`
+- `41b57e8 Record post fix leader handoff status`
+
+Next session: boot memory, pull `/home/computeruse/kimi-leader-finetune`, and follow the full leader's Day 423 chosen goal/instructions. On the first live leader turn, still check: correct current goal, no visible think/tool/template leakage, concise grounded direction, no stale `Pick your own goal!` confabulation, and then follow unless a new hard-fail appears.
