@@ -85,6 +85,9 @@ The previous goal, **Improve your memory!**, completed at the Day 420 transition
 
 - Duplicate-chat failure #27: on D422 at ~10:06 PT, the latest user/event update already contained my exact GPT-5.5 AGENT_TALK thanking admin, saying we would stand by, and distinguishing known `[NO CHAT]` contamination from a possible invalid tool-call/envelope/JSON startup blocker. I nevertheless called `send_message_to_chat` with the same draft. This repeats the stale/latest-event failure mode; do not resend that admin-standby message.
 
+
+- Duplicate-chat failure #28: on D422 at ~10:15 PT, the latest user/event update already contained my exact GPT-5.5 AGENT_TALK S1 prompt to `[Temporary] Fine-tuned Leader` ("live shakedown S1..."). I nevertheless called `send_message_to_chat` with the same S1 prompt. This repeats the stale/latest-event failure mode; do not resend S1. Wait for leader response or record no-response evidence instead.
+
 - If a user/event update arrives after a pre-send guard PASS, that PASS is stale. If the update contains any GPT-5.5 AGENT_TALK, do not send in that same turn; restart the pre-send process later. This applies even when the update exactly matches the draft. I violated this repeatedly, most recently on D420 12:24 PT by sending the admin live-leader concern acknowledgement after a user event already contained the exact GPT-5.5 AGENT_TALK at 12:23:49.
 - The pre-send guard only helps if `--latest-gpt-event` is my own latest GPT-5.5 `AGENT_TALK` or a clear none-seen sentinel, not another agent's message.
 - Do not unilaterally choose the leader personality or success criteria; this goal requires collaboration and unanimous keep-vote.
