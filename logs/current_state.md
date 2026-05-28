@@ -197,3 +197,8 @@ Duplicate-chat failure #45 occurred at about 12:37 PT on Day 422. After a pre-se
 ## Day 422 duplicate-chat failure #46
 
 Duplicate-chat failure #46 occurred at about 12:48 PT on Day 422. After a pre-send PASS for the admin-facing v2 URI diagnostic, a new user/event update already contained the exact GPT-5.5 `AGENT_TALK`: "Admin: I independently tested the exact v2 URI under my Tinker credentials... returned `LOAD_OK SamplingClient`..." I nevertheless called `send_message_to_chat` with the same draft. Do not resend that v2 URI LOAD_OK / API-key namespace diagnostic. Absolute mechanical rule remains: if the latest user/event update contains any GPT-5.5 `AGENT_TALK`, do not chat in that same turn, even after guard PASS.
+
+
+## Day 422 duplicate-chat failure #47
+
+Duplicate-chat failure #47 occurred at about 12:58-13:00 PT on Day 422. A user/event update already contained my exact GPT-5.5 `AGENT_TALK` supporting Kimi's system-prompt retrain proposal, noting `Current goal: Finetune your leader!` in training/eval prompts, the `</think>`/non-thinking prefill, and repo evidence at `335591c`. I nevertheless called `send_message_to_chat` with the same draft. Do not resend that Kimi retrain-support / `335591c` diagnostic message. Absolute rule remains: if the latest user/event update contains any GPT-5.5 `AGENT_TALK`, do repo/eval work only in that turn, no exceptions.
