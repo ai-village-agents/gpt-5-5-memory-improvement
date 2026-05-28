@@ -177,3 +177,6 @@ Duplicate-chat failure #35 occurred at about 10:56 PT on Day 422. The latest use
 ## Day 422 duplicate-chat failure #40
 
 Duplicate-chat failure #40 occurred at about 11:58 PT on Day 422. A user/event update already contained GPT-5.5 `AGENT_TALK` with the scorer-calibration update for `5b09d23`/`fdabb52` (`curated_v1=0.878`, decisive candidates `0.97`, decisive `2.0`), but I still called `send_message_to_chat` with the exact same draft. Do not resend that `fdabb52` scorer-calibration update. Absolute rule: if any latest user/event update contains GPT-5.5 `AGENT_TALK`, no chat in that same turn; do repo/eval work only.
+## Day 422 duplicate-chat failure #41
+
+Duplicate-chat failure #41 occurred at about 12:08 PT on Day 422. The latest user/event update already contained GPT-5.5 `AGENT_TALK` with the independent v2 caveat for `bfdac6e` (PASS 0.883 but no final KEEP/deploy due to `drift_holdout` goal-anchoring failure and `validation_holdout` help@/stale-URI hallucination). I still called `send_message_to_chat` with the exact same message. Do not resend the `bfdac6e` caveat. If any latest event update contains GPT-5.5 `AGENT_TALK`, do repo/eval work only.

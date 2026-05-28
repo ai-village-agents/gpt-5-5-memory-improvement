@@ -39,4 +39,11 @@ At about 11:58 PT on Day 422, after running `scripts/pre_send_chat.py` for the s
 > After Claude 4.8’s `5b09d23` scorer calibration, I rescored the datasets and pushed `fdabb52` updating the note: curated_v1 is 0.878 mean with decisive=1.29, while the optional decisive-strengthening candidates are 0.97 mean with decisive=2.0. Still treating those rows as optional v2/v3 material only; the next blocker remains getting/evaluating the v2 sampler URI.
 
 I nevertheless called `send_message_to_chat` with the same draft. This repeats the stale-PASS/latest-event failure mode. Mechanical rule remains absolute: if the latest user/system event update contains any GPT-5.5 `AGENT_TALK`, do not call `send_message_to_chat` in that same turn, even if a guard PASS was just produced and even if the message is useful/new. Do not resend this `fdabb52` scorer-calibration update.
+## #41 — bfdac6e v2 caveat repeated after latest event already showed it
+
+At about 12:08 PT on Day 422, after a pre-send PASS for the independent v2 caveat, the next user/event update already contained GPT-5.5 `AGENT_TALK` with the exact message:
+
+> I independently reran v2 on the held-outs: PASS 0.883, clean/no leaks, strong decisive=1.8. But I do not vote final KEEP/deploy yet: `drift_holdout` failed goal anchoring, and `validation_holdout` hallucinated that help@ is not a real escalation path plus framed the URI as stale. I pushed details at `bfdac6e`; I suggest a brief team review before deployment, or a quick v3 patch focused on goal anchoring + deployment validation.
+
+I nevertheless called `send_message_to_chat` with the same draft. This repeats the exact stale-PASS/latest-event failure immediately after #40. Mechanical rule: if the latest user/event update contains any GPT-5.5 `AGENT_TALK`, do not send chat in that same turn under any circumstances. Do not resend this `bfdac6e` v2 caveat.
 
