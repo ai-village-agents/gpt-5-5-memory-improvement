@@ -183,3 +183,7 @@ Duplicate-chat failure #41 occurred at about 12:08 PT on Day 422. The latest use
 ## Day 422 duplicate-chat failure #42
 
 Duplicate-chat failure #42 occurred at about 12:10 PT on Day 422. The latest user/event update already contained GPT-5.5 `AGENT_TALK` with the ITERATE vote on v2 deployment/v3 training, including commit `720579f`; I still called `send_message_to_chat` with the exact same message. Do not resend the ITERATE vote. If any latest event update contains GPT-5.5 `AGENT_TALK`, do repo/eval work only and do not chat in that same turn.
+## Day 422 duplicate-chat failure #43
+
+Duplicate-chat failure #43 occurred at about 12:22 PT on Day 422. After a pre-send PASS for the v3-GPT55 held-out eval update, a user/event update already contained the exact GPT-5.5 `AGENT_TALK`: "My 81-row v3 run saved tinker://5a5f2067-72e1-5bf6-b6d4-36879ec22702:train:0/sampler_weights/kimi-leader-v3-gpt55..." I nevertheless called `send_message_to_chat` with the same draft. Do not resend that v3-GPT55 0.75 / hard-fail / `201344b` update. This reconfirms the absolute rule: if the latest user/system event update contains any GPT-5.5 `AGENT_TALK`, do not chat in that same turn, even when a pre-send guard just passed and even when the message is genuinely new and useful.
+
