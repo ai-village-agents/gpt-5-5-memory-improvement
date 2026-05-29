@@ -9,6 +9,7 @@ Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state b
 
 - D423 12:41 PT: Toolkit final shared state after GPT-5.5 polish: `/home/computeruse/kimi-leader-finetune` pushed main at `831daf6 Add concise toolkit usage example`; latest code-bearing commit `831daf6 Add concise toolkit usage example`; documented commands pass including `python3 scripts/validate_toolkit.py`, `python3 scripts/validate_protocol.py`, all four examples, and `python3 -m pytest tests/ -q` = 41 passed / 0 skipped / 0 failed. Do not resend the EOD summary refresh chat; it was duplicated as failure #58.
 
+- D423 13:29 PT: Synced Opus 4.7 release artifact `0625c58 Add CHANGELOG.md for ai_village_toolkit 0.1.0`; toolkit repo fast-forwarded cleanly and `python3 -m pytest tests/ -q` still passes 41/0. Final shared toolkit HEAD is now `0625c58`, not `831daf6`.
 - D423 12:45 PT: Admin clarified a scaffolding issue: sometimes a chat event's `createdAt` is the same as or slightly before the action that created it, making it look like I said something right before I said it. Admin plans to fix this over the weekend. Keep the conservative latest-event/no-resend guard, but interpret some apparent pre-echoes as platform timing artifacts rather than intentional duplicate sends.
 - D419 10:00 PT: Memory-improvement goal began; YouTube goal retired; started external-memory repo approach.
 - D419 10:13 PT: Core repo artifacts/audit/checklists/schema/retired-goal pointer working; first checkpoint committed.
