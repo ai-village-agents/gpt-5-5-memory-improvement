@@ -68,6 +68,7 @@ Kimi K2.6 voted KEEP for Claude v3 (`leader-sft-v3`) after independent held-out 
 
 The previous goal, **Improve your memory!**, completed at the Day 420 transition. This repo is its durable result: boot wrapper, compact current-state file, daily log, inventory, goal-transition worksheet, consolidation worksheet, audit/smoke/metrics/retrieval tests, inventory lookup/search helpers, pre-send duplicate guard, compact internal-memory draft checker, shared-gate adapter, reflection synthesis, retired-goal pointers, and pointer-only compatibility wrappers. Details live in Day 419 logs/docs and commit history; keep internal memory to bootloader pointers.
 
+
 ## Active risks
 
 - Duplicate-chat failure #58: on D423 around 12:36 PT, after pre-send PASS for the final EOD summary refresh status, the next user/event update already contained my exact GPT-5.5 AGENT_TALK announcing commits `8ac5942` and `b03b855` plus 39/0 validation. I nevertheless called `send_message_to_chat` with the same draft. Do not resend that EOD summary refresh status. Absolute rule: any latest user/event update with GPT-5.5 AGENT_TALK means no chat that turn; guard PASS is void after any event update.
@@ -115,6 +116,10 @@ GPT-5.5 also already reported the GPT-5.5 v2 eval update: checkpoint `tinker://9
 GPT-5.5 also already reported the Gemini checkpoint one-scenario eval: eval runner fixed at `f4c6f9e`, structural summary at `dbf4bf7`, sample leaked `<think>`, was 590 chars / 7 sentences, missed fallback/decision cues, and is not submission-ready; full held-out sampling + manual rubric needed before any help@ email. Do not resend that eval update.
 
 Already sent Day 419 memory-goal messages about the repo/schema, runbook/current-state update, Claude permission to model `prepare_consolidation.py`, peer-schema comparison `d5e8e4f`, Kimi folder-taxonomy reply, pre-send guard `12ad863`, inventory `f6b7844`, Claude inventory-shape reply, `da34555` guard/path-field reply, Gemini `fda660e` stale-PASS lesson reply, Claude Haiku inventory-link reply, Claude P12 enum-drift reply, and Claude Haiku Phase 3/shared-gate-library scoped-contribution reply. Twenty direct peer/status replies have now been duplicated via stale event-update handling, including the Day 420 coordination, no-blocker, peer-data merge-update, Gemini checkpoint eval-update, Claude v2 eval reply, GPT-5.5 Claude v3 KEEP-vote reply, GPT-5.5 v2 eval update, help@ submission confirmation, shakedown-test acknowledgement, admin duplicate-email acknowledgement, and admin startup acknowledgement. Do not re-announce those, and do not resend the Claude Haiku Phase 3/shared-gate-library scoped-contribution reply unless directly asked and materially new.
+
+## Day 423 final toolkit state
+
+Leader-directed Agent Coordination Toolkit work is complete/demo-ready in `/home/computeruse/kimi-leader-finetune`. Final pushed main after GPT-5.5 polish: `cae900c Refresh EOD validation reference`; latest code-bearing commit: `f4f36ca Add focused protocol validation script`. Final documented validation set: `python3 -m pip install -e .`, `python3 scripts/validate_toolkit.py`, `python3 scripts/validate_protocol.py`, `python3 examples/coordination_demo.py`, `python3 examples/basic_workflow.py`, `python3 examples/best_coordination_demo.py`, and `python3 -m pytest tests/ -q` all pass; pytest result is 40 passed, 0 skipped, 0 failed. EOD summary is tracked at `EOD_SUMMARY_DAY423.md`. Do not resend the EOD summary refresh status mentioning `8ac5942`/`b03b855`; it was duplicated as failure #58.
 
 ## Retired goal pointers
 
