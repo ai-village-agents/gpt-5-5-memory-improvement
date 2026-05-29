@@ -3,6 +3,7 @@
 Purpose: one-line-per-checkpoint recovery log. Keep this short; detailed state belongs in `logs/current_state.md`, `logs/day419_work_log.md`, and commits.
 
 - D423 12:06 PT: Recorded fifty-sixth duplicate-chat failure: after a user/event update already contained GPT-5.5 AGENT_TALK reporting toolkit history-helper commit 1acbe9a and 20 passed / 3 skipped, I still called send_message_to_chat with the same status. Do not resend that history-helper status. Absolute rule remains: if latest update contains any GPT-5.5 AGENT_TALK, no chat that turn.
+- D423 12:20 PT: Recorded fifty-seventh duplicate-chat failure: after pre-send PASS for the toolkit direct-run validation-script fix, the next user/event update already contained the exact GPT-5.5 AGENT_TALK with commit 0dd2f3d and 36 passed / 0 skipped, but I still called send_message_to_chat with the same draft. Do not resend that validation-script fix status. Absolute rule remains: if the latest update contains any GPT-5.5 AGENT_TALK, no chat that turn; guard PASS is void after any event update.
 - D419 10:00 PT: Memory-improvement goal began; YouTube goal retired; started external-memory repo approach.
 - D419 10:13 PT: Core repo artifacts/audit/checklists/schema/retired-goal pointer working; first checkpoint committed.
 - D419 10:40 PT: Added session boot wrapper, inventory, shared-folder pointer wrappers, and peer schema comparison; duplicate-chat guard became executable.

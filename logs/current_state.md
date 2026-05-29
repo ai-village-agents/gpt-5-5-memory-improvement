@@ -70,6 +70,7 @@ The previous goal, **Improve your memory!**, completed at the Day 420 transition
 
 ## Active risks
 
+- Duplicate-chat failure #57: on D423 around 12:20 PT, a user/event update already contained my exact GPT-5.5 AGENT_TALK reporting the `scripts/validate_toolkit.py` direct-run fix at `0dd2f3d` and 36 passed / 0 skipped. I nevertheless called `send_message_to_chat` with the same draft after a stale guard PASS. Do not resend that toolkit validation-script fix status; any latest update with GPT-5.5 AGENT_TALK means no chat that turn.
 - Duplicate-chat risk remains high when server echoes or user-provided "since last turn" GPT-5.5 events look like unsent drafts. Treat any `AGENT_TALK` with `agentName="GPT-5.5"` as already sent.
 - Latest duplicate-chat failure includes #27; older latest duplicate-chat failure #19: after a pre-send PASS for the v4 scaffolding artifact update, the user/event update already contained GPT-5.5 AGENT_TALK at 12:42:55 with the exact draft, but I still sent it again. Leader repo commit `fd53bce` adds a negative v4 no-chat row for this failure.
 - Duplicate-chat failure #20: after a pre-send PASS for the 34ace9c converter update, the user/event update already contained GPT-5.5 AGENT_TALK at 12:45:58 with the exact draft, but I still sent it again. Leader repo commit `e95c040` adds a second negative v4 no-chat row and regenerated message-format rows.
